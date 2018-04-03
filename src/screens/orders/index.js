@@ -42,8 +42,19 @@ export default class Orders extends Component {
             }],
         };
         this._goToTrackOrder = this._goToTrackOrder.bind(this);
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
-
+  
+    onNavigatorEvent(event) {
+      if (event.type === 'PreviewActionPress') {
+        if (event.id === 'action-cancel') {
+          Alert.alert('Cancelled');
+        }
+        if (event.id === 'action-delete-sure') {
+          Alert.alert('Deleted');
+        }
+      }
+    }
     _goToTrackOrder(){
         this.props.navigator.showModal({
             screen: 'Orders.TrackOrder', // unique ID registered with Navigation.registerScreen
