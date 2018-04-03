@@ -1,5 +1,5 @@
 import {Icon} from 'react-native-vector-icons';
-const menuTextColor = '#FFF8E1', statusBarColor = '#FF8F00', navBarBackgroundColor = '#FFA000', screenBackgroundColor='#FFA000';
+const menuTextColor = '#FFF', statusBarColor = '#FF8F00', navBarBackgroundColor = '#FFA000', screenBackgroundColor='#FFA000';
 
 export const navigationStyle = {
     navBarTextColor: menuTextColor,

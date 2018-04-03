@@ -19,6 +19,13 @@ import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Feather';
 import {hideNavigationStyle} from "../../navbarStyles";
 
+
+import styles from '../../Constants/StyleConstants';
+import { gradientColors } from "../../Constants/GradientColors";
+const viewHeight = Dimensions.get('window').height;
+const viewWidth = Dimensions.get('window').width;
+const mainBtnThemeColor = '#FF6F00', fabThemeColor = '#FF6F00', btnWidth = viewWidth-50;
+
 export default class Deals extends Component {
 
     constructor(props) {
@@ -44,11 +51,12 @@ export default class Deals extends Component {
 
     render() {
         return (
-            <LinearGradient colors={['#FFA000', '#FFE082', '#FFC107', '#FFB74D']} style={{flex:1}}>
+            <LinearGradient colors={gradientColors} style={styles.fullScreen}>
+
             <ScrollView style={styles.container}>
 
                 <TouchableHighlight onPress={this._goToRestaurant} underlayColor={'transparent'}>
-                    <View style={{paddingVertical:5}}>
+                    <View style={styles.marginTop24px}>
                     <Card
                   containerStyle={{backgroundColor:'#fff', padding:0, borderRadius: 10, borderWidth:0, elevation:5, marginVertical:0}}>
                 <Image  source={{uri: 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg'}}
@@ -103,73 +111,6 @@ export default class Deals extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-    },
-    contentInRow:{
-        flexDirection: 'row',
-    },
-    centerVertically:{
-        alignItems: 'center',
-    },
-    centerHorizontally:{
-        justifyContent: 'center',
-    },
-    numberingOrders:{
-        borderColor: '#c7c8c3',
-        borderWidth: 0,
-        borderRadius: 0,
-        width: 20,
-        height: 20,
-        shadowColor: '#c7c8c3',
-        shadowOffset: {width: 0, height: 1},
-        shadowOpacity: 0.8,
-        shadowRadius: 30,
-        elevation: 1,
-    },
-    productNameStyle: {
-        fontWeight: '500'
-    },
-    fontFamilyRoboto: {
-        fontFamily: 'Roboto'
-    },
-    orderInfoTitleStyle:{color: '#e67e22', fontWeight: '100'},
-    twelvePointBurst: {
-        position: 'absolute',
-        top: -50,
-        right: 20,
-    },
-    twelvePointBurstMain: {
-        width: 80,
-        height: 80,
-        backgroundColor: '#7CB443'
-    },
-    twelvePointBurst30: {
-        width: 80,
-        height: 80,
-        position: 'absolute',
-        backgroundColor: '#7CB443',
-        top: 0,
-        right: 0,
-        transform: [
-            {rotate: '30deg'}
-        ]
-    },
-    twelvePointBurst60: {
-        width: 80,
-        height: 80,
-        position: 'absolute',
-        backgroundColor: '#7CB443',
-        top: 0,
-        right: 0,
-        transform: [
-            {rotate: '60deg'}
-        ]
-    },
-    discountValuePosition:{position:'absolute', right:35, top:-27}
-});
-
 
 
 {/*

@@ -14,6 +14,7 @@ import {
     Dimensions,
     PermissionsAndroid, Keyboard, TouchableHighlight
 } from 'react-native';
+
 import {Text, Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Entypo';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -23,10 +24,12 @@ import Input from '../../Components/Input';
 import {coloredNavigationStyle, hideNavigationStyle, navigationStyle, sideNavigatorButton} from "../../navbarStyles";
 import {Navigation} from "react-native-navigation";
 
+import styles from '../../Constants/StyleConstants';
+import { gradientColors } from "../../Constants/GradientColors";
 const viewHeight = Dimensions.get('window').height;
 const viewWidth = Dimensions.get('window').width;
-
 const mainBtnThemeColor = '#FF6F00', fabThemeColor = '#FF6F00', btnWidth = viewWidth-50;
+
 
 export default class Home extends Component {
     constructor() {
@@ -80,24 +83,21 @@ export default class Home extends Component {
 
     render() {
         return (
-            <LinearGradient colors={['#FFF8E1', '#F89406', '#FFC107', '#FF9800']} style={{minHeight: viewHeight-24}}>
+            <LinearGradient colors={gradientColors} style={styles.fullScreen}>
             <ScrollView>
             <Image
             source={require('../../images/headerImg.jpg')}
-            style={{
-                height: viewHeight / 2,
-                width: viewWidth
-            }}/>
+            style={styles.homeHeaderImage} />
 
         <View style={{marginTop: 10}}>
             <Icon name='location' size={30}
-                  color='#fff' style={{textAlign: 'center', marginVertical: 10}}/>
-            <Text style={{textAlign: 'center', color:'#fff', fontSize: 24, fontFamily: 'sans-serif-condensed'}}>LOS ANGELES,
+                  color='#FFA000' style={[styles.textAlignCenter, styles.marginTop24px]}/>
+            <Text style={[styles.textAlignCenter, styles.theme24pxfont, styles.condensedFonts]}>LOS ANGELES,
                 CA</Text>
         </View>
 
         <TouchableHighlight
-        style={[{height:50, width:50, borderRadius: 25, position:'absolute', right: 16,top: (viewHeight/2-30), backgroundColor:fabThemeColor, justifyContent: 'center',alignItems: 'center',}]}
+        style={[styles.homeCartBtn]}
          underlayColor={fabThemeColor} onPress={this._goToCart}>
             <View>
                 <FeatherIcon name={'shopping-cart'} size={24} color={'white'} />
@@ -108,37 +108,16 @@ export default class Home extends Component {
             icon={<FeatherIcon name='search' size={15}
                                color='white'/>}
             onPress={this._goToSearch}
-            textStyle={{
-                color: '#ffffff',
-                fontSize: 18,
-            }}
-            buttonStyle={{
-                backgroundColor: mainBtnThemeColor,
-                minWidth: btnWidth,
-                height: 50,
-                borderWidth: 0,
-                borderRadius: 5,
-                marginTop: 24, marginBottom: 20,
-            }}
+            textStyle={styles.white18pxfont}
+            buttonStyle={[styles.homeBtnStyle, styles.marginTop24px, styles.marginBottom24px]}
             text='SEARCH'/>
 
         <Button
             icon={< Icon name='map' size={15}
                          color='white'/>}
             onPress={this._goToExplore}
-            textStyle={{
-                color: '#ffffff',
-                fontSize: 18
-            }}
-            buttonStyle={{
-                backgroundColor: mainBtnThemeColor,
-                minWidth: btnWidth,
-                height: 50,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5,
-                marginBottom: 10
-            }}
+            textStyle={styles.white18pxfont}
+            buttonStyle={[styles.homeBtnStyle, styles.marginBottom24px]}
             text='EXPLORE'/>
 
             </ScrollView>
@@ -148,18 +127,3 @@ export default class Home extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10
-    },
-      buttonText: {
-        fontSize: 18,
-        fontFamily: 'Gill Sans',
-        textAlign: 'center',
-        margin: 10,
-        color: '#ffffff',
-        backgroundColor: 'transparent',
-      },
-});

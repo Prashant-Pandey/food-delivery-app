@@ -18,6 +18,7 @@ import {Card, Button, Badge} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 import GridView from '../../Components/GridView';
+import {gradientColors} from '../../Constants/GradientColors';
 import {navigationStyle, sideNavigatorButton, hideNavigationStyle, coloredNavigationStyle} from '../../navbarStyles';
 
 
@@ -72,7 +73,7 @@ export default class Orders extends Component {
             {name: 'SILVER', code: '#bdc3c7'}, {name: 'ASBESTOS', code: '#7f8c8d'},
         ];
         return (
-            <LinearGradient colors={['#FFA000', '#FFE082', '#FFC107', '#FFB74D']} style={{flex:1}}>
+            <LinearGradient colors={gradientColors} style={styles.fullScreen}>
             <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
             
             <Card containerStyle={{backgroundColor:'#fff', borderRadius: 5, borderWidth:0}}>
