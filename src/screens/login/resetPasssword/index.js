@@ -67,7 +67,7 @@ export default class ResetPassword extends Component {
             <ScrollView>
                 <KeyboardAvoidingView style={[styles.container]}>
                 <View style={{position:'absolute', top:20}}>
-                    <Text style={{fontSize: 23, fontWeight:'400', fontFamily:'sans-serif-condensed'}}>{'Reset Password'.toUpperCase()}</Text>
+                    <Text style={{fontSize: 23, fontWeight:'400', fontFamily:'Academy Engraved LET'}}>{'Reset Password'.toUpperCase()}</Text>
                 </View>
                 <TouchableHighlight onPress={this._goToLogin}  style={styles.closeBtn}>
                 <Icon
@@ -194,7 +194,7 @@ export default class ResetPassword extends Component {
                 marginTop: 24
                 }}
                 onPress={this._goToHome}
-                text='Reset Password'/>
+                title='Reset Password'/>
                 </KeyboardAvoidingView>
             </ScrollView>
         );
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     registerText: {
-        fontFamily:'Roboto', fontSize: 18, fontWeight:'bold'
+        fontFamily:'AcademyEngravedLetPlain', fontSize: 18, fontWeight:'bold'
     },
     inputContainerStyle: {backgroundColor: 'grey', marginVertical:5, borderRadius:3, flexDirection: 'row', alignItems: 'center'},
     otpInputBG:{backgroundColor:'transparent'},

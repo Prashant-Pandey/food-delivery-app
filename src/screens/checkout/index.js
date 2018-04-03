@@ -163,7 +163,7 @@ export default class Checkout extends Component {
                 borderWidth: 0,
                 borderRadius: 5,
             }}
-            text='PLACE ORDER'/>
+            title='PLACE ORDER'/>
             </View>
         )
     }
@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
         fontWeight: '500'
     },
     fontFamilyRoboto: {
-        fontFamily: 'Roboto'
+        fontFamily: 'AcademyEngravedLetPlain'
     },
     orderInfoTitleStyle:{color: '#e67e22', fontWeight: '100'}
 });

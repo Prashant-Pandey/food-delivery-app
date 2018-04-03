@@ -105,7 +105,7 @@ export default class Cart extends Component {
                 width: viewWidth-40, alignContent:'center',
                 height: 50, borderRadius: 25}]}>
                 <View style={[styles.centerVertically, styles.contentInRow, styles.centerHorizontally]}>
-                    <Text style={{color: '#fff', fontSize: 20, fontFamily: 'sans-serif-medium', paddingLeft:10}}>GO TO CHECKOUT</Text>
+                    <Text style={{color: '#fff', fontSize: 20, fontFamily: 'AvenirNext-Bold', paddingLeft:10}}>GO TO CHECKOUT</Text>
                 </View>
                 </TouchableHighlight>
                 </View>
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
         fontWeight: '500'
     },
     fontFamilyRoboto: {
-        fontFamily: 'Roboto'
+        fontFamily: 'AcademyEngravedLetPlain'
     },
     orderInfoTitleStyle:{color: '#e67e22', fontWeight: '100'}
 });

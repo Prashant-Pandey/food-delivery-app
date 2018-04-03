@@ -72,7 +72,7 @@ export default class Deals extends Component {
                                 <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
                                     Chchabra's Pure Veg
                                 </Text>
-                                <Text style={{fontFamily: 'Roboto', color: '#757575', fontWeight: '100'}}>
+                                <Text style={{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100'}}>
                                     Malviya Nagar, Jaipur
                                 </Text>
                             </View>
@@ -84,7 +84,7 @@ export default class Deals extends Component {
                             <View style={styles.twelvePointBurst60} />
                         </View>
                         <View style={[styles.discountValuePosition]}>
-                            <Text style={{fontFamily: 'Roboto', fontWeight: '500', fontSize: 30, color:'#ffffff'}}>
+                            <Text style={{fontFamily: 'AcademyEngravedLetPlain', fontWeight: '500', fontSize: 30, color:'#ffffff'}}>
                                 40%
                             </Text>
                         </View>
@@ -100,7 +100,7 @@ export default class Deals extends Component {
                     <View style={[{paddingTop: 10, paddingBottom:5, paddingHorizontal: 10}, styles.contentInRow, styles.centerVertically]}>
                         <Icon name = 'map-pin' size = {16}
                               color = '#222222' />
-                        <Text style={{textAlign:'center', fontSize: 16, fontFamily:'sans-serif-condensed', paddingLeft:10}}>LOS ANGELES, CA</Text>
+                        <Text style={[{textAlign:'center', fontSize: 16, paddingLeft:10}, styles.condensedFonts]}>LOS ANGELES, CA</Text>
                     </View>
     </Card>
                     </View>

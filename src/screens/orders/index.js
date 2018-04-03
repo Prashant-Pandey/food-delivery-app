@@ -94,13 +94,13 @@ export default class Orders extends Component {
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
                                 Chchabra's Pure Veg
                             </Text>
-                            <Text style={{fontFamily: 'Roboto', color: '#757575', fontWeight: '100'}}>
+                            <Text style={{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100'}}>
                                 Malviya Nagar, Jaipur
                             </Text>
                         </View>
                     </View>
                     <View>
-                        <Text style={{fontFamily: 'Roboto', fontWeight: '500', fontSize: 30}}>
+                        <Text style={{fontFamily: 'AcademyEngravedLetPlain', fontWeight: '500', fontSize: 30}}>
                             $15
                         </Text>
                     </View>
@@ -121,10 +121,10 @@ export default class Orders extends Component {
                         }} resizeMethod={'resize'} resizeMode={'cover'}/>
                     <View>
                         <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 20, fontFamily: 'sans-serif-condensed'}]}>
+                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 20, fontFamily: 'Academy Engraved LET'}]}>
                                 Status&nbsp;:&nbsp;
                             </Text>
-                            <Text style={[{color:'green', fontSize:20, fontFamily: 'sans-serif-condensed'}]}>
+                            <Text style={[{color:'green', fontSize:20, fontFamily: 'Academy Engraved LET'}]}>
                                 ONGOING
                             </Text>
                         </View>
@@ -171,7 +171,7 @@ export default class Orders extends Component {
                         marginTop: 24,
                         marginBottom: 10,
                     }}
-                    text='Track Order'/>
+                    title='Track Order'/>
             </Card>
             
  <Card containerStyle={{backgroundColor:'#fff', borderRadius: 5, borderWidth:0}}>
@@ -192,13 +192,13 @@ export default class Orders extends Component {
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
                                 Chchabra's Pure Veg
                             </Text>
-                            <Text style={{fontFamily: 'Roboto', color: '#757575', fontWeight: '100'}}>
+                            <Text style={{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100'}}>
                                 Malviya Nagar, Jaipur
                             </Text>
                         </View>
                     </View>
                     <View>
-                        <Text style={{fontFamily: 'Roboto', fontWeight: '500', fontSize: 30}}>
+                        <Text style={{fontFamily: 'AcademyEngravedLetPlain', fontWeight: '500', fontSize: 30}}>
                             $15
                         </Text>
                     </View>
@@ -219,10 +219,10 @@ export default class Orders extends Component {
                         }} resizeMethod={'resize'} resizeMode={'cover'}/>
                     <View>
                         <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 20, fontFamily: 'sans-serif-condensed'}]}>
+                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 20, fontFamily: 'Academy Engraved LET'}]}>
                                 Status&nbsp;:&nbsp;
                             </Text>
-                            <Text style={[{color:'green', fontSize:20, fontFamily: 'sans-serif-condensed'}]}>
+                            <Text style={[{color:'green', fontSize:20, fontFamily: 'Academy Engraved LET'}]}>
                                 ONGOING
                             </Text>
                         </View>
@@ -269,7 +269,7 @@ export default class Orders extends Component {
                         marginTop: 24,
                         marginBottom: 10,
                     }}
-                    text='Track Order'/>
+                    title='Track Order'/>
             </Card>
              <Card containerStyle={{backgroundColor:'#fff', borderRadius: 5, borderWidth:0}}>
                 <View
@@ -289,13 +289,13 @@ export default class Orders extends Component {
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
                                 Chchabra's Pure Veg
                             </Text>
-                            <Text style={{fontFamily: 'Roboto', color: '#757575', fontWeight: '100'}}>
+                            <Text style={{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100'}}>
                                 Malviya Nagar, Jaipur
                             </Text>
                         </View>
                     </View>
                     <View>
-                        <Text style={{fontFamily: 'Roboto', fontWeight: '500', fontSize: 30}}>
+                        <Text style={{fontFamily: 'AcademyEngravedLetPlain', fontWeight: '500', fontSize: 30}}>
                             $15
                         </Text>
                     </View>
@@ -316,10 +316,10 @@ export default class Orders extends Component {
                         }} resizeMethod={'resize'} resizeMode={'cover'}/>
                     <View>
                         <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 20, fontFamily: 'sans-serif-condensed'}]}>
+                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 20, fontFamily: 'Academy Engraved LET'}]}>
                                 Status&nbsp;:&nbsp;
                             </Text>
-                            <Text style={[{color:'green', fontSize:20, fontFamily: 'sans-serif-condensed'}]}>
+                            <Text style={[{color:'green', fontSize:20, fontFamily: 'Academy Engraved LET'}]}>
                                 ONGOING
                             </Text>
                         </View>
@@ -366,7 +366,7 @@ export default class Orders extends Component {
                         marginTop: 24,
                         marginBottom: 10,
                     }}
-                    text='Track Order'/>
+                    title='Track Order'/>
             </Card>
         </ScrollView>
             </LinearGradient>
@@ -403,7 +403,7 @@ const styles = StyleSheet.create({
         fontWeight: '500'
     },
     fontFamilyRoboto: {
-        fontFamily: 'Roboto'
+        fontFamily: 'AcademyEngravedLetPlain'
     },
     orderInfoTitleStyle:{color: '#e67e22', fontWeight: '100'}
 });

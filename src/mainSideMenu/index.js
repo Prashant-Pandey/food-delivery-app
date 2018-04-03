@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const height = Dimensions.get('window').height, width = Dimensions.get('window').width;
 
 const navPaddingVerticle = 8, iconColor = 'rgba(255, 193, 7, 1)', textColor = 'rgba(255, 193, 7, 1)',
-    sideMenuWidth = 250, upperImageHeight = height / 3;
+    sideMenuWidth = 280, upperImageHeight = (height / 3)+ 30;
 
 class mainSideMenu extends React.Component {
     constructor(props) {
@@ -141,7 +141,7 @@ class mainSideMenu extends React.Component {
                         resizeMode={'contain'}
                         style={{
                             position: 'absolute',
-                            top: (upperImageHeight-85),
+                            top: (upperImageHeight-35),
                             width: sideMenuWidth
                         }}
                         blurRadius={10}
@@ -149,31 +149,31 @@ class mainSideMenu extends React.Component {
                 <ScrollView>
                     <View style={styles.navTextContainer}>
                         <View style={styles.navButtons}>
-                            <Icon name={'ios-home-outline'} color={iconColor} size={24}/>
+                            <Icon name={'ios-home-outline'} color={iconColor} size={24} style={styles.transparentBG}/>
                             <TouchableHighlight onPress={this._goToHome} underlayColor={'transparent'}>
                                 <Text style={styles.navText}>Home</Text>
                             </TouchableHighlight>
                         </View>
                         <View style={styles.navButtons}>
-                            <Icon name={'ios-beer-outline'} color={iconColor} size={24}/>
+                            <Icon name={'ios-beer-outline'} color={iconColor} size={24} style={styles.transparentBG}/>
                             <TouchableHighlight onPress={this._gotoOrders} underlayColor={'transparent'}>
                                 <Text style={styles.navText}>Order</Text>
                             </TouchableHighlight>
                         </View>
                         <View style={styles.navButtons}>
-                            <Icon name={'ios-barcode-outline'} color={iconColor} size={24}/>
+                            <Icon name={'ios-barcode-outline'} color={iconColor} size={24} style={styles.transparentBG}/>
                             <TouchableHighlight onPress={this._gotoDeals} underlayColor={'transparent'}>
                                 <Text style={styles.navText}>Deals</Text>
                             </TouchableHighlight>
                         </View>
                         <View style={styles.navButtons}>
-                            <Icon name={'ios-settings-outline'} color={iconColor} size={24}/>
+                            <Icon name={'ios-settings-outline'} color={iconColor} size={24} style={styles.transparentBG}/>
                             <TouchableHighlight onPress={this._goToSettings} underlayColor={'transparent'}>
                                 <Text style={styles.navText}>Settings</Text>
                             </TouchableHighlight>
                         </View>
                         <View style={styles.lastNavBtn}>
-                            <Icon name={'ios-log-in-outline'} color={iconColor} size={24}/>
+                            <Icon name={'ios-log-in-outline'} color={iconColor} size={24} style={styles.transparentBG}/>
                             <TouchableHighlight onPress={this._goToLogin} underlayColor={'transparent'}>
                                 <Text style={styles.navText}>Login</Text>
                             </TouchableHighlight>
@@ -187,7 +187,8 @@ class mainSideMenu extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        marginRight: 0,
+        paddingRight: 0,
         width: sideMenuWidth,
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -236,6 +237,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         paddingLeft: 20,
         alignItems: 'center',
+    },
+    transparentBG:{
+        backgroundColor:'transparent'
     }
 
 });

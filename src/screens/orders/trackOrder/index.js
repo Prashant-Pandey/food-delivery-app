@@ -340,7 +340,7 @@ export default class TrackOrder extends Component {
                 <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
                     Delivery Address : 
                 </Text>
-                <Text style={{fontFamily: 'Roboto', color: '#757575', fontWeight: '100', flexWrap: 'wrap'}}>
+                <Text style={{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100', flexWrap: 'wrap'}}>
                     E-74 Name Appartment, Near Bharadwaj Petrol Pump, Malviya Nagar
                 </Text>
                 </View>
@@ -375,17 +375,17 @@ const styles = StyleSheet.create({
         fontWeight: '500'
     },
     fontFamilyRoboto: {
-        fontFamily: 'Roboto'
+        fontFamily: 'AcademyEngravedLetPlain'
     },
     trackOrderSmallText:{
-        fontFamily:'sans-serif-condensed',
+        fontFamily:'Academy Engraved LET',
         fontSize: 12,
         paddingBottom: -10,
         padding:0,
         margin: 0,
     },
     trackOrderLargeText:{
-        fontFamily:'Roboto',
+        fontFamily:'AcademyEngravedLetPlain',
         fontSize: 42,
         paddingVertical: 0,
         marginVertical: 0,

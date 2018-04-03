@@ -32,7 +32,7 @@ export default () => {
         Navigation.registerComponent('Login', () => Login),
         Navigation.registerComponent('Login.SignUp', () => SignUp),
         Navigation.registerComponent('Login.ResetPassword', () => ResetPassword),
-        Navigation.registerComponent('mainSideMenu', () => mainSideMenu),
+        Navigation.registerComponent('Home.mainSideMenu', () => mainSideMenu),
         Navigation.registerComponent('Orders', () => Orders),
         Navigation.registerComponent('Orders.TrackOrder', () => TrackOrder),
         Navigation.registerComponent('Deals', () => Deals),
@@ -56,14 +56,21 @@ export default () => {
             screen: {
                 screen: 'Home',
                 title: 'Welcome to Foodie',
-                navigatorButtons: sideNavigatorButton,
+                navigatorButtons: {
+                    leftButtons:  [
+                        {
+                            icon: require('./images/menu.png'),
+                            id: 'sideMenu'
+                        }
+                    ],
+                },
                 navigatorStyle: navigationStyle,
             },
             drawer: {
                 left: {
-                    screen: 'mainSideMenu'
+                    screen: 'Home.mainSideMenu'
                 },
-                disableOpenGesture: true
+                // disableOpenGesture: false
             },
             // passProps: object,
             animationType: 'fade'

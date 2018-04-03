@@ -5,7 +5,7 @@ import {
 
 const viewHeight = Dimensions.get('window').height;
 const viewWidth = Dimensions.get('window').width;
-const mainBtnThemeColor = '#FF6F00', fabThemeColor = '#FF6F00', btnWidth = viewWidth-50;
+const mainBtnThemeColor = '#FF6F00', fabThemeColor = '#FF6F00', btnWidth = 200;
 
 
 export default styles = StyleSheet.create({
@@ -13,7 +13,8 @@ export default styles = StyleSheet.create({
   flex: 1
  },
  fullScreen:{
-  minHeight: viewHeight-24
+  minHeight: viewHeight
+    // flex:1
  },
  homeHeaderImage: {
   height: viewHeight / 2,
@@ -34,12 +35,13 @@ export default styles = StyleSheet.create({
  homeBtnStyle: {
   backgroundColor: mainBtnThemeColor,
   minWidth: btnWidth,
+  marginHorizontal: 30,
   height: 50,
   borderWidth: 0,
-  borderRadius: 5,
+  borderRadius: 3,
  },
  marginTop24px: {
-  marginTop: 24,
+  marginTop: 20,
  },
  marginBottom24px: {
   marginBottom: 24
@@ -60,22 +62,11 @@ export default styles = StyleSheet.create({
   fontSize: 24,
  },
  condensedFonts: {
-  fontFamily: 'sans-serif-condensed'
+//   fontFamily: 'sans-serif-condensed'
+  fontFamily: 'Arial Rounded MT Bold'
  },
  textAlignCenter: {
   textAlign: 'center'
- },
-
- container: {
- },
- contentInRow:{
-     flexDirection: 'row',
- },
- centerVertically:{
-     alignItems: 'center',
- },
- centerHorizontally:{
-     justifyContent: 'center',
  },
  numberingOrders:{
      borderColor: '#c7c8c3',
@@ -92,10 +83,6 @@ export default styles = StyleSheet.create({
  productNameStyle: {
      fontWeight: '500'
  },
- fontFamilyRoboto: {
-     fontFamily: 'Roboto'
- },
- orderInfoTitleStyle:{color: '#e67e22', fontWeight: '100'},
  twelvePointBurst: {
      position: 'absolute',
      top: -50,
@@ -128,6 +115,43 @@ export default styles = StyleSheet.create({
          {rotate: '60deg'}
      ]
  },
- discountValuePosition:{position:'absolute', right:35, top:-27}
+ discountValuePosition:{position:'absolute', right:35, top:-27},
+ container: {
+    backgroundColor: '#f0f0f0',
+    flex: 1
+},
+contentInRow: {
+    flexDirection: 'row',
+},
+centerVertically: {
+    alignItems: 'center',
+},
+centerHorizontally: {
+    justifyContent: 'center',
+},
+cartNotificationBtnStyling:{height:10, width:10, borderRadius: 5, borderWidth:0, backgroundColor:'red'},
+productDetailsHeading: {fontWeight: '200', fontSize: 12},
+productDetailsDetail: {fontWeight: '500', fontSize: 16},
 
+fontFamilyRoboto: {
+    fontFamily: 'AcademyEngravedLetPlain'
+},
+orderInfoTitleStyle: {color: '#e67e22', fontWeight: '100'},
+wrapper: {
+    height: viewHeight / 3,
+    margin: 0,
+    padding: 0,
+    borderWidth: 0,
+},
+prodImage: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#9DD6EB',
+},
+actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
+},
 });

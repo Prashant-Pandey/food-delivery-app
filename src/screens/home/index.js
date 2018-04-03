@@ -59,9 +59,9 @@ export default class Home extends Component {
         Keyboard.dismiss();
         Navigation.showModal({
             screen: 'Search', // unique ID registered with Navigation.registerScreen
-            title: 'Search Title', // title of the screen as appears in the nav bar (optional)
+            title: 'Search', // title of the screen as appears in the nav bar (optional)
             passProps: {}, // simple serializable object that will pass as props to the modal (optional)
-            navigatorStyle: hideNavigationStyle, // override the navigator style for the screen, see "Styling the navigator" below (optional)
+            navigatorStyle: coloredNavigationStyle, // override the navigator style for the screen, see "Styling the navigator" below (optional)
             animationType: 'slide-up' // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
         });
     }
@@ -89,10 +89,10 @@ export default class Home extends Component {
             source={require('../../images/headerImg.jpg')}
             style={styles.homeHeaderImage} />
 
-        <View style={{marginTop: 10}}>
+        <View style={{marginTop: 10, backgroundColor: "transparent"}}>
             <Icon name='location' size={30}
                   color='#FFA000' style={[styles.textAlignCenter, styles.marginTop24px]}/>
-            <Text style={[styles.textAlignCenter, styles.theme24pxfont, styles.condensedFonts]}>LOS ANGELES,
+            <Text style={[styles.textAlignCenter, styles.theme24pxfont, styles.condensedFonts, styles.marginTop24px]}>LOS ANGELES,
                 CA</Text>
         </View>
 
@@ -110,7 +110,7 @@ export default class Home extends Component {
             onPress={this._goToSearch}
             textStyle={styles.white18pxfont}
             buttonStyle={[styles.homeBtnStyle, styles.marginTop24px, styles.marginBottom24px]}
-            text='SEARCH'/>
+            title='SEARCH'/>
 
         <Button
             icon={< Icon name='map' size={15}
@@ -118,7 +118,7 @@ export default class Home extends Component {
             onPress={this._goToExplore}
             textStyle={styles.white18pxfont}
             buttonStyle={[styles.homeBtnStyle, styles.marginBottom24px]}
-            text='EXPLORE'/>
+            title='EXPLORE'/>
 
             </ScrollView>
             

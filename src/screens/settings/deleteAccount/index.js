@@ -40,7 +40,7 @@ export default class DeleteAccount extends Component {
                     borderRadius: 5,
                     marginTop: 24
                 }}
-                text='Delete Account'/>
+                title='Delete Account'/>
                 </View>
             </ScrollView>
         );

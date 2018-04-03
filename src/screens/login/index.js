@@ -213,7 +213,7 @@ export default class Login extends Component {
                 marginTop: 24
                 }}
                 onPress={this.doLogin}
-                text='Login'/>
+                title='Login'/>
 
             <View style={{flexDirection:'row', marginTop:50}}>
                 <RNText style={[{color:'white'}, styles.registerText]}>Create an Account ? </RNText>
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     registerText: {
-        fontFamily:'Roboto', fontSize: 18, fontWeight:'bold',
+        fontFamily:'AcademyEngravedLetPlain', fontSize: 18, fontWeight:'bold',
     },
     closeBtn: {position:'absolute', top: 16, right: 0, backgroundColor:'#ffffff', borderTopLeftRadius: 20, borderBottomLeftRadius: 20, paddingVertical: 5, paddingLeft: 10, paddingRight:20}
 });

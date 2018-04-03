@@ -95,7 +95,7 @@ export default class SignUp extends Component {
             <ScrollView>
                 <KeyboardAvoidingView style={[styles.container]}>
                 <View style={{position:'absolute', top:20}}>
-                    <Text style={{fontSize: 23, fontWeight:'400', fontFamily:'sans-serif-condensed'}}>REGISTER & SIGN IN</Text>
+                    <Text style={{fontSize: 23, fontWeight:'400', fontFamily:'Academy Engraved LET'}}>REGISTER & SIGN IN</Text>
                 </View>
                 <TouchableHighlight onPress={this._goToLogin}  style={styles.closeBtn}>
                 <Icon
@@ -198,7 +198,7 @@ export default class SignUp extends Component {
                         marginVertical: 30
                         }}
                         onPress={this.signUp}
-                        text='SIGN UP'/>
+                        title='SIGN UP'/>
 
                         <View style={{flexDirection:'row'}}>
                         <Button
@@ -214,7 +214,7 @@ export default class SignUp extends Component {
                             }}
 
                             onPress={this._facebookLogin}
-                            text='FACEBOOK'/>
+                            title='FACEBOOK'/>
                         <Button
                             buttonStyle={{
                             backgroundColor: "#3B94D9",
@@ -227,7 +227,7 @@ export default class SignUp extends Component {
                             marginTop: 24
                             }}
                             onPress={this._twitterLogin}
-                            text='TWITTER'/>
+                            title='TWITTER'/>
                             </View>
                 </KeyboardAvoidingView>
             </ScrollView>
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     registerText: {
-        fontFamily:'Roboto', fontSize: 18, fontWeight:'bold'
+        fontFamily:'AcademyEngravedLetPlain', fontSize: 18, fontWeight:'bold'
     },
     inputContainerStyle: {backgroundColor: 'grey', marginVertical:5, borderRadius:3, flexDirection: 'row', alignItems: 'center'},
     closeBtn: {position:'absolute', top: 16, right: 0, backgroundColor:'#222222', borderTopLeftRadius: 20, borderBottomLeftRadius: 20, paddingVertical: 5, paddingLeft: 10, paddingRight:20}

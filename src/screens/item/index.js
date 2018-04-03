@@ -25,6 +25,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Swiper from 'react-native-swiper';
 import {coloredNavigationStyle, sideNavigatorButton} from "../../navbarStyles";
 
+import { styles } from "../../Constants/StyleConstants";
+
 const navBarBackgroundColor = '#FFA000';
 
 
@@ -103,7 +105,7 @@ export default class Item extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={{flex:1}}>
                 {/*header*/}
                 <Header
                     outerContainerStyles={{borderBottomWidth:0, paddingRight:0}}
@@ -125,13 +127,13 @@ export default class Item extends Component {
                                     fontWeight: '500',
                                     paddingLeft: 30,
                                 }}
-                                text='Sushi'/>
+                                title='Sushi'/>
                         </View>
                     }
                     rightComponent={
                         <TouchableHighlight onPress={this._goToCart} underlayColor={navBarThemeColor}>
-                            <View style={[styles.centerHorizontally, styles.centerVertically,{paddingRight: 20}]}>
-                                <View style={[{position:'absolute', top:0, right:5, zIndex:10, height: 20, width:25, borderRadius: 10, backgroundColor: 'red'}, styles.centerVertically, styles.centerHorizontally]}>
+                            <View style={[{paddingRight: 20, alignItems: 'center', justifyContent: 'center'}]}>
+                                <View style={[{position:'absolute', top:0, right:5, zIndex:10, height: 20, width:25, borderRadius: 10, backgroundColor: 'red', alignItems: 'center', justifyContent: 'center'}]}>
                                     <Text style={{fontSize: 10, color: '#fff', fontWeight: '700'}}>1</Text>
                                 </View>
                                 <Icon name='md-cart' size={42} color='white'/>
@@ -140,7 +142,12 @@ export default class Item extends Component {
                     }
                 />
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <Swiper style={styles.wrapper} showsButtons={true}>
+                    <Swiper style={[{
+                         height: viewHeight / 3,
+                         margin: 0,
+                         padding: 0,
+                         borderWidth: 0,
+                    }]} showsButtons={true}>
                         <Image
                             source={{uri: 'http://i.dailymail.co.uk/i/pix/2017/11/08/16/4623608900000578-0-image-a-9_1510156892900.jpg'}}
                             style={styles.prodImage}/>
@@ -207,7 +214,7 @@ export default class Item extends Component {
                             fontSize: 24,
                             fontWeight: '500',
                         }}
-                        text='Our Other Menu'/>
+                        title='Our Other Menu'/>
                     <Divider style={{backgroundColor: '#d8dde1'}}/>
                     <View style={{minHeight: 220}}>
                         <FlatList
@@ -233,12 +240,11 @@ export default class Item extends Component {
                                             style={[{paddingBottom: 5}, styles.contentInRow, styles.centerVertically]}>
                                             <Icon name='ios-pin-outline' size={16}
                                                   color='#222222'/>
-                                            <Text style={{
+                                            <Text style={[{
                                                 textAlign: 'center',
                                                 fontSize: 16,
-                                                fontFamily: 'sans-serif-condensed',
                                                 paddingLeft: 10
-                                            }}>{rowData.hotelLocation}</Text>
+                                            }, styles.condensedFonts]}>{rowData.hotelLocation}</Text>
                                         </View>
                                     </Card>
                                 );
@@ -254,58 +260,13 @@ export default class Item extends Component {
                     height: 45
                 }, styles.centerVertically, styles.contentInRow, styles.centerHorizontally]}>
                     <MaterialIcons name={'add-shopping-cart'} size={24} color={'white'}/>
-                    <Text style={{color: '#fff', fontSize: 20, fontFamily: 'sans-serif-medium', paddingLeft:10}}>ORDER NOW</Text>
+                    <Text style={{color: '#fff', fontSize: 20, fontFamily: 'AvenirNext-Bold', paddingLeft:10}}>ORDER NOW</Text>
                 </View>
                 </TouchableHighlight>
             </View>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#f0f0f0',
-        flex: 1
-    },
-    contentInRow: {
-        flexDirection: 'row',
-    },
-    centerVertically: {
-        alignItems: 'center',
-    },
-    centerHorizontally: {
-        justifyContent: 'center',
-    },
-    cartNotificationBtnStyling:{height:10, width:10, borderRadius: 5, borderWidth:0, backgroundColor:'red'},
-    productDetailsHeading: {fontWeight: '200', fontSize: 12},
-    productDetailsDetail: {fontWeight: '500', fontSize: 16},
-
-    productNameStyle: {
-        fontWeight: '500'
-    },
-    fontFamilyRoboto: {
-        fontFamily: 'Roboto'
-    },
-    orderInfoTitleStyle: {color: '#e67e22', fontWeight: '100'},
-    wrapper: {
-        height: viewHeight / 3,
-        margin: 0,
-        padding: 0,
-        borderWidth: 0,
-    },
-    prodImage: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#9DD6EB',
-    },
-    actionButtonIcon: {
-        fontSize: 20,
-        height: 22,
-        color: 'white',
-    },
-});
-
 
 {/*
  <Card

@@ -4,16 +4,16 @@ const menuTextColor = '#FFF', statusBarColor = '#FF8F00', navBarBackgroundColor 
 export const navigationStyle = {
     navBarTextColor: menuTextColor,
     // navBarTextFontSize: 20, navBarTextFontFamily: string,
-    // navBarBackgroundColor: menuTextColor,
+    navBarBackgroundColor: navBarBackgroundColor,
     // navBarCustomView: string,
     navBarComponentAlignment: 'center',
     // navBarCustomViewInitialProps: object,
     navBarButtonColor: menuTextColor,
     topBarElevationShadowEnabled: false,
-    navBarHidden: false,
+    // navBarHidden: false,
     // navBarHideOnScroll: false, navBarTranslucent: true,
-    navBarTransparent: true,
-    navBarNoBorder: true,
+    navBarTransparent: false,
+    // navBarNoBorder: true,
     //  drawUnderNavBar: boolean, drawUnderTabBar: boolean,
     // navBarBlur: true, tabBarHidden: boolean,
     // statusBarHidden: true,
@@ -21,21 +21,23 @@ export const navigationStyle = {
     // navBarSubtitleFontFamily: string, navBarSubtitleFontSize: number,
     screenBackgroundColor: screenBackgroundColor,
     orientation: 'portrait',
-    // disabledButtonColor: string, iOS only statusBarTextColorSchemeSingleScreen:
-    // string, statusBarHideWithNavBar: boolean, statusBarBlur: boolean,
+    // disabledButtonColor: string, iOS only 
+    // statusBarTextColorSchemeSingleScreen: string, 
+    // statusBarHideWithNavBar: true, 
+    // statusBarBlur: true,
     // disabledBackGesture: boolean, disabledSimultaneousGesture: boolean,
     // screenBackgroundImageName: string, rootBackgroundImageName: string,
-    // navBarButtonFontSize: number, navBarButtonFontWeight: string | number,
-    // navBarLeftButtonFontSize: number,
-    navBarLeftButtonColor: '#ffffff',
+    // navBarButtonFontSize: 30, navBarButtonFontWeight: 500,
+    // navBarLeftButtonFontSize: 40,
+    // navBarLeftButtonColor: '#ffffff',
     // navBarLeftButtonFontWeight: string | number, navBarRightButtonFontSize:
-    // number, navBarRightButtonColor: string, navBarRightButtonFontWeight: string |
+    // number, navBarRightButtonColor: "#000", navBarRightButtonFontWeight: string |
     // number, topBarShadowColor: string, topBarShadowOpacity: number,
     // topBarShadowOffset: number, topBarShadowRadius: number, preferredContentSize:
     // { width: number, height: number }, modalPresentationStyle: 'formSheet' |
     // 'pageSheet' | 'overFullScreen' | 'overCurrentContext' | 'fullScreen',
     // largeTitle: boolean, Android only navigationBarColor: '#ffffff',
-    navBarTitleTextCentered: true, navBarButtonFontFamily: 'roboto',
+    navBarTitleTextCentered: true, navBarButtonFontFamily: 'AcademyEngravedLetPlain',
     statusBarColor: statusBarColor,
     // drawUnderStatusBar: true, collapsingToolBarImage:
     // object, collapsingToolBarCollapsedColor: string, navBarTextFontBold: boolean,
@@ -77,7 +79,7 @@ export const coloredNavigationStyle = {
     // { width: number, height: number }, modalPresentationStyle: 'formSheet' |
     // 'pageSheet' | 'overFullScreen' | 'overCurrentContext' | 'fullScreen',
     // largeTitle: boolean, Android only navigationBarColor: '#ffffff',
-    navBarTitleTextCentered: true, navBarButtonFontFamily: 'roboto',
+    navBarTitleTextCentered: true, navBarButtonFontFamily: 'AcademyEngravedLetPlain',
     statusBarColor: statusBarColor,
     // drawUnderStatusBar: true, collapsingToolBarImage:
     // object, collapsingToolBarCollapsedColor: string, navBarTextFontBold: boolean,
@@ -88,7 +90,7 @@ export const coloredNavigationStyle = {
 modalTextColor = '#000000';
 export const modalNaviagtionStyle = {
     navBarTextColor: modalTextColor,
-    navBarTextFontSize: 16, navBarTextFontFamily: 'Roboto',
+    navBarTextFontSize: 16, navBarTextFontFamily: 'AcademyEngravedLetPlain',
     // navBarBackgroundColor: menuTextColor,
     // navBarCustomView: string,
     navBarComponentAlignment: 'center',
@@ -122,7 +124,7 @@ export const modalNaviagtionStyle = {
     // 'pageSheet' | 'overFullScreen' | 'overCurrentContext' | 'fullScreen',
     // largeTitle: boolean, Android only navigationBarColor: '#ffffff',
     navBarTitleTextCentered: true,
-    navBarButtonFontFamily: 'roboto',
+    navBarButtonFontFamily: 'AcademyEngravedLetPlain',
     statusBarColor: statusBarColor,
     // drawUnderStatusBar: true, collapsingToolBarImage:
     // object, collapsingToolBarCollapsedColor: string, navBarTextFontBold: boolean,
@@ -132,7 +134,7 @@ export const modalNaviagtionStyle = {
 
 export const productModalNaviagtionStyle = {
     navBarTextColor: modalTextColor,
-    navBarTextFontSize: 16, navBarTextFontFamily: 'Roboto',
+    navBarTextFontSize: 16, navBarTextFontFamily: 'AcademyEngravedLetPlain',
     // navBarBackgroundColor: menuTextColor,
     // navBarCustomView: string,
     navBarComponentAlignment: 'center',
@@ -166,7 +168,7 @@ export const productModalNaviagtionStyle = {
     // 'pageSheet' | 'overFullScreen' | 'overCurrentContext' | 'fullScreen',
     // largeTitle: boolean, Android only navigationBarColor: '#ffffff',
     navBarTitleTextCentered: true,
-    navBarButtonFontFamily: 'roboto',
+    navBarButtonFontFamily: 'AcademyEngravedLetPlain',
     statusBarColor: statusBarColor,
     // drawUnderStatusBar: true, collapsingToolBarImage:
     // object, collapsingToolBarCollapsedColor: string, navBarTextFontBold: boolean,

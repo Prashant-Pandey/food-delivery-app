@@ -82,7 +82,7 @@ export default class Search extends Component {
                                     <Text style={[styles.fontFamilyRoboto, styles.productNameStyle,{flexWrap: 'wrap', width:contentWidth}]}>
                                         Chhabra's Pure Vegsadihash
                                     </Text>
-                                    <Text style={{fontFamily: 'Roboto', color: '#757575', fontWeight: '100', marginTop:8}}>
+                                    <Text style={{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100', marginTop:8}}>
                                         <Icon name = 'map-pin' size = {15}
                                               color = '#757575'/>&nbsp;Malviya Nagar, Jaipur
                                     </Text>
@@ -128,7 +128,7 @@ export default class Search extends Component {
                                     <Text style={[styles.fontFamilyRoboto, styles.productNameStyle,{flexWrap: 'wrap', width:contentWidth}]}>
                                         Chhabra's Pure Vegsadihash
                                     </Text>
-                                    <Text style={{fontFamily: 'Roboto', color: '#757575', fontWeight: '100', marginTop:8}}>
+                                    <Text style={{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100', marginTop:8}}>
                                         <Icon name = 'map-pin' size = {15}
                                               color = '#757575'/>&nbsp;Malviya Nagar, Jaipur
                                     </Text>
@@ -174,7 +174,7 @@ export default class Search extends Component {
                                     <Text style={[styles.fontFamilyRoboto, styles.productNameStyle,{flexWrap: 'wrap', width:contentWidth}]}>
                                         Chhabra's Pure Vegsadihash
                                     </Text>
-                                    <Text style={{fontFamily: 'Roboto', color: '#757575', fontWeight: '100', marginTop:8}}>
+                                    <Text style={{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100', marginTop:8}}>
                                         <Icon name = 'map-pin' size = {15}
                                               color = '#757575'/>&nbsp;Malviya Nagar, Jaipur
                                     </Text>
@@ -220,7 +220,7 @@ export default class Search extends Component {
                                     <Text style={[styles.fontFamilyRoboto, styles.productNameStyle,{flexWrap: 'wrap', width:contentWidth}]}>
                                         Chhabra's Pure Vegsadihash
                                     </Text>
-                                    <Text style={{fontFamily: 'Roboto', color: '#757575', fontWeight: '100', marginTop:8}}>
+                                    <Text style={{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100', marginTop:8}}>
                                         <Icon name = 'map-pin' size = {15}
                                               color = '#757575'/>&nbsp;Malviya Nagar, Jaipur
                                     </Text>
@@ -294,7 +294,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     fontFamilyRoboto: {
-        fontFamily: 'Roboto'
+        fontFamily: 'AcademyEngravedLetPlain'
     },
     twelvePointBurst: {
         position: 'absolute',
@@ -329,5 +329,5 @@ const styles = StyleSheet.create({
         ]
     },
     discountValuePosition:{position:'absolute', right:3, top:8},
-    discountValueText:{fontFamily: 'Roboto', fontWeight: '500', fontSize: 16, color:'#ffffff'}
+    discountValueText:{fontFamily: 'AcademyEngravedLetPlain', fontWeight: '500', fontSize: 16, color:'#ffffff'}
 });

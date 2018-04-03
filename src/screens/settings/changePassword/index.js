@@ -181,7 +181,7 @@ export default class ChangePassword extends Component {
                         borderRadius: 5,
                         marginTop: 24
                     }}
-                    text='Change Password'/>
+                    title='Change Password'/>
             </ScrollView>
         );
     }

@@ -131,7 +131,7 @@ export default class Menu extends Component {
                     imageSrc={{uri:menu.image}}
                     title={menu.title.toUpperCase()}
                     onPress={this._goToRestaurant}
-                    titleStyle={{fontSize:18, fontWeight:'700', fontFamily:'sans-serif-light'}}
+                    titleStyle={{fontSize:18, fontWeight:'700', fontFamily:'AvenirNext-Bold'}}
                     width={viewWidth-10}
                     featured
                     caption={'$ '+menu.cost}
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
         fontWeight: '500'
     },
     fontFamilyRoboto: {
-        fontFamily: 'Roboto'
+        fontFamily: 'AcademyEngravedLetPlain'
     },
     orderInfoTitleStyle: {color: '#e67e22', fontWeight: '100'}
 });

@@ -66,7 +66,7 @@ export default class ThankYou extends Component {
                 />
             </TouchableHighlight>
             <View style={{minHeight:viewHeight-24, justifyContent:'center', alignContent: 'center',alignItems:'center'}}>
-            <Text style={{color:'#fff', fontFamily:'Roboto', fontSize: 32, fontWeight:'500', textAlign:'center'}}>{'Thank You For\nUsing Foodie'.toUpperCase()}</Text>
+            <Text style={{color:'#fff', fontFamily:'AcademyEngravedLetPlain', fontSize: 32, fontWeight:'500', textAlign:'center'}}>{'Thank You For\nUsing Foodie'.toUpperCase()}</Text>
             <Button
             onPress={this._goToHome}
             textStyle={{
@@ -82,7 +82,7 @@ export default class ThankYou extends Component {
                 borderWidth: 0,
                 borderRadius: 5,
             }}
-            text='CONTINUE SHOPPING'/>
+            title='CONTINUE SHOPPING'/>
             </View>
             </View>
         );
