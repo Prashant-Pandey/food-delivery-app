@@ -9,7 +9,7 @@ import {
     TouchableHighlight,
     StyleSheet,
     View,
-    Image,
+    Image,ScrollView,
     Dimensions, Keyboard
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -84,7 +84,9 @@ export default class Search extends Component {
                     onChangeText={this._search}
                     onClearText={()=>{}}
                     placeholder='Search for Restaurant, cuisine or dish...' />
-                <TouchableHighlight onPress={this._goToRestaurant} underlayColor={'transparent'}>
+                <ScrollView>
+                    <View>
+                    <TouchableHighlight onPress={this._goToRestaurant} underlayColor={'transparent'}>
                     <View>
                         <Card
                             flexDirection={'row'}
@@ -267,6 +269,8 @@ export default class Search extends Component {
                         </Card>
                     </View>
                 </TouchableHighlight>
+                    </View>
+                </ScrollView>
             </View>
             </LinearGradient>
         );

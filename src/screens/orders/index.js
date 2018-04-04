@@ -189,10 +189,10 @@ export default class Orders extends Component {
                         }} resizeMethod={'resize'} resizeMode={'cover'}/>
                     <View>
                         <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 20, fontFamily: 'Academy Engraved LET'}]}>
+                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 15, fontFamily: 'ArialMT'}]}>
                                 Status&nbsp;:&nbsp;
                             </Text>
-                            <Text style={[{color:'green', fontSize:20, fontFamily: 'Academy Engraved LET'}]}>
+                            <Text style={[{color:'green', fontSize:15, fontFamily: 'ArialMT'}]}>
                                 ONGOING
                             </Text>
                         </View>
@@ -287,10 +287,10 @@ export default class Orders extends Component {
                         }} resizeMethod={'resize'} resizeMode={'cover'}/>
                     <View>
                         <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 20, fontFamily: 'Academy Engraved LET'}]}>
+                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 15, fontFamily: 'ArialMT'}]}>
                                 Status&nbsp;:&nbsp;
                             </Text>
-                            <Text style={[{color:'green', fontSize:20, fontFamily: 'Academy Engraved LET'}]}>
+                            <Text style={[{color:'green', fontSize:15, fontFamily: 'ArialMT'}]}>
                                 ONGOING
                             </Text>
                         </View>
@@ -372,7 +372,7 @@ export default class Orders extends Component {
                     style={[styles.contentInRow, styles.centerVertically,{
                     justifyContent: 'space-between',
                     minHeight: 100,
-                    paddingTop: 10
+                    paddingTop: 8
                 }]}>
                    <Image source={{uri: 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg'}} style={{
                             height: '100%',
@@ -384,10 +384,10 @@ export default class Orders extends Component {
                         }} resizeMethod={'resize'} resizeMode={'cover'}/>
                     <View>
                         <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 20, fontFamily: 'Academy Engraved LET'}]}>
+                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 15, fontFamily: 'ArialMT'}]}>
                                 Status&nbsp;:&nbsp;
                             </Text>
-                            <Text style={[{color:'green', fontSize:20, fontFamily: 'Academy Engraved LET'}]}>
+                            <Text style={[{color:'green', fontSize:15, fontFamily: 'ArialMT'}]}>
                                 ONGOING
                             </Text>
                         </View>
@@ -471,7 +471,7 @@ const styles = StyleSheet.create({
         fontWeight: '500'
     },
     fontFamilyRoboto: {
-        fontFamily: 'AcademyEngravedLetPlain'
+        fontFamily: 'ArialMT'
     },
     orderInfoTitleStyle:{color: '#e67e22', fontWeight: '100'}
 });

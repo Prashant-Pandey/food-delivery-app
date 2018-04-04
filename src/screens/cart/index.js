@@ -48,7 +48,9 @@ export default class Cart extends Component {
     onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
         if (event.type == 'NavBarButtonPress') { // this is the event type for button presses
           if (event.id == 'back') { // this is the same id field from the static navigatorButtons definition
-            this.props.navigator.dismissAllModals();
+            this.props.navigator.dismissModal({
+                animationType: 'slide-down' // 'none' / 'slide-down' , dismiss animation for the modal (optional, default 'slide-down')
+              });
           }
         }
       }

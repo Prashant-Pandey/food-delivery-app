@@ -356,11 +356,11 @@ export default class TrackOrder extends Component {
                 <View style={styles.mapBottomOverlay}>
                 <Card containerStyle={[{backgroundColor:'#fff', borderRadius: 5, borderWidth:0}]}>
                 <View style={[styles.contentInRow, styles.centerVertically, styles.centerHorizontally]}>
-                <View style={[{paddingVertical: 8, width: 150}]}>
+                <View style={[{paddingVertical: 8, width: 130}]}>
                 <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
                     Delivery Address : 
                 </Text>
-                <Text style={{fontFamily: 'ArialHebrew', color: '#757575', fontWeight: '100', flexWrap: 'wrap'}}>
+                <Text style={{fontFamily: 'ArialMT', color: '#757575', fontWeight: '100', flexWrap: 'wrap'}}>
                     E-74 Name Appartment, Near Bharadwaj Petrol Pump, Malviya Nagar
                 </Text>
                 </View>
@@ -395,17 +395,20 @@ const styles = StyleSheet.create({
         fontWeight: '500'
     },
     fontFamilyRoboto: {
-        fontFamily: 'ArialHebrew'
+        fontFamily: 'ArialMT'
     },
     trackOrderSmallText:{
-        fontFamily:'Academy Engraved LET',
+        fontFamily:'ArialMT',
         fontSize: 12,
         paddingBottom: -10,
+        flexWrap:'wrap',
+        width: 100,
+        textAlign:'center',
         padding:0,
         margin: 0,
     },
     trackOrderLargeText:{
-        fontFamily:'ArialHebrew',
+        fontFamily:'ArialMT',
         fontSize: 42,
         paddingVertical: 0,
         marginVertical: 0,
