@@ -273,10 +273,30 @@ const mapStyle=[
 const navBarThemeColor = '#FFB300', fabThemeColor = '#FFCA28';
 
 export default class TrackOrder extends Component {
-    constructor(){
-        super();
+    
+    static navigatorButtons = {
+        leftButtons: [
+          {
+            icon: require('../../../images/back.png'), // for icon button, provide the local image asset name
+            id: 'back' // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+          }
+        ]
+      };
+
+
+    constructor(props) {
+        super(props);
         this._goToRestaurant = this._goToRestaurant.bind(this);
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
+
+    onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
+        if (event.type == 'NavBarButtonPress') { // this is the event type for button presses
+          if (event.id == 'back') { // this is the same id field from the static navigatorButtons definition
+            this.props.navigator.dismissAllModals();
+          }
+        }
+      }
 
     _goToRestaurant(){
        
@@ -340,7 +360,7 @@ export default class TrackOrder extends Component {
                 <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
                     Delivery Address : 
                 </Text>
-                <Text style={{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100', flexWrap: 'wrap'}}>
+                <Text style={{fontFamily: 'ArialHebrew', color: '#757575', fontWeight: '100', flexWrap: 'wrap'}}>
                     E-74 Name Appartment, Near Bharadwaj Petrol Pump, Malviya Nagar
                 </Text>
                 </View>
@@ -375,7 +395,7 @@ const styles = StyleSheet.create({
         fontWeight: '500'
     },
     fontFamilyRoboto: {
-        fontFamily: 'AcademyEngravedLetPlain'
+        fontFamily: 'ArialHebrew'
     },
     trackOrderSmallText:{
         fontFamily:'Academy Engraved LET',
@@ -385,7 +405,7 @@ const styles = StyleSheet.create({
         margin: 0,
     },
     trackOrderLargeText:{
-        fontFamily:'AcademyEngravedLetPlain',
+        fontFamily:'ArialHebrew',
         fontSize: 42,
         paddingVertical: 0,
         marginVertical: 0,

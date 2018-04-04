@@ -268,20 +268,41 @@ const mapStyle=[
 ];
 
 export default class Explore extends Component {
-    constructor(){
-        super();
+
+    static navigatorButtons = {
+        leftButtons: [
+          {
+            icon: require('../../images/back.png'), // for icon button, provide the local image asset name
+            id: 'back' // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+          }
+        ]
+      };
+
+    constructor(props){
+        super(props);
         this._goToRestaurant = this._goToRestaurant.bind(this);
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
 
+    onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
+        if (event.type == 'NavBarButtonPress') { // this is the event type for button presses
+          if (event.id == 'back') { // this is the same id field from the static navigatorButtons definition
+            this.props.navigator.dismissAllModals();
+          }
+        }
+      }
     _goToRestaurant(){
         this.props.navigator.dismissAllModals();
-        this
-            .props
-            .navigator
-            .resetTo({screen: 'Menu', title: 'Restraunt Name',
-                navigatorButtons: sideNavigatorButton,
-                navigatorStyle: coloredNavigationStyle,
-                animated: true, animationType: 'fade'});
+        // this
+        //     .props
+        //     .navigator
+        //     .resetTo({screen: 'Menu', title: 'Restraunt Name',
+        //         navigatorButtons: sideNavigatorButton,
+        //         navigatorStyle: coloredNavigationStyle,
+        //         animated: true, animationType: 'fade'});
+        this.props.navigator.handleDeepLink({ 
+            link: 'Menu'
+        }); 
     }
 
     componentWillMount(){
@@ -305,14 +326,14 @@ export default class Explore extends Component {
 
 
                 <Marker
-                    coordinate={{latitude: 38.78825,
+                    coordinate={{latitude: 37.73825,
                         longitude: -122.4324,}}
                     title={'home'}
                     description={'sweet home'}
                 />
 
                 <Marker
-                    coordinate={{latitude: 39.78825,
+                    coordinate={{latitude: 37.58825,
                         longitude: -122.4324,}}
                     title={'home'}
                     description={'sweet home'}

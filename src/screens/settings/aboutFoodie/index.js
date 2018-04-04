@@ -20,6 +20,29 @@ const viewWidth = Dimensions.get('window').width;
 const IconColor = '#ff00ff', profileEditBottomColor = '#ff0';
 
 export default class AboutFoodie extends Component {
+    static navigatorButtons = {
+        leftButtons: [
+          {
+            icon: require('../../../images/back.png'), // for icon button, provide the local image asset name
+            id: 'back' // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+          }
+        ]
+      };
+
+
+    constructor(props) {
+        super(props);
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    }
+
+    onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
+        if (event.type == 'NavBarButtonPress') { // this is the event type for button presses
+          if (event.id == 'back') { // this is the same id field from the static navigatorButtons definition
+            this.props.navigator.dismissAllModals();
+          }
+        }
+      }
+      
     render() {
         return (
             <ScrollView>

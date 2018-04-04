@@ -22,9 +22,19 @@ import Icon from 'react-native-vector-icons/Entypo';
 const viewHeight = Dimensions.get('window').height;
 const viewWidth = Dimensions.get('window').width;
 
-const IconColor = '#ff00ff', changePasswordBottomColor = 'transparent', InputWidth=viewWidth-140;
+const IconColor = '#f1c40f', changePasswordBottomColor = 'transparent', InputWidth=viewWidth-140;
 
 export default class ChangePassword extends Component {
+
+    static navigatorButtons = {
+        leftButtons: [
+          {
+            icon: require('../../../images/back.png'), // for icon button, provide the local image asset name
+            id: 'back' // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+          }
+        ]
+    };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -36,8 +46,18 @@ export default class ChangePassword extends Component {
             repeatNewPassword: '',
             repeatNewPasswordErr: false,
         }
-
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
+
+    onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
+        if (event.type == 'NavBarButtonPress') { // this is the event type for button presses
+          if (event.id == 'back') { // this is the same id field from the static navigatorButtons definition
+            this.props.navigator.dismissAllModals();
+          }
+        }
+      }
+
+      
     render() {
         return (
             <ScrollView style={{alignContent:'stretch'}}>
@@ -178,8 +198,8 @@ export default class ChangePassword extends Component {
                         height: 50,
                         borderColor: "transparent",
                         borderWidth: 0,
-                        borderRadius: 5,
-                        marginTop: 24
+                        borderRadius: 0,
+                        marginTop: 24,
                     }}
                     title='Change Password'/>
             </ScrollView>

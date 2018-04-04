@@ -13,8 +13,7 @@ export default styles = StyleSheet.create({
   flex: 1
  },
  fullScreen:{
-  minHeight: viewHeight
-    // flex:1
+    flex:1
  },
  homeHeaderImage: {
   height: viewHeight / 2,
@@ -46,6 +45,9 @@ export default styles = StyleSheet.create({
  marginBottom24px: {
   marginBottom: 24
  },
+ marginBottomhomeLastbtn: {
+    marginBottom: 50
+   },
  homeCartBtn: {
   height: 50,
   width: 50,
@@ -134,7 +136,7 @@ productDetailsHeading: {fontWeight: '200', fontSize: 12},
 productDetailsDetail: {fontWeight: '500', fontSize: 16},
 
 fontFamilyRoboto: {
-    fontFamily: 'AcademyEngravedLetPlain'
+    fontFamily: 'Arial Rounded MT Bold'
 },
 orderInfoTitleStyle: {color: '#e67e22', fontWeight: '100'},
 wrapper: {

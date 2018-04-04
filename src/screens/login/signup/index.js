@@ -42,7 +42,7 @@ export default class SignUp extends Component {
         Keyboard.dismiss();
         Navigation.dismissAllModals();
         this.props.navigator.resetTo({screen: 'Home', title: 'Welcome to Foodie',
-        navigatorButtons: sideNavigatorButton,
+        
         navigatorStyle: navigationStyle,
         animated: true, animationType: 'fade'});
     }
@@ -51,7 +51,7 @@ export default class SignUp extends Component {
         Keyboard.dismiss();
         Navigation.dismissAllModals();
         this.props.navigator.resetTo({screen: 'Home', title: 'Welcome to Foodie',
-        navigatorButtons: sideNavigatorButton,
+        
         navigatorStyle: navigationStyle,
         animated: true, animationType: 'fade'});
     }
@@ -73,7 +73,7 @@ export default class SignUp extends Component {
                 Keyboard.dismiss();
                 Navigation.dismissAllModals();
                 this.props.navigator.resetTo({screen: 'Home', title: 'Welcome to Foodie',
-                navigatorButtons: sideNavigatorButton,
+                
                 navigatorStyle: navigationStyle,
                 animated: true, animationType: 'fade'});
             }else{

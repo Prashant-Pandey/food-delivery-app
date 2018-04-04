@@ -25,13 +25,33 @@ const viewHeight = Dimensions.get('window').height;
 const viewWidth = Dimensions.get('window').width;
 
 export default class Cart extends Component {
-    constructor() {
-        super();
+
+    static navigatorButtons = {
+        leftButtons: [
+          {
+            icon: require('../../images/back.png'), // for icon button, provide the local image asset name
+            id: 'back' // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+          }
+        ]
+      };
+
+
+    constructor(props) {
+        super(props);
         this._goToCheckout = this._goToCheckout.bind(this);
         this.state = {
             itemCount: 1
         }
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
+
+    onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
+        if (event.type == 'NavBarButtonPress') { // this is the event type for button presses
+          if (event.id == 'back') { // this is the same id field from the static navigatorButtons definition
+            this.props.navigator.dismissAllModals();
+          }
+        }
+      }
 
     _goToCheckout(){
         this.props.navigator.showModal({

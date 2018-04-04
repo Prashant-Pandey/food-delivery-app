@@ -22,9 +22,20 @@ import Icon from 'react-native-vector-icons/Entypo';
 const viewHeight = Dimensions.get('window').height;
 const viewWidth = Dimensions.get('window').width;
 
-const IconColor = '#ff00ff', profileEditBottomColor = '#ff0';
+const IconColor = '#f1c40f', profileEditBottomColor = '#ff0';
 
 export default class EditProfile extends Component {
+
+    static navigatorButtons = {
+        leftButtons: [
+          {
+            icon: require('../../../images/back.png'), // for icon button, provide the local image asset name
+            id: 'back' // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+          }
+        ]
+      };
+
+
     constructor(props) {
         super(props);
         this.state = {
@@ -33,7 +44,7 @@ export default class EditProfile extends Component {
             isUsernameEditable:false,
             usernameErr: false,
             // contact
-            contact: 'Prashant Pandey',
+            contact: '9455768768',
             isContactEditable:false,
             contactErr: false,
             // email
@@ -50,26 +61,40 @@ export default class EditProfile extends Component {
 
             avatarSource: 'https://facebook.github.io/react-native/docs/assets/favicon.png'
         }
-
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
+
+    onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
+        if (event.type == 'NavBarButtonPress') { // this is the event type for button presses
+          if (event.id == 'back') { // this is the same id field from the static navigatorButtons definition
+            this.props.navigator.dismissAllModals();
+          }
+        }
+      }
+
+
     render() {
         return (
             <ScrollView>
                 <View style={styles.container}>
                     {/* Profile Image */}
-                    <View style={[styles.profilePageRow, styles.contentInRow, styles.centerVertically]}>
+                    <View style={[styles.profilePageRow, styles.contentInRow, styles.centerVertically, styles.centerHorizontally]}>
                         <Image
                             style={{
                                 width: 100,
                                 height: 100,
-                                borderRadius: 100
+                                borderRadius: 50
                             }}
                             source={{uri:'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
                         <TouchableOpacity
                             onPress={() => {}}
                             style={{
                                 padding: 8,
-                                borderRadius: 2
+                                borderRadius: 2,
+                                position: 'absolute',
+                                bottom:0,
+                                paddingLeft: 120,
+                                backgroundColor:'transparent'
                             }}>
                             <Icon name="edit" size={30} color={IconColor}/>
                         </TouchableOpacity>
@@ -106,20 +131,13 @@ export default class EditProfile extends Component {
                     </View>
 
                     {/*Contact*/}
-                    <View style={[styles.profilePageRow, styles.contentInRow, styles.centerVertically]}>
+                    <View style={[styles.profilePageRow, styles.contentInRow]}>
                         <View style={{width: viewWidth-100}}>
                             <View style={[styles.contentInRow]}>
                                 <Text style={{paddingLeft:10}}>Contact </Text>
                                 <Text style={{color:'red'}}>*</Text>
                             </View>
-                            <View style={[styles.contentInRow, styles.centerVertically]}>
-                                <Picker
-                                    style={{minWidth:90}}
-                                    selectedValue={this.state.language}
-                                    onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
-                                    <Picker.Item label="+91" value="India" />
-                                    <Picker.Item label="+16" value="US" />
-                                </Picker>
+                            <View style={[styles.contentInRow]}>
                                 <Input
                                     inputStyle={{marginLeft: 20, width:viewWidth-200,
                                         color: 'black', borderBottomWidth:(this.state.isContactEditable?1:0), borderBottomColor:profileEditBottomColor}}
@@ -186,7 +204,7 @@ export default class EditProfile extends Component {
                                 <Text style={{color:'red'}}>*</Text>
                             </View>
                             <TextInput
-                                style={{marginLeft: 20, color: 'black',borderBottomWidth:(this.state.isPrimaryAddressEditable?1:0), borderBottomColor:profileEditBottomColor, width: viewWidth-100}}
+                                style={{marginLeft: 20, color: 'black', paddingBottom: 10,borderBottomWidth:(this.state.isPrimaryAddressEditable?1:0), borderBottomColor:profileEditBottomColor, width: viewWidth-100}}
                                 onChangeText={text => this.setState({primaryAddress :text})}
                                 editable = {this.state.isPrimaryAddressEditable}
                                 multiline = {true}
@@ -217,7 +235,7 @@ export default class EditProfile extends Component {
                                 <Text style={{color:'red'}}>*</Text>
                             </View>
                             <TextInput
-                                style={{marginLeft: 20, color: 'black',borderBottomWidth:(this.state.isDeliveryAddressEditable?1:0), borderBottomColor:profileEditBottomColor, width: viewWidth-100}}
+                                style={{marginLeft: 20, color: 'black', paddingBottom: 10,borderBottomWidth:(this.state.isDeliveryAddressEditable?1:0), borderBottomColor:profileEditBottomColor, width: viewWidth-100}}
                                 onChangeText={text => this.setState({deliveryAddress :text})}
                                 editable = {this.state.isDeliveryAddressEditable}
                                 multiline = {true}

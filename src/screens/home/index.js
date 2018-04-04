@@ -21,7 +21,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 
 import Input from '../../Components/Input';
-import {coloredNavigationStyle, hideNavigationStyle, navigationStyle, sideNavigatorButton} from "../../navbarStyles";
+import {coloredNavigationStyle, hideNavigationStyle, navigationStyle, sideNavigatorButton, backNavigatorButton} from "../../navbarStyles";
 import {Navigation} from "react-native-navigation";
 
 import styles from '../../Constants/StyleConstants';
@@ -32,8 +32,18 @@ const mainBtnThemeColor = '#FF6F00', fabThemeColor = '#FF6F00', btnWidth = viewW
 
 
 export default class Home extends Component {
-    constructor() {
-        super();
+
+    static navigatorButtons = {
+        leftButtons: [
+          {
+            icon: require('../../images/menu.png'), // for icon button, provide the local image asset name
+            id: 'sideMenu' // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+          }
+        ]
+      };
+
+    constructor(props) {
+        super(props);
         this.state = {
         //   longitude: '', latitude: '',
         //   json:''
@@ -43,7 +53,70 @@ export default class Home extends Component {
         this._goToSearch = this._goToSearch.bind(this);
         this._goToExplore = this._goToExplore.bind(this);
         this._goToCart = this._goToCart.bind(this);
-    }
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    } 
+   
+    onNavigatorEvent(event) {
+        if (event.type === 'DeepLink') {
+            switch (event.link) {
+                case 'Home':
+                    this.props.navigator.resetTo({
+                        screen: 'Home', title: 'Welcome to Foodie',
+                        
+                        navigatorStyle: navigationStyle,
+                        animated: true, animationType: 'fade'
+                    });
+                    break;
+                case 'Orders':
+                this.props.navigator.resetTo({
+                    screen: 'Orders', title: 'Orders Summary',
+                    
+                    navigatorStyle: coloredNavigationStyle,
+                    animated: true, animationType: 'fade'
+                });
+                break;
+                case 'Deals':
+                this.props.navigator.resetTo({
+                    screen: 'Deals', title: 'Deals for You',
+                    
+                    navigatorStyle: coloredNavigationStyle,
+                    animated: true, animationType: 'fade'
+                });
+                break;
+                case 'Settings':
+                this.props.navigator.resetTo({
+                    screen: 'Settings', title: 'Settings',
+                    
+                    navigatorStyle: coloredNavigationStyle,
+                    animated: true, animationType: 'fade'
+                });
+                break;
+                case 'Login':
+                this.props.navigator.resetTo({
+                    screen: 'Login', title: '',
+                    navigatorStyle: hideNavigationStyle, animated: true, animationType: 'fade'
+                });
+                break;
+                case 'Menu':
+                this.props.navigator.resetTo({screen: 'Menu', title: 'Restraunt Name',
+                    
+                    navigatorStyle: coloredNavigationStyle,
+                    animated: true, animationType: 'fade'});
+                break;
+                default:
+                    break;
+            }
+        }
+
+        if (event.type == 'NavBarButtonPress') { // this is the event type for button presses
+            if (event.id == 'sideMenu') { // this is the same id field from the static navigatorButtons definition
+                this.props.navigator.toggleDrawer({
+                    side: 'left',
+                    animated: true
+                });
+            }
+          }
+      }
 
     _goToCart() {
         this.props.navigator.showModal({
@@ -51,6 +124,7 @@ export default class Home extends Component {
             title: 'ORDER CART', // title of the screen as appears in the nav bar (optional)
             passProps: {}, // simple serializable object that will pass as props to the modal (optional)
             navigatorStyle: coloredNavigationStyle, // override the navigator style for the screen, see "Styling the navigator" below (optional)
+            buttonStyle:backNavigatorButton,
             animationType: 'slide-up' // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
         });
     }
@@ -70,9 +144,9 @@ export default class Home extends Component {
         Keyboard.dismiss();
         this.props.navigator.showModal({
             screen: 'Explore', // unique ID registered with Navigation.registerScreen
-            title: 'Sushi Title', // title of the screen as appears in the nav bar (optional)
+            title: 'Explore Nearby Places', // title of the screen as appears in the nav bar (optional)
             passProps: {}, // simple serializable object that will pass as props to the modal (optional)
-            navigatorStyle: hideNavigationStyle, // override the navigator style for the screen, see "Styling the navigator" below (optional)
+            navigatorStyle: coloredNavigationStyle, // override the navigator style for the screen, see "Styling the navigator" below (optional)
             animationType: 'slide-up' // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
         });
     }

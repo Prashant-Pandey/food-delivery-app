@@ -25,7 +25,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Swiper from 'react-native-swiper';
 import {coloredNavigationStyle, sideNavigatorButton} from "../../navbarStyles";
 
-import { styles } from "../../Constants/StyleConstants";
+import styles from "../../Constants/StyleConstants";
 
 const navBarBackgroundColor = '#FFA000';
 
@@ -58,6 +58,7 @@ const data = [{
 }]
 
 export default class Item extends Component {
+    
 
     constructor() {
         super();
@@ -78,15 +79,18 @@ export default class Item extends Component {
 
     _goToMenu() {
         this.props.navigator.dismissAllModals();
-        this
-            .props
-            .navigator
-            .resetTo({
-                screen: 'Menu', title: 'Restraunt Name',
-                navigatorButtons: sideNavigatorButton,
-                navigatorStyle: coloredNavigationStyle,
-                animated: true, animationType: 'fade'
-            });
+        this.props.navigator.handleDeepLink({ 
+            link: 'Menu'
+        }); 
+        // this
+        //     .props
+        //     .navigator
+        //     .resetTo({
+        //         screen: 'Menu', title: 'Restraunt Name',
+                
+        //         navigatorStyle: coloredNavigationStyle,
+        //         animated: true, animationType: 'fade'
+        //     });
     }
 
     _goToCart() {
@@ -159,9 +163,13 @@ export default class Item extends Component {
                             style={styles.prodImage}/>
                     </Swiper>
                     <View>
-                        <Text style={{padding: 10}}>A leper colony, leprosarium, or lazar house is a place to quarantine
-                            people with leprosy. The term lazaretto can refer to quarantine sites, which were at some
-                            time also leper colonies.</Text>
+                        <Text style={{padding: 10}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer 
+                        took a galley of type and scrambled it to make a type specimen book. 
+                        It has survived not only five centuries, but also the leap into electronic typesetting, 
+                        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
+                        Aldus PageMaker including versions of Lorem Ipsum.</Text>
                     </View>
                     <Divider style={{backgroundColor: '#d8dde1'}}/>
                     <View style={[styles.contentInRow, {
@@ -204,13 +212,13 @@ export default class Item extends Component {
                         icon={<MaterialCommunityIcons name='dots-horizontal-circle' size={34} color='#000'/>}
                         onPress={this._goToMenu}
                         buttonStyle={{
-                            backgroundColor: "transparent",
+                            backgroundColor:'#ddd',
                             elevation: 0,
                             width: viewWidth,
                             paddingVertical: 10,
+                            color: '#000',
                         }}
                         textStyle={{
-                            color: '#000',
                             fontSize: 24,
                             fontWeight: '500',
                         }}

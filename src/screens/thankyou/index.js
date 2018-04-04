@@ -39,7 +39,7 @@ export default class ThankYou extends Component {
             .navigator
             .resetTo({
                 screen: 'Home', title: 'Welcome to Foodie',
-                navigatorButtons: sideNavigatorButton,
+                
                 navigatorStyle: navigationStyle,
                 animated: true, animationType: 'fade'
             });
@@ -65,8 +65,8 @@ export default class ThankYou extends Component {
                     size={20}
                 />
             </TouchableHighlight>
-            <View style={{minHeight:viewHeight-24, justifyContent:'center', alignContent: 'center',alignItems:'center'}}>
-            <Text style={{color:'#fff', fontFamily:'AcademyEngravedLetPlain', fontSize: 32, fontWeight:'500', textAlign:'center'}}>{'Thank You For\nUsing Foodie'.toUpperCase()}</Text>
+            <View style={{minHeight:viewHeight-24, justifyContent:'center', alignContent: 'center',alignItems:'center', backgroundColor:'transparent'}}>
+            <Text style={{color:'#fff', fontFamily:'ArialHebrew', fontSize: 32, fontWeight:'500', textAlign:'center'}}>{'Thank You For\nUsing Foodie'.toUpperCase()}</Text>
             <Button
             onPress={this._goToHome}
             textStyle={{

@@ -1,4 +1,4 @@
-import {Navigation} from "react-native-navigation";
+import {Navigation,ScreenVisibilityListener} from "react-native-navigation";
 
 import Home from './screens/home/index';
 import Login from './screens/login/index';
@@ -32,7 +32,7 @@ export default () => {
         Navigation.registerComponent('Login', () => Login),
         Navigation.registerComponent('Login.SignUp', () => SignUp),
         Navigation.registerComponent('Login.ResetPassword', () => ResetPassword),
-        Navigation.registerComponent('Home.mainSideMenu', () => mainSideMenu),
+        Navigation.registerComponent('mainSideMenu', () => mainSideMenu),
         Navigation.registerComponent('Orders', () => Orders),
         Navigation.registerComponent('Orders.TrackOrder', () => TrackOrder),
         Navigation.registerComponent('Deals', () => Deals),
@@ -51,24 +51,22 @@ export default () => {
         Navigation.registerComponent('ThankYou', () => ThankYou),
         
 
+        new ScreenVisibilityListener({
+            willAppear: ({screen}) => console.log(`Displaying screen ${screen}`),
+            didAppear: ({screen, startTime, endTime, commandType}) => console.log('screenVisibility', `Screen ${screen} displayed in ${endTime - startTime} millis [${commandType}]`),
+            willDisappear: ({screen}) => console.log(`Screen will disappear ${screen}`),
+            didDisappear: ({screen}) => console.log(`Screen disappeared ${screen}`)
+          }).register();
         // Navigation.registerComponent('Home', () => StorybookUI);
         Navigation.startSingleScreenApp({
             screen: {
                 screen: 'Home',
                 title: 'Welcome to Foodie',
-                navigatorButtons: {
-                    leftButtons:  [
-                        {
-                            icon: require('./images/menu.png'),
-                            id: 'sideMenu'
-                        }
-                    ],
-                },
                 navigatorStyle: navigationStyle,
             },
             drawer: {
                 left: {
-                    screen: 'Home.mainSideMenu'
+                    screen: 'mainSideMenu'
                 },
                 // disableOpenGesture: false
             },

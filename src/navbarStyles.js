@@ -13,7 +13,7 @@ export const navigationStyle = {
     // navBarHidden: false,
     // navBarHideOnScroll: false, navBarTranslucent: true,
     navBarTransparent: false,
-    // navBarNoBorder: true,
+    navBarNoBorder: true,
     //  drawUnderNavBar: boolean, drawUnderTabBar: boolean,
     // navBarBlur: true, tabBarHidden: boolean,
     // statusBarHidden: true,
@@ -179,7 +179,8 @@ export const productModalNaviagtionStyle = {
 export const sideNavigatorButton = {
     leftButtons:  [
         {
-            id: 'sideMenu'
+            id: 'sideMenu',
+            SystemItemIOS: 'done',
         }
     ],
     rightButtons: []

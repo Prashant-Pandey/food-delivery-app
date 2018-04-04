@@ -850,6 +850,10 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = WB6KJ93QPT;
+						ProvisioningStyle = Manual;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -1626,8 +1630,11 @@
 			baseConfigurationReference = AF4B1B528A394E6AE8475900 /* Pods-Foodie.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = WB6KJ93QPT;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
@@ -1642,7 +1649,10 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.youstart.foodie;
 				PRODUCT_NAME = Foodie;
+				PROVISIONING_PROFILE = "4333d9c8-05d0-4c53-ab14-b62aa6a854b2";
+				PROVISIONING_PROFILE_SPECIFIER = "foodie-dev";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1652,7 +1662,10 @@
 			baseConfigurationReference = F0410FAEAC88088B3282D73B /* Pods-Foodie.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WB6KJ93QPT;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
@@ -1667,7 +1680,10 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.youstart.foodie;
 				PRODUCT_NAME = Foodie;
+				PROVISIONING_PROFILE = "4333d9c8-05d0-4c53-ab14-b62aa6a854b2";
+				PROVISIONING_PROFILE_SPECIFIER = "foodie-dev";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

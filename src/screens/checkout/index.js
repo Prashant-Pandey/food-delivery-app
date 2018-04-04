@@ -29,8 +29,17 @@ const viewWidth = Dimensions.get('window').width;
 const mainBtnThemeColor = 'rgba(255, 193, 7, 1)';
 
 export default class Checkout extends Component {
-    constructor() {
-        super();
+    static navigatorButtons = {
+        leftButtons: [
+          {
+            icon: require('../../images/back.png'), // for icon button, provide the local image asset name
+            id: 'back' // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+          }
+        ]
+      };
+
+    constructor(props) {
+        super(props);
         this.state={
             isCreditCardSelected : false,
             isPayPalSelected : false,
@@ -38,7 +47,15 @@ export default class Checkout extends Component {
         this._goToBack = this._goToBack.bind(this);
         this._creditCardSelected = this._creditCardSelected.bind(this);
         this._paypalSelected = this._paypalSelected.bind(this);
-        
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    }
+
+    onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
+        if (event.type == 'NavBarButtonPress') { // this is the event type for button presses
+            if (event.id == 'back') { // this is the same id field from the static navigatorButtons definition
+            this.props.navigator.dismissAllModals();
+            }
+        }
     }
 
     _goToBack() {

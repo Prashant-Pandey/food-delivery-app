@@ -17,7 +17,7 @@ import {
 import {Text, Button, Card} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Feather';
-import {hideNavigationStyle} from "../../navbarStyles";
+import {coloredNavigationStyle, hideNavigationStyle, navigationStyle, sideNavigatorButton} from "../../navbarStyles";
 
 
 import styles from '../../Constants/StyleConstants';
@@ -28,14 +28,80 @@ const mainBtnThemeColor = '#FF6F00', fabThemeColor = '#FF6F00', btnWidth = viewW
 
 export default class Deals extends Component {
 
+    static navigatorButtons = {
+        leftButtons: [
+          {
+            icon: require('../../images/menu.png'), // for icon button, provide the local image asset name
+            id: 'sideMenu' // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+          }
+        ]
+      };
+
     constructor(props) {
         super(props);
 
         this._goToRestaurant = this
             ._goToRestaurant
             .bind(this);
-
-    }
+            this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    } 
+       
+        onNavigatorEvent(event) {
+            console.log('event triggered');
+            if (event.type === 'DeepLink') {
+                switch (event.link) {
+                    case 'Home':
+                        this.props.navigator.resetTo({
+                            screen: 'Home', title: 'Welcome to Foodie',
+                            
+                            navigatorStyle: navigationStyle,
+                            animated: true, animationType: 'fade'
+                        });
+                        break;
+                    case 'Orders':
+                    this.props.navigator.resetTo({
+                        screen: 'Orders', title: 'Orders Summary',
+                        
+                        navigatorStyle: coloredNavigationStyle,
+                        animated: true, animationType: 'fade'
+                    });
+                    break;
+                    case 'Deals':
+                    this.props.navigator.resetTo({
+                        screen: 'Deals', title: 'Deals for You',
+                        
+                        navigatorStyle: coloredNavigationStyle,
+                        animated: true, animationType: 'fade'
+                    });
+                    break;
+                    case 'Settings':
+                    this.props.navigator.resetTo({
+                        screen: 'Settings', title: 'Settings',
+                        
+                        navigatorStyle: coloredNavigationStyle,
+                        animated: true, animationType: 'fade'
+                    });
+                    break;
+                    case 'Login':
+                    this.props.navigator.resetTo({
+                        screen: 'Login', title: '',
+                        navigatorStyle: hideNavigationStyle, animated: true, animationType: 'fade'
+                    });
+                    break;
+                
+                    default:
+                        break;
+                }
+            }
+            if (event.type == 'NavBarButtonPress') { // this is the event type for button presses
+                if (event.id == 'sideMenu') { // this is the same id field from the static navigatorButtons definition
+                    this.props.navigator.toggleDrawer({
+                        side: 'left',
+                        animated: true
+                    });
+                }
+              }
+          }
 
     _goToRestaurant(){
         console.log('_goToRestaurant');
@@ -72,7 +138,7 @@ export default class Deals extends Component {
                                 <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
                                     Chchabra's Pure Veg
                                 </Text>
-                                <Text style={{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100'}}>
+                                <Text style={{fontFamily: 'AppleSDGothicNeo-Medium', color: '#757575', fontWeight: '100'}}>
                                     Malviya Nagar, Jaipur
                                 </Text>
                             </View>
@@ -84,7 +150,7 @@ export default class Deals extends Component {
                             <View style={styles.twelvePointBurst60} />
                         </View>
                         <View style={[styles.discountValuePosition]}>
-                            <Text style={{fontFamily: 'AcademyEngravedLetPlain', fontWeight: '500', fontSize: 30, color:'#ffffff'}}>
+                            <Text style={{fontFamily: 'Arial Rounded MT Bold', fontWeight: '500', fontSize: 26, color:'#ffffff'}}>
                                 40%
                             </Text>
                         </View>

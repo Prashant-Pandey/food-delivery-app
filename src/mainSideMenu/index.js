@@ -10,10 +10,11 @@ import {
 } from 'react-native';
 import {navigationStyle, sideNavigatorButton, hideNavigationStyle, coloredNavigationStyle} from '../navbarStyles';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Navigation } from "react-native-navigation";
 
 const height = Dimensions.get('window').height, width = Dimensions.get('window').width;
 
-const navPaddingVerticle = 8, iconColor = 'rgba(255, 193, 7, 1)', textColor = 'rgba(255, 193, 7, 1)',
+const navPaddingVerticle = 12, iconColor = 'rgba(255, 193, 7, 1)', textColor = 'rgba(255, 193, 7, 1)',
     sideMenuWidth = 280, upperImageHeight = (height / 3)+ 30;
 
 class mainSideMenu extends React.Component {
@@ -24,100 +25,20 @@ class mainSideMenu extends React.Component {
             ._toggleDrawer
             .bind(this);
 
-        this._goToHome = this
-            ._goToHome
-            .bind(this);
-
-        this._gotoOrders = this
-            ._gotoOrders
-            .bind(this);
-
-        this._gotoDeals = this
-            ._gotoDeals
-            .bind(this);
-
-        this._goToSettings = this
-            ._goToSettings
-            .bind(this);
-
-        this._goToLogin = this
-            ._goToLogin
-            .bind(this);
-
     }
 
-    _goToHome() {
+    _goTo(goTo){
         this._toggleDrawer();
-        this
-            .props
-            .navigator
-            .resetTo({
-                screen: 'Home', title: 'Welcome to Foodie',
-                navigatorButtons: sideNavigatorButton,
-                navigatorStyle: navigationStyle,
-                animated: true, animationType: 'fade'
-            });
-    }
-
-    _gotoOrders() {
-        this._toggleDrawer();
-        this
-            .props
-            .navigator
-            .resetTo({
-                screen: 'Orders', title: 'Orders Summary',
-                navigatorButtons: sideNavigatorButton,
-                navigatorStyle: coloredNavigationStyle,
-                animated: true, animationType: 'fade'
-            });
-    }
-
-    _gotoDeals() {
-        this._toggleDrawer();
-        this
-            .props
-            .navigator
-            .resetTo({
-                screen: 'Deals', title: 'Deals for You',
-                navigatorButtons: sideNavigatorButton,
-                navigatorStyle: coloredNavigationStyle,
-                animated: true, animationType: 'fade'
-            });
-    }
-
-    _goToSettings() {
-        this._toggleDrawer();
-        this
-            .props
-            .navigator
-            .resetTo({
-                screen: 'Settings', title: 'Settings',
-                navigatorButtons: sideNavigatorButton,
-                navigatorStyle: coloredNavigationStyle,
-                animated: true, animationType: 'fade'
-            });
-    }
-
-
-
-
-    _goToLogin() {
-        this._toggleDrawer();
-        this
-            .props
-            .navigator
-            .resetTo({
-                screen: 'Login', title: '',
-                navigatorStyle: hideNavigationStyle, animated: true, animationType: 'fade'
-            });
-
+        this.props.navigator.handleDeepLink({ 
+            link: goTo
+        }); 
     }
 
     _toggleDrawer() {
         this
             .props
             .navigator
-            .toggleDrawer({to: 'closed', side: 'left', animated: true});
+            .toggleDrawer({side: 'left'});
     }
 
     render() {
@@ -149,32 +70,32 @@ class mainSideMenu extends React.Component {
                 <ScrollView>
                     <View style={styles.navTextContainer}>
                         <View style={styles.navButtons}>
-                            <Icon name={'ios-home-outline'} color={iconColor} size={24} style={styles.transparentBG}/>
-                            <TouchableHighlight onPress={this._goToHome} underlayColor={'transparent'}>
+                            <Icon name={'ios-home-outline'} color={iconColor} size={30} style={styles.transparentBG}/>
+                            <TouchableHighlight onPress={()=>{this._goTo('Home')}} underlayColor={'transparent'}>
                                 <Text style={styles.navText}>Home</Text>
                             </TouchableHighlight>
                         </View>
                         <View style={styles.navButtons}>
-                            <Icon name={'ios-beer-outline'} color={iconColor} size={24} style={styles.transparentBG}/>
-                            <TouchableHighlight onPress={this._gotoOrders} underlayColor={'transparent'}>
-                                <Text style={styles.navText}>Order</Text>
+                            <Icon name={'ios-beer-outline'} color={iconColor} size={30} style={styles.transparentBG}/>
+                            <TouchableHighlight onPress={()=>{this._goTo('Orders')}} underlayColor={'transparent'}>
+                                <Text style={styles.navText}>Orders</Text>
                             </TouchableHighlight>
                         </View>
                         <View style={styles.navButtons}>
-                            <Icon name={'ios-barcode-outline'} color={iconColor} size={24} style={styles.transparentBG}/>
-                            <TouchableHighlight onPress={this._gotoDeals} underlayColor={'transparent'}>
+                            <Icon name={'ios-barcode-outline'} color={iconColor} size={30} style={styles.transparentBG}/>
+                            <TouchableHighlight onPress={()=>{this._goTo('Deals')}} underlayColor={'transparent'}>
                                 <Text style={styles.navText}>Deals</Text>
                             </TouchableHighlight>
                         </View>
                         <View style={styles.navButtons}>
-                            <Icon name={'ios-settings-outline'} color={iconColor} size={24} style={styles.transparentBG}/>
-                            <TouchableHighlight onPress={this._goToSettings} underlayColor={'transparent'}>
+                            <Icon name={'ios-settings-outline'} color={iconColor} size={30} style={styles.transparentBG}/>
+                            <TouchableHighlight onPress={()=>{this._goTo('Settings')}} underlayColor={'transparent'}>
                                 <Text style={styles.navText}>Settings</Text>
                             </TouchableHighlight>
                         </View>
                         <View style={styles.lastNavBtn}>
-                            <Icon name={'ios-log-in-outline'} color={iconColor} size={24} style={styles.transparentBG}/>
-                            <TouchableHighlight onPress={this._goToLogin} underlayColor={'transparent'}>
+                            <Icon name={'ios-log-in-outline'} color={iconColor} size={30} style={styles.transparentBG}/>
+                            <TouchableHighlight onPress={()=>{this._goTo('Login')}} underlayColor={'transparent'}>
                                 <Text style={styles.navText}>Login</Text>
                             </TouchableHighlight>
                         </View>
@@ -226,7 +147,7 @@ const styles = StyleSheet.create({
     },
     navButtons: {
         paddingVertical: navPaddingVerticle,
-        borderBottomWidth: 0.5,
+        borderBottomWidth: 0,
         borderBottomColor: 'rgba(199,200,195,1)',
         flexDirection: 'row',
         paddingLeft: 20,

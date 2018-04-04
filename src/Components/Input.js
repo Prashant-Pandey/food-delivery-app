@@ -18,16 +18,15 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 class Input extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      hidePassword: true
+      hidePassword: this.props.secureTextEntry
     };
     this.togglePassword = this.togglePassword.bind(this);
   }
 
   togglePassword(){
-    console.log('toggle password is clicked');
     if(this.state.hidePassword){
       this.setState({
         hidePassword : false
@@ -80,12 +79,11 @@ class Input extends Component {
       leftIconContainerStyle,
       rightIcon,
       rightIconContainerStyle,
-
-      secureTextEntry,
       showPasswordIcon,
       hidePasswordIcon,
       inputStyle,
       displayError,
+      secureTextEntry,
       errorStyle,
       errorMessage,
       ...attributes
@@ -127,7 +125,7 @@ class Input extends Component {
             secureTextEntry={this.state.hidePassword}
             {...attributes}
           />
-          {secureTextEntry && (
+          {showPasswordIcon && (
             <TouchableHighlight onPress={this.togglePassword} style={[styles.iconContainer, { paddingRight: 15 }, rightIconContainerStyle]}>
               {this.state.hidePassword?showPasswordIcon:hidePasswordIcon}
             </TouchableHighlight>
