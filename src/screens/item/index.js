@@ -118,20 +118,20 @@ export default class Item extends Component {
                     leftComponent={
                         <View>
                             <Button
-                                icon={<Icon name='ios-arrow-back' size={34} color='white'/>}
+                                icon={<Icon name='ios-arrow-back' size={24} color='white'/>}
                                 onPress={this._goToBack}
                                 buttonStyle={{
                                     backgroundColor: "transparent",
                                     elevation: 0,
                                     zIndex: 0
                                 }}
-                                textStyle={{
+                                titleStyle={{
                                     color: '#ffffff',
-                                    fontSize: 24,
+                                    fontSize: 20,
                                     fontWeight: '500',
                                     paddingLeft: 30,
                                 }}
-                                title='Sushi'/>
+                                title={'Sushi'.toUpperCase()}/>
                         </View>
                     }
                     rightComponent={
@@ -140,18 +140,18 @@ export default class Item extends Component {
                                 <View style={[{position:'absolute', top:0, right:5, zIndex:10, height: 20, width:25, borderRadius: 10, backgroundColor: 'red', alignItems: 'center', justifyContent: 'center'}]}>
                                     <Text style={{fontSize: 10, color: '#fff', fontWeight: '700'}}>1</Text>
                                 </View>
-                                <Icon name='md-cart' size={42} color='white'/>
+                                <Icon name='md-cart' size={30} style={{marginTop:10}} color='white'/>
                             </View>
                         </TouchableHighlight>
                     }
                 />
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <Swiper style={[{
+                    <Swiper style={{
                          height: viewHeight / 3,
                          margin: 0,
                          padding: 0,
                          borderWidth: 0,
-                    }]} showsButtons={true}>
+                    }} showsButtons={true}>
                         <Image
                             source={{uri: 'http://i.dailymail.co.uk/i/pix/2017/11/08/16/4623608900000578-0-image-a-9_1510156892900.jpg'}}
                             style={styles.prodImage}/>
@@ -216,9 +216,9 @@ export default class Item extends Component {
                             elevation: 0,
                             width: viewWidth,
                             paddingVertical: 10,
-                            color: '#000',
                         }}
                         textStyle={{
+                            color: '#000',
                             fontSize: 24,
                             fontWeight: '500',
                         }}
@@ -277,17 +277,14 @@ export default class Item extends Component {
 }
 
 {/*
- <Card
-    image={{
-    uri: 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg'
-  }}>
-    <Text style={{
-      marginBottom: 10
-    }}>
-      The idea with React Native Elements is more about component structure than
-      actual design.
-    </Text>
-</Card>
+
+
+   onPress={this.onPressActionCall}
+          disabled={this.state.btnDisabled}
+          underlayColor={clear ? 'transparent' : undefined}
+          activeOpacity={clear ? 0 : undefined}
+
+
 */
 }
 {/*

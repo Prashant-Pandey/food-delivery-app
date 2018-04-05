@@ -12,7 +12,6 @@ import {
     Image,
     ScrollView,
     Dimensions,
-    TouchableHighlight
 } from 'react-native';
 import {Card, Button, Badge, Text, Divider} from 'react-native-elements';
 import Octicons from 'react-native-vector-icons/Octicons';
@@ -96,40 +95,37 @@ export default class Checkout extends Component {
                     <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>Select Payment Method</Text>
                     <Card containerStyle={{borderWidth:0, width: viewWidth-30, borderRadius:5}}>
                     <View style={[styles.contentInRow, {justifyContent:'flex-start', paddingBottom: 16}, styles.centerVertically]}>
-                    <TouchableHighlight 
+                    <Button
                     onPress={this._creditCardSelected}
-                    style={{height: 16, width: 16, borderRadius: 8, backgroundColor:this.state.isCreditCardSelected?'#7AB43A':'#E0E0E0', borderWidth: 0, borderColor:'#222', marginRight: 16}}>
-                       <View></View>
-                    </TouchableHighlight>
-                    <TouchableHighlight 
-                    underlayColor={'transparent'}
-                    style={[styles.contentInRow, styles.centerVertically]}
-                    onPress={this._creditCardSelected}>
-                       <View style={[styles.contentInRow, styles.centerVertically]}>
-                       <Octicons name={'credit-card'} color={'#A9AAAE'} size={32} />
-                       <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:16, paddingLeft: 8}]}>{'Credit Card'.toUpperCase()}</Text>
-                       </View>
-                    </TouchableHighlight>
+                    titleStyle={{color: '#fff', fontSize: 20, fontFamily: 'AvenirNext-Bold', paddingLeft:10}}
+                    containerStyle={{height: 16, width: 16, borderRadius: 8, backgroundColor:this.state.isCreditCardSelected?'#7AB43A':'#E0E0E0', borderWidth: 0, borderColor:'#222', marginRight: 16}}
+                    title={''}/>
+
+                    <Button
+                    onPress={this._creditCardSelected}
+                    buttonStyle={[{elevation:0}]}
+                    icon={ <Octicons name={'credit-card'} color={'#A9AAAE'} size={32} />}
+                    titleStyle={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:16, paddingLeft: 8, color:'#A9AAAE'}]}
+                    containerStyle={[styles.contentInRow, styles.centerVertically]}
+                    title={'Credit Card'.toUpperCase()}/>
                 </View>
 
 
                 <Divider style={{backgroundColor: '#d8dde1'}}/>
 
                         <View style={[styles.contentInRow, {justifyContent:'flex-start', paddingVertical: 16}, styles.centerVertically]}>
-                            <TouchableHighlight 
-                            onPress={this._paypalSelected}
-                            style={{height: 16, width: 16, borderRadius: 8, backgroundColor:this.state.isPayPalSelected?'#7AB43A':'#E0E0E0', borderWidth: 0, borderColor:'#222', marginRight: 16}}>
-                               <View></View>
-                            </TouchableHighlight>
-                            <TouchableHighlight 
-                            underlayColor={'transparent'}
-                            style={[styles.contentInRow, styles.centerVertically]}
-                            onPress={this._paypalSelected}>
-                               <View style={[styles.contentInRow, styles.centerVertically]}>
-                               <FontAwesome name={'cc-paypal'} color={'#A9AAAE'} size={32} />
-                               <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:16, paddingLeft: 8}]}>{'Paypal'.toUpperCase()}</Text>
-                               </View>
-                            </TouchableHighlight>
+                        <Button
+                        onPress={this._paypalSelected}
+                        titleStyle={{color: '#fff', fontSize: 20, fontFamily: 'AvenirNext-Bold', paddingLeft:10}}
+                        containerStyle={{height: 16, width: 16, borderRadius: 8, backgroundColor:this.state.isPayPalSelected?'#7AB43A':'#E0E0E0', borderWidth: 0, borderColor:'#222', marginRight: 16}}
+                        title={''}/>
+                        <Button
+                        onPress={this._paypalSelected}
+                    buttonStyle={[{elevation:0}]}
+                    icon={  <FontAwesome name={'cc-paypal'} color={'#A9AAAE'} size={32} /> }
+                    titleStyle={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:16, paddingLeft: 8, color:'#A9AAAE'}]}
+                    containerStyle={[styles.contentInRow, styles.centerVertically]}
+                    title={'Paypal'.toUpperCase()}/>
                         </View> 
                     </Card>
 
@@ -167,7 +163,7 @@ export default class Checkout extends Component {
             </ScrollView>
             <Button
             onPress={this._goToBack}
-            textStyle={{
+            titleStyle={{
                 color: '#ffffff',
                 fontSize: 18
             }}
@@ -175,6 +171,7 @@ export default class Checkout extends Component {
                 backgroundColor: mainBtnThemeColor,
                 minWidth: 150,
                 marginBottom:16,
+                marginHorizontal: 100,
                 height: 50,
                 borderColor: "transparent",
                 borderWidth: 0,

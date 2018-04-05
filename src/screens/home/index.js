@@ -15,7 +15,8 @@ import {
     PermissionsAndroid, Keyboard, TouchableHighlight
 } from 'react-native';
 
-import {Text, Button} from 'react-native-elements';
+import {Text} from 'react-native-elements';
+import Button from "../../Components/Button";
 import Icon from 'react-native-vector-icons/Entypo';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
@@ -130,7 +131,6 @@ export default class Home extends Component {
     }
 
     _goToSearch() {
-        Keyboard.dismiss();
         Navigation.showModal({
             screen: 'Search', // unique ID registered with Navigation.registerScreen
             title: 'Search', // title of the screen as appears in the nav bar (optional)

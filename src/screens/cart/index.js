@@ -11,10 +11,9 @@ import {
     View,
     Image,
     ScrollView,
-    Dimensions,
-    TouchableHighlight
+    Dimensions
 } from 'react-native';
-import {Card, Button, Badge, Text} from 'react-native-elements';
+import {Card, Badge, Text, Button} from 'react-native-elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import {coloredNavigationStyle, hideNavigationStyle, navigationStyle, sideNavigatorButton} from "../../navbarStyles";
@@ -83,19 +82,25 @@ export default class Cart extends Component {
                         </View>
                         <View style={[styles.contentInRow, {justifyContent:'space-between', paddingTop:16, paddingBottom:8, borderTopWidth:1, borderTopColor:'#d8dde1'}]}>
                             <View style={[styles.contentInRow, {justifyContent:'space-around'}, styles.centerVertically]}>
-                                <TouchableHighlight underlayColor={'transparent'} 
-                                    onPress={()=>{this.setState({itemCount:this.state.itemCount-1});this.forceUpdate();}}>
-                                    <View style={[styles.cartAddSubBtnStyling, styles.centerVertically, styles.centerHorizontally]}>
-                                    <FeatherIcon name={'minus'} size={24} color={'#1D2029'}/> 
-                                    </View> 
-                                </TouchableHighlight>
+                                <Button
+                                onPress={()=>{this.setState({itemCount:this.state.itemCount-1});this.forceUpdate();}}
+                                textStyle={styles.white18pxfont}
+                                containerStyle={[styles.cartAddSubBtnStyling]}
+                                buttonStyle={[{elevation: 0, paddingTop: 1, paddingRight:2}]}
+                                icon={
+                                    <FeatherIcon name={'minus'} size={24} color={'#1D2029'}/>
+                                } 
+                                title={''}/>
                                 <Text style={{fontSize:24, paddingHorizontal: 20}}>{this.state.itemCount}</Text>
-                                <TouchableHighlight underlayColor={'transparent'} 
-                                    onPress={()=>{this.setState({itemCount:this.state.itemCount+1});this.forceUpdate();}}>
-                                    <View style={[styles.cartAddSubBtnStyling, styles.centerVertically, styles.centerHorizontally]}>
+                                <Button
+                                onPress={()=>{this.setState({itemCount:this.state.itemCount+1});this.forceUpdate();}}
+                                textStyle={styles.white18pxfont}
+                                containerStyle={[styles.cartAddSubBtnStyling]}
+                                buttonStyle={[{elevation: 0, paddingTop: 1, marginLeft:-3}]}
+                                icon={
                                     <MaterialIcons name={'add'} size={24} color={'#1D2029'}/>
-                                </View>
-                                </TouchableHighlight>
+                                } 
+                                title={''}/>
                                 
                             </View>
                             <View style={[styles.centerVertically, styles.centerHorizontally]}>
@@ -121,15 +126,14 @@ export default class Cart extends Component {
                     </Card>
                 </View>
                 <View style={[styles.centerHorizontally, styles.centerVertically, {marginTop: 10},]}>
-                <TouchableHighlight underlayColor={'#F57F17'} 
-                onPress={this._goToCheckout}
-                style={[styles.centerHorizontally, styles.centerVertically,{ backgroundColor: '#F57F17',
-                width: viewWidth-40, alignContent:'center',
-                height: 50, borderRadius: 25}]}>
-                <View style={[styles.centerVertically, styles.contentInRow, styles.centerHorizontally]}>
-                    <Text style={{color: '#fff', fontSize: 20, fontFamily: 'AvenirNext-Bold', paddingLeft:10}}>GO TO CHECKOUT</Text>
-                </View>
-                </TouchableHighlight>
+                <Button
+                    onPress={this._goToCheckout}
+                    titleStyle={{color: '#fff', fontSize: 20, fontFamily: 'AvenirNext-Bold', paddingLeft:10}}
+                    containerStyle={[styles.centerHorizontally, styles.centerVertically]}
+                    buttonStyle={[{elevation: 0, backgroundColor: '#F57F17',
+                    width: viewWidth-40, alignContent:'center',
+                    height: 50, borderRadius: 25}]}
+                    title={'CHECKOUT'}/>
                 </View>
             </ScrollView>
         )
@@ -148,7 +152,7 @@ const styles = StyleSheet.create({
     centerHorizontally:{
         justifyContent: 'center',
     },
-    cartAddSubBtnStyling:{height:30, width:30, borderRadius: 15, borderWidth:1},
+    cartAddSubBtnStyling:{height:30, width:30, borderRadius: 15, borderWidth:1, backgroundColor: 'transparent'},
     numberingOrders:{
         borderColor: '#c7c8c3',
         borderWidth: 0,

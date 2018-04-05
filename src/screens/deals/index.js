@@ -117,11 +117,11 @@ export default class Deals extends Component {
 
     render() {
         return (
-            <LinearGradient colors={gradientColors} style={styles.fullScreen}>
+            <LinearGradient colors={gradientColors} style={[styles.fullScreen]}>
 
             <ScrollView style={styles.container}>
 
-                <TouchableHighlight onPress={this._goToRestaurant} underlayColor={'transparent'}>
+                <TouchableHighlight onPress={this._goToRestaurant} underlayColor={'transparent'} style={{paddingBottom: 10,}}>
                     <View style={styles.marginTop24px}>
                     <Card
                   containerStyle={{backgroundColor:'#fff', padding:0, borderRadius: 10, borderWidth:0, elevation:5, marginVertical:0}}>

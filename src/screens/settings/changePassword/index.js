@@ -84,7 +84,7 @@ export default class ChangePassword extends Component {
                                     color={IconColor}
                                 />
                             }
-                            inputStyle={{color: '#ffffff'}}
+                            inputStyle={{color: '#000'}}
                             secureTextEntry={true}
                             keyboardAppearance="light"
                             placeholder="Enter Your Current Password"
@@ -125,7 +125,7 @@ export default class ChangePassword extends Component {
                                     color={IconColor}
                                 />
                             }
-                            inputStyle={{color: '#ffffff'}}
+                            inputStyle={{color: '#000'}}
                             secureTextEntry={true}
                             keyboardAppearance="light"
                             placeholder="Enter Your New Password"
@@ -167,7 +167,7 @@ export default class ChangePassword extends Component {
                                     color={IconColor}
                                 />
                             }
-                            inputStyle={{color: '#ffffff'}}
+                            inputStyle={{color: '#000'}}
                             secureTextEntry={true}
                             keyboardAppearance="light"
                             placeholder="Repeat Your New Password"
