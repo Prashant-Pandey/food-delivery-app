@@ -61,31 +61,19 @@ class mainSideMenu extends React.Component {
 
     _gotoOrders() {
         this._toggleDrawer();
-        // this
-        // .props
-        // .navigator
-        // .resetTo({
-        //     screen: 'Orders', title: 'Orders Summary',
-        //     navigatorButtons: sideNavigatorButton,
-        //     navigatorStyle: coloredNavigationStyle,
-        //     animated: true, animationType: 'fade'
-        // });
+        this
+        .props
+        .navigator
+        .resetTo({
+            screen: 'Orders', title: 'Orders Summary',
+            navigatorButtons: sideNavigatorButton,
+            navigatorStyle: coloredNavigationStyle,
+            animated: true, animationType: 'fade'
+        });
 
-        // const navigatorID = this.props.navigator.navigatorID.split('_')[0] + '_nav';
-        
-        // this
-        // .props
-        // .navigator
-        // .resetTo({
-        //     screen: 'Orders', title: 'Orders Summary',
-        //     navigatorButtons: sideNavigatorButton,
-        //     navigatorStyle: coloredNavigationStyle,
-        //     animated: true, animationType: 'fade'
-        // });
-
-        this.props.navigator.handleDeepLink({
-            link: 'Orders'
-          });
+        // this.props.navigator.handleDeepLink({
+        //     link: 'Orders'
+        //   });
         // this.props.navigator.handleDeepLink({ link: "Orders" });
 
     }
