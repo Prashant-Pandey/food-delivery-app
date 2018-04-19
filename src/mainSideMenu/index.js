@@ -33,7 +33,7 @@ class mainSideMenu extends React.Component {
             link: goTo
         }); 
     }
-
+    
     _toggleDrawer() {
         this
             .props
