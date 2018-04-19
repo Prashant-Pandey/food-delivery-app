@@ -16,6 +16,8 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import GridView from '../../Components/GridView';
 import {coloredNavigationStyle, hideNavigationStyle, navigationStyle, sideNavigatorButton} from "../../navbarStyles";
+import styles from '../../Constants/StyleConstants';
+
 
 export default class Settings extends Component {
 
@@ -125,7 +127,7 @@ export default class Settings extends Component {
                                   name={item.icon}
                                   color='#ffffff'
                                   size={50}
-                                  style={{textAlign:'center'}}
+                                  style={styles.textAlignCenter}
                               />
                               <Text style={styles.itemName}>{item.name}</Text>
                           </View>
@@ -136,29 +138,3 @@ export default class Settings extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    gridView: {
-        paddingTop: 25,
-        flex: 1,
-        minHeight:Dimensions.get('window').height-24,
-        alignContent:'center',
-    },
-    itemContainer: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 5,
-        height: 150,
-    },
-    itemName: {
-        fontSize: 16,
-        color: '#fff',
-        fontWeight: '600',
-        textAlign:'center'
-    },
-    itemCode: {
-        fontWeight: '600',
-        fontSize: 12,
-        color: '#fff',
-    },
-});

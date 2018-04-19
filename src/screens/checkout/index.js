@@ -17,15 +17,9 @@ import {Card, Button, Badge, Text, Divider} from 'react-native-elements';
 import Octicons from 'react-native-vector-icons/Octicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { CreditCardInput, LiteCreditCardInput } from "react-native-credit-card-input";
-import {modalNaviagtionStyle, rightCrossButton, sideNavigatorButton, navigationStyle, hideNavigationStyle} from '../../navbarStyles';
-
-
-
-
-const viewHeight = Dimensions.get('window').height;
-const viewWidth = Dimensions.get('window').width;
-
-const mainBtnThemeColor = 'rgba(255, 193, 7, 1)';
+import {hideNavigationStyle} from '../../navbarStyles';
+import styles from '../../Constants/StyleConstants';
+const paymentSelectedColor = '#A9AAAE';
 
 export default class Checkout extends Component {
     static navigatorButtons = {
@@ -67,11 +61,12 @@ export default class Checkout extends Component {
         });
     }
 
-
+    // function run when CreditCard is selected
     _creditCardSelected(){
         this.setState({isCreditCardSelected: !this.state.isCreditCardSelected, isPayPalSelected:false});this.forceUpdate();
     }
 
+    // function run when PayPal is selected
     _paypalSelected(){
         this.setState({isPayPalSelected: !this.state.isPayPalSelected, isCreditCardSelected:false});this.forceUpdate();
     }
@@ -83,58 +78,54 @@ export default class Checkout extends Component {
         // adding data to our list
     }
 
-    _onChange(form){
-        console.log(form);
-    }
-
     render() {
         return(
-            <View style={[{flex:1},s.container]}>
+            <View style={[styles.flex1,styles.silverColorBackground]}>
             <ScrollView>
-                <View style={[styles.container, styles.centerVertically,{paddingVertical: 8}]}>
+                <View style={[styles.checkoutFullContainer, styles.centerVertically,{paddingVertical: 8}]}>
                     <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>Select Payment Method</Text>
-                    <Card containerStyle={{borderWidth:0, width: viewWidth-30, borderRadius:5}}>
-                    <View style={[styles.contentInRow, {justifyContent:'flex-start', paddingBottom: 16}, styles.centerVertically]}>
-                    <Button
-                    onPress={this._creditCardSelected}
-                    titleStyle={{color: '#fff', fontSize: 20, fontFamily: 'AvenirNext-Bold', paddingLeft:10}}
-                    containerStyle={{height: 16, width: 16, borderRadius: 8, backgroundColor:this.state.isCreditCardSelected?'#7AB43A':'#E0E0E0', borderWidth: 0, borderColor:'#222', marginRight: 16}}
-                    title={''}/>
+                    <Card containerStyle={styles.checkoutPaymentModeChooseCard}>
+                        <View style={[styles.contentInRow, styles.justifyContentFlexStart, styles.paddingBottom16, styles.paddingTop16, styles.centerVertically]}>
+                            <Button
+                                onPress={this._creditCardSelected}
+                                titleStyle={styles.paymentMethodChooseBtnTitle}
+                                containerStyle={[styles.paymentMethodChooseBtnContainer, {backgroundColor:this.state.isCreditCardSelected?'#7AB43A':'#E0E0E0'}]}
+                                title={''}/>
 
-                    <Button
-                    onPress={this._creditCardSelected}
-                    buttonStyle={[{elevation:0}]}
-                    icon={ <Octicons name={'credit-card'} color={'#A9AAAE'} size={32} />}
-                    titleStyle={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:16, paddingLeft: 8, color:'#A9AAAE'}]}
-                    containerStyle={[styles.contentInRow, styles.centerVertically]}
-                    title={'Credit Card'.toUpperCase()}/>
-                </View>
+                            <Button
+                                onPress={this._creditCardSelected}
+                                buttonStyle={[{elevation:0, backgroundColor: 'transparent'}]}
+                                icon={ <Octicons name={'credit-card'} color={paymentSelectedColor} size={32} />}
+                                titleStyle={[styles.fontFamilyRoboto, styles.productNameStyle, styles.paymentMethodChooseBtnTextTitle, {backgroundColor: 'transparent'}]}
+                                containerStyle={[styles.contentInRow, styles.centerVertically]}
+                                title={'Credit Card'.toUpperCase()}/>
+                        </View>
 
 
                 <Divider style={{backgroundColor: '#d8dde1'}}/>
 
-                        <View style={[styles.contentInRow, {justifyContent:'flex-start', paddingVertical: 16}, styles.centerVertically]}>
+                        <View style={[styles.contentInRow, styles.justifyContentFlexStart, styles.paddingBottom16, styles.centerVertically]}>
                         <Button
                         onPress={this._paypalSelected}
-                        titleStyle={{color: '#fff', fontSize: 20, fontFamily: 'AvenirNext-Bold', paddingLeft:10}}
-                        containerStyle={{height: 16, width: 16, borderRadius: 8, backgroundColor:this.state.isPayPalSelected?'#7AB43A':'#E0E0E0', borderWidth: 0, borderColor:'#222', marginRight: 16}}
+                        titleStyle={styles.paymentMethodChooseBtnTitle}
+                        containerStyle={ [styles.paymentMethodChooseBtnContainer, {backgroundColor:this.state.isPayPalSelected?'#7AB43A':'#E0E0E0'}]}
                         title={''}/>
                         <Button
                         onPress={this._paypalSelected}
-                    buttonStyle={[{elevation:0}]}
-                    icon={  <FontAwesome name={'cc-paypal'} color={'#A9AAAE'} size={32} /> }
-                    titleStyle={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:16, paddingLeft: 8, color:'#A9AAAE'}]}
+                    buttonStyle={[{elevation:0, backgroundColor: 'transparent'}]}
+                    icon={  <FontAwesome name={'cc-paypal'} color={paymentSelectedColor} size={32} /> }
+                    titleStyle={[styles.fontFamilyRoboto, styles.productNameStyle, styles.paymentMethodChooseBtnTextTitle]}
                     containerStyle={[styles.contentInRow, styles.centerVertically]}
                     title={'Paypal'.toUpperCase()}/>
                         </View> 
                     </Card>
 
-                    <View style={[s.container,{marginTop:16}]}>
+                    <View style={[styles.silverColorBackground,{marginTop:16}]}>
                     { !this.state.isCreditCardSelected ?
                       (
                         <LiteCreditCardInput
                           autoFocus
-                          inputStyle={s.input}
+                          inputStyle={styles.paymentInput}
             
                           validColor={"black"}
                           invalidColor={"red"}
@@ -148,8 +139,8 @@ export default class Checkout extends Component {
                           requiresCVC
                           requiresPostalCode
             
-                          labelStyle={s.label}
-                          inputStyle={s.input}
+                          labelStyle={styles.paymentLabel}
+                          inputStyle={styles.paymentInput}
                           validColor={"black"}
                           invalidColor={"red"}
                           placeholderColor={"darkgray"}
@@ -163,72 +154,10 @@ export default class Checkout extends Component {
             </ScrollView>
             <Button
             onPress={this._goToBack}
-            titleStyle={{
-                color: '#ffffff',
-                fontSize: 18
-            }}
-            buttonStyle={{
-                backgroundColor: mainBtnThemeColor,
-                minWidth: 150,
-                marginBottom:16,
-                marginHorizontal: 100,
-                height: 50,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5,
-            }}
+            titleStyle={styles.checkoutPlaceOrderTitle}
+            buttonStyle={styles.checkoutPlaceOrderBtn}
             title='PLACE ORDER'/>
             </View>
         )
     }
 }
-
-const s = StyleSheet.create({
-    container: {
-      backgroundColor: "#F5F5F5",
-    },
-    label: {
-      color: "black",
-      fontSize: 12,
-    },
-    input: {
-      fontSize: 16,
-      color: "black",
-    },
-  });
-  
-
-const styles = StyleSheet.create({
-    container: {
-        minHeight: viewHeight-324,
-    },
-    contentInRow:{
-        flexDirection: 'row',
-    },
-    centerVertically:{
-        alignItems: 'center',
-    },
-    centerHorizontally:{
-        justifyContent: 'center',
-    },
-    cartAddSubBtnStyling:{height:30, width:30, borderRadius: 15, borderWidth:1},
-    numberingOrders:{
-        borderColor: '#c7c8c3',
-        borderWidth: 0,
-        borderRadius: 0,
-        width: 20,
-        height: 20,
-        shadowColor: '#c7c8c3',
-        shadowOffset: {width: 0, height: 1},
-        shadowOpacity: 0.8,
-        shadowRadius: 30,
-        elevation: 1,
-    },
-    productNameStyle: {
-        fontWeight: '500'
-    },
-    fontFamilyRoboto: {
-        fontFamily: 'AcademyEngravedLetPlain'
-    },
-    orderInfoTitleStyle:{color: '#e67e22', fontWeight: '100'}
-});

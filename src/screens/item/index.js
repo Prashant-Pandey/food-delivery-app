@@ -23,7 +23,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Swiper from 'react-native-swiper';
-import {coloredNavigationStyle, sideNavigatorButton} from "../../navbarStyles";
+import {coloredNavigationStyle} from "../../navbarStyles";
 
 import styles from "../../Constants/StyleConstants";
 
@@ -34,7 +34,10 @@ const viewHeight = Dimensions.get('window').height;
 const viewWidth = Dimensions.get('window').width;
 
 const navBarThemeColor = 'rgba(255, 193, 7, 1)', fabThemeColor = 'rgba(255, 193, 7, 1)';
+const iconColor = 'white';
+const dividerColor = '#d8dde1';
 
+// you can use state to store this data
 const data = [{
     uri:"https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg",
     hotelName:'Chhabras pure veg',
@@ -82,15 +85,6 @@ export default class Item extends Component {
         this.props.navigator.handleDeepLink({ 
             link: 'Menu'
         }); 
-        // this
-        //     .props
-        //     .navigator
-        //     .resetTo({
-        //         screen: 'Menu', title: 'Restraunt Name',
-                
-        //         navigatorStyle: coloredNavigationStyle,
-        //         animated: true, animationType: 'fade'
-        //     });
     }
 
     _goToCart() {
@@ -109,49 +103,38 @@ export default class Item extends Component {
 
     render() {
         return (
-            <View style={{flex:1}}>
+            <View style={styles.flex1}>
                 {/*header*/}
                 <Header
-                    outerContainerStyles={{borderBottomWidth:0, paddingRight:0}}
-                    innerContainerStyles={{marginRight:0}}
+                    outerContainerStyles={[styles.borderBottomWidth0, styles.paddingRight0]}
+                    innerContainerStyles={styles.marginRight0}
                     backgroundColor={navBarBackgroundColor}
                     leftComponent={
                         <View>
+                            {/*put product name as title*/}
                             <Button
-                                icon={<Icon name='ios-arrow-back' size={24} color='white'/>}
+                                icon={<Icon name='ios-arrow-back' size={24} color={iconColor}/>}
                                 onPress={this._goToBack}
-                                buttonStyle={{
-                                    backgroundColor: "transparent",
-                                    elevation: 0,
-                                    zIndex: 0
-                                }}
-                                titleStyle={{
-                                    color: '#ffffff',
-                                    fontSize: 20,
-                                    fontWeight: '500',
-                                    paddingLeft: 30,
-                                }}
+                                buttonStyle={[styles.productPageHeaderBackBtn]}
+                                titleStyle={[styles.productPageHeaderBackBtnTitle]}
                                 title={'Sushi'.toUpperCase()}/>
                         </View>
                     }
                     rightComponent={
                         <TouchableHighlight onPress={this._goToCart} underlayColor={navBarThemeColor}>
-                            <View style={[{paddingRight: 20, alignItems: 'center', justifyContent: 'center'}]}>
-                                <View style={[{position:'absolute', top:0, right:5, zIndex:10, height: 20, width:25, borderRadius: 10, backgroundColor: 'red', alignItems: 'center', justifyContent: 'center'}]}>
-                                    <Text style={{fontSize: 10, color: '#fff', fontWeight: '700'}}>1</Text>
+                            <View style={[styles.centerVertically, styles.centerHorizontally, styles.paddingRight20]}>
+                                <View style={[ styles.centerVertically, styles.centerHorizontally, styles.itemPageCartNotifierStyle]}>
+                                    {/*put no of items in cart*/}
+                                    <Text style={[styles.itemPageCartText]}>1</Text>
                                 </View>
-                                <Icon name='md-cart' size={30} style={{marginTop:10}} color='white'/>
+                                <Icon name='md-cart' size={30} style={{marginTop:10}} color={iconColor}/>
                             </View>
                         </TouchableHighlight>
                     }
                 />
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <Swiper style={{
-                         height: viewHeight / 3,
-                         margin: 0,
-                         padding: 0,
-                         borderWidth: 0,
-                    }} showsButtons={true}>
+                    <Swiper style={styles.itemPageSwiperStyle} showsButtons={true}>
+                        {/*put all the images of product you want to have in a swiper*/}
                         <Image
                             source={{uri: 'http://i.dailymail.co.uk/i/pix/2017/11/08/16/4623608900000578-0-image-a-9_1510156892900.jpg'}}
                             style={styles.prodImage}/>
@@ -163,19 +146,15 @@ export default class Item extends Component {
                             style={styles.prodImage}/>
                     </Swiper>
                     <View>
-                        <Text style={{padding: 10}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer 
-                        took a galley of type and scrambled it to make a type specimen book. 
-                        It has survived not only five centuries, but also the leap into electronic typesetting, 
-                        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
-                        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-                        Aldus PageMaker including versions of Lorem Ipsum.</Text>
+                        <Text style={{padding: 10}}>
+                            {/*put product description*/}
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                            It has survived not only five centuries, but also the leap into electronic typesetting, 
+                            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </Text>
                     </View>
-                    <Divider style={{backgroundColor: '#d8dde1'}}/>
-                    <View style={[styles.contentInRow, {
-                        flex: 1,
-                        justifyContent: 'space-around',
-                        paddingVertical: 10,
+                    <Divider style={{backgroundColor: dividerColor}}/>
+                    <View style={[styles.contentInRow, styles.flex1, styles.justifyContentSpaceAround, styles.paddingVertical10, {
                         backgroundColor: '#fff'
                     }]}>
                         <View style={[styles.centerVertically, styles.centerHorizontally]}>
@@ -196,34 +175,25 @@ export default class Item extends Component {
                                 imageSize={16}
                                 readonly
                                 startingValue={5}
-                                // style={styles.rating}
                             />
                         </View>
                     </View>
                     <TouchableHighlight
-                style={[{height:50, width:50, borderRadius: 25, position:'absolute', right: 16,top: (viewHeight/3-40), backgroundColor:fabThemeColor, justifyContent: 'center',alignItems: 'center',}]}
+                style={[styles.itemFabBtnStyling, styles.centerVertically, styles.centerHorizontally]}
                  underlayColor={fabThemeColor} onPress={this._doCall}>
                     <View>
-                        <FeatherIcon name={'phone-call'} size={24} color={'white'} />
+                        <FeatherIcon name={'phone-call'} size={24} color={iconColor} />
                     </View>
                 </TouchableHighlight>
-                    <Divider style={{backgroundColor: '#d8dde1'}}/>
+                    <Divider style={{backgroundColor: dividerColor}}/>
                     <Button
                         icon={<MaterialCommunityIcons name='dots-horizontal-circle' size={34} color='#000'/>}
                         onPress={this._goToMenu}
-                        buttonStyle={{
-                            backgroundColor:'#ddd',
-                            elevation: 0,
-                            width: viewWidth,
-                            paddingVertical: 10,
-                        }}
-                        textStyle={{
-                            color: '#000',
-                            fontSize: 24,
-                            fontWeight: '500',
-                        }}
+                        buttonStyle={styles.itemGoToMenuPageBtn}
+                        textStyle={styles.itemGoToMenuPageBtnText}
                         title='Our Other Menu'/>
-                    <Divider style={{backgroundColor: '#d8dde1'}}/>
+                    <Divider style={{backgroundColor: dividerColor}}/>
+                    {/*recomended product list*/}
                     <View style={{minHeight: 220}}>
                         <FlatList
                             horizontal
@@ -231,28 +201,22 @@ export default class Item extends Component {
                             data={this.state.data}
                             renderItem={({item: rowData}) => {
                                 return (
+                                    /*recomended image uri list*/
                                     <Card
                                         image={{uri: rowData.uri}}
-                                        imageStyle={{borderRadius: 10}}
-                                        containerStyle={{
-                                            height: 210,
-                                            width: 200,
-                                            marginHorizontal: 5,
-                                            marginVertical: 5,
-                                            borderWidth:0
-                                        }}>
+                                        imageStyle={styles.borderRadius10}
+                                        containerStyle={styles.itemPageRecommendedListCardContainerStyle}>
                                         <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
+                                            {/*recomended product restaurant name*/}
                                             {rowData.hotelName}
                                         </Text>
                                         <View
-                                            style={[{paddingBottom: 5}, styles.contentInRow, styles.centerVertically]}>
+                                            style={[styles.paddingBottom10,styles.contentInRow, styles.centerVertically]}>
                                             <Icon name='ios-pin-outline' size={16}
                                                   color='#222222'/>
-                                            <Text style={[{
-                                                textAlign: 'center',
-                                                fontSize: 16,
-                                                paddingLeft: 10
-                                            }, styles.condensedFonts]}>{rowData.hotelLocation}</Text>
+                                            <Text style={[styles.textAlignCenter, styles.fontSize16,styles.paddingLeft10, styles.condensedFonts]}>
+                                            {/*recomended product restaurant location*/}
+                                            {rowData.hotelLocation}</Text>
                                         </View>
                                     </Card>
                                 );
@@ -262,39 +226,12 @@ export default class Item extends Component {
                     </View>
                 </ScrollView>
                 <TouchableHighlight underlayColor={'#F57F17'} onPress={this._goToCart}>
-                <View style={[{
-                    backgroundColor: '#F57F17',
-                    width: viewWidth,
-                    height: 45
-                }, styles.centerVertically, styles.contentInRow, styles.centerHorizontally]}>
-                    <MaterialIcons name={'add-shopping-cart'} size={24} color={'white'}/>
-                    <Text style={{color: '#fff', fontSize: 20, fontFamily: 'AvenirNext-Bold', paddingLeft:10}}>ORDER NOW</Text>
+                <View style={[styles.itemOrderNowBtnContainer, styles.centerVertically, styles.contentInRow, styles.centerHorizontally]}>
+                    <MaterialIcons name={'add-shopping-cart'} size={24} color={{iconColor}}/>
+                    <Text style={[styles.paddingLeft10, styles.itemOrderNowBtnText]}>ORDER NOW</Text>
                 </View>
                 </TouchableHighlight>
             </View>
         );
     }
-}
-
-{/*
-
-
-   onPress={this.onPressActionCall}
-          disabled={this.state.btnDisabled}
-          underlayColor={clear ? 'transparent' : undefined}
-          activeOpacity={clear ? 0 : undefined}
-
-
-*/
-}
-{/*
-<Card
-    title={'title'}
-    image={{ url: rowData.imageUrl }}
-    key={rowData.title}
-    containerStyle={[{ width: 160 }, styles.centerVertically, styles.centerHorizontally]}>
-    <Text>
-        {rowData.title}
-    </Text>
-</Card>*/
 }

@@ -17,14 +17,13 @@ import {
 import {Text, Button, Card} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Feather';
-import {coloredNavigationStyle, hideNavigationStyle, navigationStyle, sideNavigatorButton} from "../../navbarStyles";
+import {coloredNavigationStyle, hideNavigationStyle, navigationStyle} from "../../navbarStyles";
 
 
-import styles from '../../Constants/StyleConstants';
 import { gradientColors } from "../../Constants/GradientColors";
-const viewHeight = Dimensions.get('window').height;
-const viewWidth = Dimensions.get('window').width;
-const mainBtnThemeColor = '#FF6F00', fabThemeColor = '#FF6F00', btnWidth = viewWidth-50;
+import styles from '../../Constants/StyleConstants';
+
+const mapIconColor = '#222222';
 
 export default class Deals extends Component {
 
@@ -88,6 +87,13 @@ export default class Deals extends Component {
                         navigatorStyle: hideNavigationStyle, animated: true, animationType: 'fade'
                     });
                     break;
+                    case 'Menu':
+                    this.props.navigator.resetTo({
+                        screen: 'Menu', title: 'Restraunt Name', 
+                        navigatorStyle: coloredNavigationStyle,
+                        animated: true, animationType: 'fade'
+                    });
+                    break;
                 
                     default:
                         break;
@@ -118,27 +124,26 @@ export default class Deals extends Component {
     render() {
         return (
             <LinearGradient colors={gradientColors} style={[styles.fullScreen]}>
-
             <ScrollView style={styles.container}>
-
-                <TouchableHighlight onPress={this._goToRestaurant} underlayColor={'transparent'} style={{paddingBottom: 10,}}>
+                {/*map your array of data here*/}
+                <TouchableHighlight onPress={this._goToRestaurant} underlayColor={'transparent'} style={styles.paddingBottom10}>
                     <View style={styles.marginTop24px}>
                     <Card
-                  containerStyle={{backgroundColor:'#fff', padding:0, borderRadius: 10, borderWidth:0, elevation:5, marginVertical:0}}>
+                  containerStyle={styles.dealsCardContainerStyle}>
+                  {/*put image uri here*/}
                 <Image  source={{uri: 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg'}}
-                    style={{borderTopLeftRadius: 10, borderTopRightRadius: 10, top:0.5, width:'99%', left:'0.5%', height:175}} />
+                    style={styles.dealsCardImage} />
                     <View
                         style={[styles.contentInRow,
-                            styles.centerVertically, {
-                                justifyContent: 'space-between',
-                                paddingTop: 5
-                            }]}>
-                        <View style={[styles.contentInRow, styles.centerVertically, {paddingHorizontal: 10,}]}>
-                            <View style={{marginLeft: 10}}>
+                            styles.centerVertically, styles.justifyContentSpaceBetween, styles.paddingTop5]}>
+                        <View style={[styles.contentInRow, styles.centerVertically, styles.paddingHorizontal10]}>
+                            <View style={styles.marginLeft10}>
                                 <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
+                                {/*put restaurant here*/}
                                     Chchabra's Pure Veg
                                 </Text>
-                                <Text style={{fontFamily: 'AppleSDGothicNeo-Medium', color: '#757575', fontWeight: '100'}}>
+                                <Text style={styles.dealsCardLocation}>
+                                {/*put location here*/}
                                     Malviya Nagar, Jaipur
                                 </Text>
                             </View>
@@ -150,23 +155,26 @@ export default class Deals extends Component {
                             <View style={styles.twelvePointBurst60} />
                         </View>
                         <View style={[styles.discountValuePosition]}>
-                            <Text style={{fontFamily: 'Arial Rounded MT Bold', fontWeight: '500', fontSize: 26, color:'#ffffff'}}>
+                            <Text style={styles.dealsCardDiscount}>
+                            {/*put discount percent or amount here*/}
                                 40%
                             </Text>
                         </View>
                     </View>
                     <View
-                        style={[styles.contentInRow, styles.centerVertically,{
-                            paddingTop: 10, paddingHorizontal: 10
-                        }]}>
-                        <Text style={[styles.fontFamilyRoboto,{textAlign:'justify'}]}>
+                        style={[styles.contentInRow, styles.centerVertically, styles.paddingTop10, styles.paddingHorizontal10]}>
+                        <Text style={[styles.fontFamilyRoboto, styles.textAlignJustify]}>
+                        {/*put description here*/}
                             a contagious disease that affects the skin, mucous membranes, and nerves, causing discoloration and lumps on the skin and, in severe cases, disfigurement and deformities. Leprosy is now mainly confined to tropical Africa and Asia.
                         </Text>
                     </View>
-                    <View style={[{paddingTop: 10, paddingBottom:5, paddingHorizontal: 10}, styles.contentInRow, styles.centerVertically]}>
+                    <View style={[styles.paddingTop10, { paddingBottom:5, paddingHorizontal: 10}, styles.contentInRow, styles.centerVertically]}>
                         <Icon name = 'map-pin' size = {16}
-                              color = '#222222' />
-                        <Text style={[{textAlign:'center', fontSize: 16, paddingLeft:10}, styles.condensedFonts]}>LOS ANGELES, CA</Text>
+                              color={mapIconColor} />
+                        <Text style={[styles.dealsCardLocationStyle, styles.condensedFonts]}>
+                            {/*put location here*/}
+                            LOS ANGELES, CA
+                        </Text>
                     </View>
     </Card>
                     </View>
@@ -178,17 +186,3 @@ export default class Deals extends Component {
     }
 }
 
-
-{/*
- <Card
-    image={{
-    uri: 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg'
-  }}>
-    <Text style={{
-      marginBottom: 10
-    }}>
-      The idea with React Native Elements is more about component structure than
-      actual design.
-    </Text>
-</Card>
-*/}

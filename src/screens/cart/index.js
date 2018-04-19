@@ -16,12 +16,11 @@ import {
 import {Card, Badge, Text, Button} from 'react-native-elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import {coloredNavigationStyle, hideNavigationStyle, navigationStyle, sideNavigatorButton} from "../../navbarStyles";
+import {coloredNavigationStyle} from "../../navbarStyles";
+import styles from '../../Constants/StyleConstants';
 
 
-
-const viewHeight = Dimensions.get('window').height;
-const viewWidth = Dimensions.get('window').width;
+const cartIconColor = '#1D2029';
 
 export default class Cart extends Component {
 
@@ -71,68 +70,82 @@ export default class Cart extends Component {
     render() {
         return(
             <ScrollView>
-                <View style={[styles.container]}>
+                <View>
                     <Card containerStyle={{borderWidth:0}}>
-                        <View style={[styles.contentInRow, {justifyContent:'space-between', paddingBottom: 16}]}>
+                        <View style={[styles.contentInRow, styles.justifyContentSpaceBetween, styles.paddingBottom16]}>
                             <View>
-                                <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>American Sushi Salomen</Text>
-                                <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize: 12}]}>Avengers EastWood</Text>
+                                <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
+                                    American Sushi Salomen
+                                </Text>
+                                <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize: 12}]}>
+                                    Avengers EastWood
+                                </Text>
                             </View>
-                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:24, color: '#0fb14a'}]}>$500</Text>
+                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, styles.fontSize24, styles.cartProductCostColor]}>$500</Text>
                         </View>
-                        <View style={[styles.contentInRow, {justifyContent:'space-between', paddingTop:16, paddingBottom:8, borderTopWidth:1, borderTopColor:'#d8dde1'}]}>
+                        <View style={[styles.contentInRow, styles.justifyContentSpaceBetween, styles.paddingWithLightBorder]}>
                             <View style={[styles.contentInRow, {justifyContent:'space-around'}, styles.centerVertically]}>
                                 <Button
-                                onPress={()=>{this.setState({itemCount:this.state.itemCount-1});this.forceUpdate();}}
-                                textStyle={styles.white18pxfont}
-                                containerStyle={[styles.cartAddSubBtnStyling]}
-                                buttonStyle={[{elevation: 0, paddingTop: 1, paddingRight:2}]}
-                                icon={
-                                    <FeatherIcon name={'minus'} size={24} color={'#1D2029'}/>
-                                } 
-                                title={''}/>
-                                <Text style={{fontSize:24, paddingHorizontal: 20}}>{this.state.itemCount}</Text>
+                                    onPress={
+                                        ()=>{this.setState({itemCount:this.state.itemCount-1});this.forceUpdate();}
+                                    }
+                                    textStyle={styles.white18pxfont}
+                                    containerStyle={[styles.cartAddSubBtnContainerStyle]}
+                                    buttonStyle={[styles.cartAddSubBtnStyling, styles.paddingRight3]}
+                                    icon={<FeatherIcon name={'minus'} size={24} color={cartIconColor}/>} 
+                                    title={''}/>
+                                    
+                                    <Text style={[styles.fontSize24, {paddingHorizontal: 20}]}>
+                                        {this.state.itemCount}
+                                    </Text>
                                 <Button
-                                onPress={()=>{this.setState({itemCount:this.state.itemCount+1});this.forceUpdate();}}
-                                textStyle={styles.white18pxfont}
-                                containerStyle={[styles.cartAddSubBtnStyling]}
-                                buttonStyle={[{elevation: 0, paddingTop: 1, marginLeft:-3}]}
-                                icon={
-                                    <MaterialIcons name={'add'} size={24} color={'#1D2029'}/>
-                                } 
-                                title={''}/>
+                                    onPress={
+                                        ()=>{this.setState({itemCount:this.state.itemCount+1});this.forceUpdate();}
+                                    }
+                                    textStyle={styles.white18pxfont}
+                                    containerStyle={[styles.cartAddSubBtnContainerStyle]}
+                                    buttonStyle={[styles.cartAddSubBtnStyling, styles.marginLeftNeg3]}
+                                    icon={<MaterialIcons name={'add'} size={24} color={cartIconColor}/>} 
+                                    title={''}/>
                                 
                             </View>
                             <View style={[styles.centerVertically, styles.centerHorizontally]}>
-                            <MaterialIcons name={'delete-sweep'} size={24} color={'#1D2029'}/> 
+                                <MaterialIcons name={'delete-sweep'} size={24} color={cartIconColor}/> 
                             </View>
                         </View>
                     </Card>
                 </View>
-                <View style={[styles.container]}>
+                <View>
                     <Card containerStyle={{borderWidth:0}}>
-                        <View style={[styles.contentInRow, {justifyContent:'space-between', paddingBottom: 16}]}>
+                        <View style={[styles.contentInRow, styles.justifyContentSpaceBetween, styles.paddingBottom16]}>
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>Subtotal</Text>
-                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:18,}]}>$500</Text>
+                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:18,}]}>
+                                {/* add sub total here */}
+                                $500
+                            </Text>
                         </View>
-                        <View style={[styles.contentInRow, {justifyContent:'space-between', paddingTop:16, paddingBottom:8, borderTopWidth:1, borderTopColor:'#d8dde1'}]}>
+                        <View style={[styles.contentInRow, styles.justifyContentSpaceBetween,styles.paddingWithLightBorder]}>
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>Tax</Text>
-                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:18,}]}>$3.45</Text>
+                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:18,}]}>
+                                {/* add tax here */}
+                                $3.45
+                            </Text>
                         </View>
-                        <View style={[styles.contentInRow, {justifyContent:'space-between', paddingTop:16, paddingBottom:8, borderTopWidth:1, borderTopColor:'#d8dde1'}]}>
+                        <View style={[styles.contentInRow, styles.justifyContentSpaceBetween, styles.paddingWithLightBorder]}>
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>Total</Text>
-                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:18,}]}>$503.45</Text>
+                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:18,}]}>
+                                {/* add net cost here */}
+                                $503.45
+                            </Text>
                     </View>
                     </Card>
                 </View>
                 <View style={[styles.centerHorizontally, styles.centerVertically, {marginTop: 10},]}>
                 <Button
                     onPress={this._goToCheckout}
-                    titleStyle={{color: '#fff', fontSize: 20, fontFamily: 'AvenirNext-Bold', paddingLeft:10}}
+                    titleStyle={styles.goToCheckoutBtnTitleStyle}
                     containerStyle={[styles.centerHorizontally, styles.centerVertically]}
-                    buttonStyle={[{elevation: 0, backgroundColor: '#F57F17',
-                    width: viewWidth-40, alignContent:'center',
-                    height: 50, borderRadius: 25}]}
+                    buttonStyle={[styles.goToCheckoutBtnStyle]}
                     title={'CHECKOUT'}/>
                 </View>
             </ScrollView>
@@ -140,36 +153,3 @@ export default class Cart extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-    },
-    contentInRow:{
-        flexDirection: 'row',
-    },
-    centerVertically:{
-        alignItems: 'center',
-    },
-    centerHorizontally:{
-        justifyContent: 'center',
-    },
-    cartAddSubBtnStyling:{height:30, width:30, borderRadius: 15, borderWidth:1, backgroundColor: 'transparent'},
-    numberingOrders:{
-        borderColor: '#c7c8c3',
-        borderWidth: 0,
-        borderRadius: 0,
-        width: 20,
-        height: 20,
-        shadowColor: '#c7c8c3',
-        shadowOffset: {width: 0, height: 1},
-        shadowOpacity: 0.8,
-        shadowRadius: 30,
-        elevation: 1,
-    },
-    productNameStyle: {
-        fontWeight: '500'
-    },
-    fontFamilyRoboto: {
-        fontFamily: 'AcademyEngravedLetPlain'
-    },
-    orderInfoTitleStyle:{color: '#e67e22', fontWeight: '100'}
-});

@@ -39,7 +39,6 @@ export default class ThankYou extends Component {
             .navigator
             .resetTo({
                 screen: 'Home', title: 'Welcome to Foodie',
-                
                 navigatorStyle: navigationStyle,
                 animated: true, animationType: 'fade'
             });

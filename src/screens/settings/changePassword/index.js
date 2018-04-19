@@ -60,12 +60,12 @@ export default class ChangePassword extends Component {
       
     render() {
         return (
-            <ScrollView style={{alignContent:'stretch'}}>
+            <ScrollView style={styles.alignContentStretch}>
                 {/* Current Password */}
                 <View style={{borderBottomWidth:1,borderBottomColor:changePasswordBottomColor}}>
                     <View style={[styles.contentInRow, styles.paddingTop10]}>
-                        <Text style={{paddingLeft:10}}>Current Password </Text>
-                        <Text style={{color:'red'}}>*</Text>
+                        <Text style={styles.paddingLeft10}>Current Password </Text>
+                        <Text style={styles.colorRed}>*</Text>
                     </View>
                     <View style={[styles.centerVertically]}>
                         <Input
@@ -95,7 +95,7 @@ export default class ChangePassword extends Component {
                             onChangeText={text => this.setState({currentPassword: text})}
                             value={this.state.currentPassword}
                             displayError={this.state.currentPasswordErr}
-                            errorStyle={{textAlign: 'center', fontSize: 12}}
+                            errorStyle={styles.inputErrorStyle}
                             errorMessage="check your current password"
                             blurOnSubmit={true}
                             placeholderTextColor="#B2ACAB"
@@ -105,8 +105,8 @@ export default class ChangePassword extends Component {
                 {/* New Password */}
                 <View style={{borderBottomWidth:1,borderBottomColor:changePasswordBottomColor}}>
                     <View style={[styles.contentInRow, styles.paddingTop10]}>
-                        <Text style={{paddingLeft:10}}>New Password </Text>
-                        <Text style={{color:'red'}}>*</Text>
+                        <Text style={styles.paddingLeft10}>New Password </Text>
+                        <Text style={styles.colorRed}>*</Text>
                     </View>
                     <View style={[styles.centerVertically]}>
                         <Input
@@ -136,7 +136,7 @@ export default class ChangePassword extends Component {
                             onChangeText={text => this.setState({newPassword: text})}
                             value={this.state.newPassword}
                             displayError={this.state.newPasswordErr}
-                            errorStyle={{textAlign: 'center', fontSize: 12}}
+                            errorStyle={styles.inputErrorStyle}
                             errorMessage="check your new password"
                             ref={ input => this.newPasswordInput = input}
                             blurOnSubmit={true}
@@ -147,8 +147,8 @@ export default class ChangePassword extends Component {
                 {/* Repeat New Password */}
                 <View style={{borderBottomWidth:1,borderBottomColor:changePasswordBottomColor}}>
                     <View style={[styles.contentInRow, styles.paddingTop10]}>
-                        <Text style={{paddingLeft:10}}>Repeat New Password </Text>
-                        <Text style={{color:'red'}}>*</Text>
+                        <Text style={styles.paddingLeft10}>Repeat New Password </Text>
+                        <Text style={styles.colorRed}>*</Text>
                     </View>
                     <View style={[styles.centerVertically]}>
                         <Input
@@ -178,7 +178,7 @@ export default class ChangePassword extends Component {
                             onChangeText={text => this.setState({repeatNewPassword: text})}
                             value={this.state.repeatNewPassword}
                             displayError={this.state.repeatNewPasswordErr}
-                            errorStyle={{textAlign: 'center', fontSize: 12}}
+                            errorStyle={styles.inputErrorStyle}
                             errorMessage="Please confirm correct email and password"
                             ref={ input => this.repeatNewPasswordInput = input}
                             blurOnSubmit={true}
@@ -187,20 +187,9 @@ export default class ChangePassword extends Component {
                     </View>
                 </View>
                 <Button
-                    onPress={this._goToExplore}
-                    textStyle={{
-                        color: '#ffffff',
-                        fontSize: 18
-                    }}
-                    buttonStyle={{
-                        backgroundColor: "#0FB14A",
-                        minWidth: viewWidth-30,
-                        height: 50,
-                        borderColor: "transparent",
-                        borderWidth: 0,
-                        borderRadius: 0,
-                        marginTop: 24,
-                    }}
+                    onPress={this._changePassword}
+                    textStyle={styles.changePasswordBottonTxtStyle}
+                    buttonStyle={styles.changePasswordBottonStyle}
                     title='Change Password'/>
             </ScrollView>
         );
@@ -223,5 +212,22 @@ const styles = StyleSheet.create({
     },
     paddingTop10:{
         paddingTop: 15,
+    },
+    paddingLeft10:{paddingLeft:10},
+    colorRed:{color:'red'},
+    alignContentStretch:{alignContent:'stretch'},
+    inputErrorStyle:{textAlign: 'center', fontSize: 12},
+    changePasswordBottonTxtStyle:{
+        color: '#ffffff',
+        fontSize: 18
+    },
+    changePasswordBottonStyle:{
+        backgroundColor: "#0FB14A",
+        minWidth: viewWidth-30,
+        height: 50,
+        borderColor: "transparent",
+        borderWidth: 0,
+        borderRadius: 0,
+        marginTop: 24,
     }
 });

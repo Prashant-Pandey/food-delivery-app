@@ -20,6 +20,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import GridView from '../../Components/GridView';
 import {gradientColors} from '../../Constants/GradientColors';
 import {navigationStyle, sideNavigatorButton, hideNavigationStyle, coloredNavigationStyle} from '../../navbarStyles';
+import styles from '../../Constants/StyleConstants';
+
 
 export default class Orders extends Component {
 
@@ -144,55 +146,44 @@ export default class Orders extends Component {
             <LinearGradient colors={gradientColors} style={styles.fullScreen}>
             <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
             
-            <Card containerStyle={{backgroundColor:'#fff', borderRadius: 5, borderWidth:0}}>
+            <Card containerStyle={styles.orderScreenCardStyle}>
                 <View
                     style={[styles.contentInRow,
-                    styles.centerVertically, {
-                    justifyContent: 'space-between',
-                    borderColor: '#000',
-                    borderBottomWidth: 1
-                }]}>
+                    styles.centerVertically, styles.justifyContentSpaceBetween, styles.blackBorderWidth1]}>
                     <View style={[styles.contentInRow, styles.centerVertically,{paddingVertical: 8}]}>
                         <View style={[styles.centerVertically, styles.centerHorizontally,styles.numberingOrders]}>
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
+                            {/* put serial no of product here */}
                                 1
                             </Text>
                         </View>
                         <View style={{marginLeft: 20}}>
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
+                            {/* put name of restaurant here */}
                                 Chchabra's Pure Veg
                             </Text>
-                            <Text style={{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100'}}>
+                            <Text style={styles.dealsCardLocation}>
+                            {/* put location of restaurant here */}
                                 Malviya Nagar, Jaipur
                             </Text>
                         </View>
                     </View>
                     <View>
-                        <Text style={{fontFamily: 'AcademyEngravedLetPlain', fontWeight: '500', fontSize: 30}}>
+                        <Text style={styles.orderCardCostStyle}>
+                        {/* put cost of product here */}
                             $15
                         </Text>
                     </View>
                 </View>
                 <View
-                    style={[styles.contentInRow, styles.centerVertically,{
-                    justifyContent: 'space-between',
-                    minHeight: 100,
-                    paddingTop: 10
-                }]}>
-                   <Image source={{uri: 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg'}} style={{
-                            height: '100%',
-                            width: '100%',
-                            maxHeight: 120,
-                            maxWidth: 100,
-                            marginHorizontal: 10,
-                            borderRadius: 5
-                        }} resizeMethod={'resize'} resizeMode={'cover'}/>
+                    style={[styles.contentInRow, styles.centerVertically, styles.justifyContentSpaceBetween, styles.orderCardDescriptionContainer]}>
+                   <Image source={{uri: 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg'}} style={styles.orderScreenCardImage} resizeMethod={'resize'} resizeMode={'cover'}/>
                     <View>
                         <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 15, fontFamily: 'ArialMT'}]}>
+                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle, styles.fontSize15, styles.fontArielMT]}>
                                 Status&nbsp;:&nbsp;
                             </Text>
-                            <Text style={[{color:'green', fontSize:15, fontFamily: 'ArialMT'}]}>
+                            <Text style={[{color:'green'}, styles.fontSize15, styles.fontArielMT]}>
                                 ONGOING
                             </Text>
                         </View>
@@ -226,252 +217,13 @@ export default class Orders extends Component {
                     onPress={this._goToTrackOrder}
                     icon={<Icon name = 'map-pin' size = {15}
                                        color = 'white' />}
-                    textStyle={{
-                        color: '#ffffff',
-                        fontSize: 18,
-                    }}
-                    buttonStyle={{
-                        backgroundColor: '#F1C40F',
-                        minWidth: 200,
-                        height: 50,
-                        borderWidth: 0,
-                        borderRadius: 25,
-                        marginTop: 24,
-                        marginBottom: 10,
-                    }}
+                    textStyle={[styles.fontWeight, styles.fontSize18]}
+                    buttonStyle={styles.orderCardBtn}
                     title='Track Order'/>
             </Card>
             
- <Card containerStyle={{backgroundColor:'#fff', borderRadius: 5, borderWidth:0}}>
-                <View
-                    style={[styles.contentInRow,
-                    styles.centerVertically, {
-                    justifyContent: 'space-between',
-                    borderColor: '#000',
-                    borderBottomWidth: 1
-                }]}>
-                    <View style={[styles.contentInRow, styles.centerVertically,{paddingVertical: 8}]}>
-                        <View style={[styles.centerVertically, styles.centerHorizontally,styles.numberingOrders]}>
-                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
-                                1
-                            </Text>
-                        </View>
-                        <View style={{marginLeft: 20}}>
-                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
-                                Chchabra's Pure Veg
-                            </Text>
-                            <Text style={{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100'}}>
-                                Malviya Nagar, Jaipur
-                            </Text>
-                        </View>
-                    </View>
-                    <View>
-                        <Text style={{fontFamily: 'AcademyEngravedLetPlain', fontWeight: '500', fontSize: 30}}>
-                            $15
-                        </Text>
-                    </View>
-                </View>
-                <View
-                    style={[styles.contentInRow, styles.centerVertically,{
-                    justifyContent: 'space-between',
-                    minHeight: 100,
-                    paddingTop: 10
-                }]}>
-                   <Image source={{uri: 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg'}} style={{
-                            height: '100%',
-                            width: '100%',
-                            maxHeight: 120,
-                            maxWidth: 100,
-                            marginHorizontal: 10,
-                            borderRadius: 5
-                        }} resizeMethod={'resize'} resizeMode={'cover'}/>
-                    <View>
-                        <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 15, fontFamily: 'ArialMT'}]}>
-                                Status&nbsp;:&nbsp;
-                            </Text>
-                            <Text style={[{color:'green', fontSize:15, fontFamily: 'ArialMT'}]}>
-                                ONGOING
-                            </Text>
-                        </View>
-                        <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.fontFamilyRoboto, styles.orderInfoTitleStyle]}>
-                                Order ID&nbsp;:&nbsp;
-                            </Text>
-                            <Text style={[styles.fontFamilyRoboto]}>
-                                1213233
-                            </Text>
-                        </View>
-                        <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.fontFamilyRoboto, styles.orderInfoTitleStyle]}>
-                                Ordered at&nbsp;:&nbsp;
-                            </Text>
-                            <Text style={[styles.fontFamilyRoboto]}>
-                                2 Feb 2018
-                            </Text>
-                        </View>
-                        <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.fontFamilyRoboto, styles.orderInfoTitleStyle]}>
-                                Time&nbsp;:&nbsp;
-                            </Text>
-                            <Text style={[styles.fontFamilyRoboto]}>
-                                2:35 AM
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-                <Button
-                    onPress={this._goToTrackOrder}
-                    icon={<Icon name = 'map-pin' size = {15}
-                                       color = 'white' />}
-                    textStyle={{
-                        color: '#ffffff',
-                        fontSize: 18,
-                    }}
-                    buttonStyle={{
-                        backgroundColor: '#F1C40F',
-                        minWidth: 200,
-                        height: 50,
-                        borderWidth: 0,
-                        borderRadius: 25,
-                        marginTop: 24,
-                        marginBottom: 10,
-                    }}
-                    title='Track Order'/>
-            </Card>
-             <Card containerStyle={{backgroundColor:'#fff', borderRadius: 5, borderWidth:0}}>
-                <View
-                    style={[styles.contentInRow,
-                    styles.centerVertically, {
-                    justifyContent: 'space-between',
-                    borderColor: '#000',
-                    borderBottomWidth: 1
-                }]}>
-                    <View style={[styles.contentInRow, styles.centerVertically,{paddingVertical: 8}]}>
-                        <View style={[styles.centerVertically, styles.centerHorizontally,styles.numberingOrders]}>
-                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
-                                1
-                            </Text>
-                        </View>
-                        <View style={{marginLeft: 20}}>
-                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
-                                Chchabra's Pure Veg
-                            </Text>
-                            <Text style={{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100'}}>
-                                Malviya Nagar, Jaipur
-                            </Text>
-                        </View>
-                    </View>
-                    <View>
-                        <Text style={{fontFamily: 'AcademyEngravedLetPlain', fontWeight: '500', fontSize: 30}}>
-                            $15
-                        </Text>
-                    </View>
-                </View>
-                <View
-                    style={[styles.contentInRow, styles.centerVertically,{
-                    justifyContent: 'space-between',
-                    minHeight: 100,
-                    paddingTop: 8
-                }]}>
-                   <Image source={{uri: 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg'}} style={{
-                            height: '100%',
-                            width: '100%',
-                            maxHeight: 120,
-                            maxWidth: 100,
-                            marginHorizontal: 10,
-                            borderRadius: 5
-                        }} resizeMethod={'resize'} resizeMode={'cover'}/>
-                    <View>
-                        <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.centerVertically, styles.orderInfoTitleStyle,{fontSize: 15, fontFamily: 'ArialMT'}]}>
-                                Status&nbsp;:&nbsp;
-                            </Text>
-                            <Text style={[{color:'green', fontSize:15, fontFamily: 'ArialMT'}]}>
-                                ONGOING
-                            </Text>
-                        </View>
-                        <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.fontFamilyRoboto, styles.orderInfoTitleStyle]}>
-                                Order ID&nbsp;:&nbsp;
-                            </Text>
-                            <Text style={[styles.fontFamilyRoboto]}>
-                                1213233
-                            </Text>
-                        </View>
-                        <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.fontFamilyRoboto, styles.orderInfoTitleStyle]}>
-                                Ordered at&nbsp;:&nbsp;
-                            </Text>
-                            <Text style={[styles.fontFamilyRoboto]}>
-                                2 Feb 2018
-                            </Text>
-                        </View>
-                        <View style={[styles.contentInRow, styles.centerVertically]}>
-                            <Text style={[styles.fontFamilyRoboto, styles.orderInfoTitleStyle]}>
-                                Time&nbsp;:&nbsp;
-                            </Text>
-                            <Text style={[styles.fontFamilyRoboto]}>
-                                2:35 AM
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-                <Button
-                    onPress={this._goToTrackOrder}
-                    icon={<Icon name = 'map-pin' size = {15}
-                                       color = 'white' />}
-                    textStyle={{
-                        color: '#ffffff',
-                        fontSize: 18,
-                    }}
-                    buttonStyle={{
-                        backgroundColor: '#F1C40F',
-                        minWidth: 200,
-                        height: 50,
-                        borderWidth: 0,
-                        borderRadius: 25,
-                        marginTop: 24,
-                        marginBottom: 10,
-                    }}
-                    title='Track Order'/>
-            </Card>
         </ScrollView>
             </LinearGradient>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-
-    },
-    contentInRow:{
-        flexDirection: 'row',
-    },
-    centerVertically:{
-        alignItems: 'center',
-    },
-    centerHorizontally:{
-        justifyContent: 'center',
-    },
-    numberingOrders:{
-        borderColor: '#c7c8c3',
-        borderWidth: 0,
-        borderRadius: 0,
-        width: 20,
-        height: 20,
-        shadowColor: '#c7c8c3',
-        shadowOffset: {width: 0, height: 1},
-        shadowOpacity: 0.8,
-        shadowRadius: 30,
-        elevation: 1,
-    },
-    productNameStyle: {
-        fontWeight: '500'
-    },
-    fontFamilyRoboto: {
-        fontFamily: 'ArialMT'
-    },
-    orderInfoTitleStyle:{color: '#e67e22', fontWeight: '100'}
-});

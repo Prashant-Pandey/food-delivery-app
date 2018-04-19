@@ -8,15 +8,15 @@ import {
     Dimensions, TouchableHighlight, KeyboardAvoidingView, AsyncStorage, Keyboard,
     ToastAndroid
 } from 'react-native';
-import {Navigation} from "react-native-navigation";
 import {Card, ListItem, Input as input, Button, Text} from 'react-native-elements';
 import { Text as RNText } from "react-native";
 import Input from '../../Components/Input';
 import Icon from 'react-native-vector-icons/Entypo';
-import {modalNaviagtionStyle, coloredNavigationStyle, rightCrossButton, sideNavigatorButton, navigationStyle, hideNavigationStyle} from '../../navbarStyles';
-const viewHeight = Dimensions.get('window').height;
+import {coloredNavigationStyle, navigationStyle, hideNavigationStyle} from '../../navbarStyles';
+import styles from '../../Constants/StyleConstants';
 const viewWidth = Dimensions.get('window').width;
-const InputWidth = viewWidth-200, InputBorderRadius = 5, iconColor = 'rgba(255, 193, 7, 0.7)';
+const InputWidth = viewWidth-200, iconColor = 'rgba(255, 193, 7, 0.7)';
+const inputPlaceholderColor = "#B2ACAB";
 
 
 export default class Login extends Component {
@@ -39,9 +39,9 @@ constructor(props){
         emailErr:false,
         passwordErr: false,
     };
-    this.openSignUpPage = this.openSignUpPage.bind(this);
-    this.doLogin = this.doLogin.bind(this);
-    this.validateEmail = this.validateEmail.bind(this);
+    this._openSignUpPage = this._openSignUpPage.bind(this);
+    this._doLogin = this._doLogin.bind(this);
+    this._validateEmail = this._validateEmail.bind(this);
     this._goToHome = this._goToHome.bind(this);
     this._goToResetPassword = this._goToResetPassword.bind(this);
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
@@ -101,7 +101,8 @@ onNavigatorEvent(event) {
         }
       }
     }
-validateEmail(){
+    
+_validateEmail(){
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(this.state.email);
 }
@@ -119,7 +120,7 @@ _goToHome() {
 
 _goToResetPassword() {
         Keyboard.dismiss();
-        Navigation.showModal({
+        this.props.navigator.showModal({
             screen: 'Login.ResetPassword', // unique ID registered with Navigation.registerScreen
             title: 'RESET PASSWORD', // title of the screen as appears in the nav bar (optional)
             passProps: {}, // simple serializable object that will pass as props to the modal (optional)
@@ -128,7 +129,7 @@ _goToResetPassword() {
         });
     }
 
-doLogin(){
+_doLogin(){
 
     Keyboard.dismiss();
     if(Platform.OS !== 'ios'){
@@ -144,9 +145,9 @@ doLogin(){
     animated: true, animationType: 'fade'});
 }
 
-openSignUpPage(){
+_openSignUpPage(){
     Keyboard.dismiss();
-    Navigation.showModal({
+    this.props.navigator.showModal({
         screen: 'Login.SignUp', // unique ID registered with Navigation.registerScreen
         title: 'REGISTER & SIGN IN', // title of the screen as appears in the nav bar (optional)
         passProps: {}, // simple serializable object that will pass as props to the modal (optional)
@@ -157,41 +158,28 @@ openSignUpPage(){
 
 render() {
     return (
-        <View style={[styles.container]}>
+        <View style={[styles.loginScreenContainer]}>
         <Image
             source={require('../../images/bg.png')}
-            style={{
-            height: viewHeight+100,
-            width: viewWidth,
-            position: 'absolute',
-            top:-10
-        }}
-        resizeMethod={'scale'}/>
+            style={styles.fullScreenBackgroundImage}
+            resizeMethod={'scale'}/>
         <TouchableHighlight onPress={this._goToHome}  style={styles.closeBtn}>
             <Icon
                 name='cross'
                 color='#222222'
-                size={20}
-            />
+                size={20} />
         </TouchableHighlight>
 
-        <View style={{
-            backgroundColor: '#ffffff',
-            borderBottomWidth: 0.5,
-            borderBottomColor:'rgba(199,200,195,1)',
-            borderTopLeftRadius: InputBorderRadius,
-            borderTopRightRadius: InputBorderRadius,
-        }}>
+        <View style={styles.loginScreenEmailInputContainer}>
         <Input
             width={InputWidth}
             leftIcon={
                 <Icon
                     name='mail-with-circle'
                     color='rgba(255, 193, 7, 0.7)'
-                    size={20}
-                />
+                    size={20}/>
             }
-            inputStyle={{marginLeft: 20, color: 'black', borderBottomColor: '#000'}}
+            inputStyle={styles.loginScreenEmailInput}
             onChangeText={text => this.setState({email :text})}
             value={this.state.email}
             secureTextEntry={false}
@@ -204,7 +192,7 @@ render() {
             autoCorrect={false}
             keyboardType="email-address"
             onSubmitEditing={() => {
-                if(this.validateEmail()){
+                if(this._validateEmail()){
                     this.passwordInput.focus();
                 }else{
                     this.setState({
@@ -213,17 +201,12 @@ render() {
                 }
             }}
             blurOnSubmit={false}
-            placeholderTextColor="#B2ACAB"
-            errorStyle={{textAlign: 'center', fontSize: 12}}
+            placeholderTextColor={inputPlaceholderColor}
+            errorStyle={[styles.textAlignCenter, styles.fontSize12]}
             errorMessage="Please enter a valid email address"/>
         </View>
 
-        <View style={{
-            marginBottom: 28,
-            backgroundColor: '#ffffff',
-            borderBottomLeftRadius: InputBorderRadius,
-            borderBottomRightRadius: InputBorderRadius,
-        }}>
+        <View style={[ styles.loginScreenPasswordInputContainer]}>
 
             <Input
                 width={InputWidth}
@@ -249,7 +232,7 @@ render() {
                     />
                 }
 
-                inputStyle={{marginLeft: 20, color: '#000000'}}
+                inputStyle={styles.loginScreenPassowrdInputStyle}
                 secureTextEntry={true}
                 keyboardAppearance="light"
                 placeholder="Password"
@@ -260,52 +243,38 @@ render() {
                 onChangeText={text => this.setState({password: text})}
                 value={this.state.password}
                 displayError={this.state.passwordErr}
-                errorStyle={{textAlign: 'center', fontSize: 12}}
+                errorStyle={[styles.textAlignCenter, styles.fontSize12]}
                 errorMessage="Please confirm correct email and password"
                 ref={ input => this.passwordInput = input}
                 blurOnSubmit={true}
-                placeholderTextColor="#B2ACAB"
+                placeholderTextColor={inputPlaceholderColor}
             />
 
         </View>
         <Button
-            buttonStyle={{
-            backgroundColor: "rgba(255, 179, 0, 1)",
-            minWidth: 150,
-            height: 50,
-            borderColor: "transparent",
-            borderWidth: 0,
-            borderRadius: 5,
-            marginTop: 24
-            }}
-            onPress={this.doLogin}
+            buttonStyle={styles.loginScreenLoginBtn}
+            onPress={this._doLogin}
             title='Login'/>
-                <TouchableHighlight onPress={this.openSignUpPage}>
-            <View style={{flexDirection:'row', marginTop:50}}>
-                <RNText style={[{color:'#fff'}, styles.registerText]}>
+                <TouchableHighlight 
+                underlayColor={'transparent'}
+                onPress={this._openSignUpPage}>
+            <View style={[styles.contentInRow, styles.marginTop50]}>
+                <RNText style={[styles.whiteText, styles.registerText]}>
                     Create an Account ? 
                 </RNText>
-                <RNText style={[{color:'#FF6F00', paddingHorizontal: 10, paddingBottom: 5}, styles.registerText]}>Register</RNText>
+                <RNText style={[styles.paddingHorizontal10,styles.loginScreenRegisterLink, styles.registerText]}>Register</RNText>
             </View> 
         </TouchableHighlight>
-        <View style={{flexDirection:'row'}}>
-            <TouchableHighlight onPress={this._goToResetPassword}>
-                <RNText style={[{color:'white', paddingHorizontal: 10, paddingBottom: 5}, styles.registerText]}>Forgot Password</RNText>
+        <View style={styles.contentInRow}>
+            <TouchableHighlight 
+            underlayColor={'transparent'}
+            onPress={this._goToResetPassword}>
+                <RNText style={[styles.paddingHorizontal10, styles.loginScreenRegisterLink,
+                    styles.whiteText,
+                    styles.registerText]}>Forgot Password</RNText>
             </TouchableHighlight>
         </View>
     </View>
     );
 }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent:'center',
-        alignItems: 'center'
-    },
-    registerText: {
-        fontFamily:'Arial-BoldMT', fontSize: 18, fontWeight:'bold', backgroundColor:"transparent"
-    },
-    closeBtn: {position:'absolute', top: 16, right: 0, backgroundColor:'#ffffff', borderTopLeftRadius: 20, borderBottomLeftRadius: 20, paddingVertical: 5, paddingLeft: 10, paddingRight:20}
-});

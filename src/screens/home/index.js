@@ -46,8 +46,6 @@ export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        //   longitude: '', latitude: '',
-        //   json:''
             search:''
         };
 
@@ -56,7 +54,7 @@ export default class Home extends Component {
         this._goToCart = this._goToCart.bind(this);
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     } 
-   
+   // for side drawer navigation block
     onNavigatorEvent(event) {
         if (event.type === 'DeepLink') {
             switch (event.link) {
@@ -109,6 +107,7 @@ export default class Home extends Component {
             }
         }
 
+        // opening side menu
         if (event.type == 'NavBarButtonPress') { // this is the event type for button presses
             if (event.id == 'sideMenu') { // this is the same id field from the static navigatorButtons definition
                 this.props.navigator.toggleDrawer({
@@ -163,36 +162,39 @@ export default class Home extends Component {
             source={require('../../images/headerImg.jpg')}
             style={styles.homeHeaderImage} />
 
-        <View style={{marginTop: 10, backgroundColor: "transparent"}}>
-            <Icon name='location' size={30}
-                  color='#FFA000' style={[styles.textAlignCenter, styles.marginTop24px]}/>
-            <Text style={[styles.textAlignCenter, styles.theme24pxfont, styles.condensedFonts, styles.marginTop24px]}>LOS ANGELES,
-                CA</Text>
-        </View>
-
-        <TouchableHighlight
-        style={[styles.homeCartBtn]}
-         underlayColor={fabThemeColor} onPress={this._goToCart}>
-            <View>
-                <FeatherIcon name={'shopping-cart'} size={24} color={'white'} />
+            <View style={{marginTop: 10, backgroundColor: "transparent"}}>
+                <Icon name='location' size={30}
+                    color='#FFA000' style={[styles.textAlignCenter, styles.marginTop24px]}/>
+                <Text 
+                style={[styles.textAlignCenter, styles.theme24pxfont, styles.condensedFonts, styles.marginTop24px]}>
+                 {/* show location here */}
+                    LOS ANGELES, CA
+                </Text>
             </View>
-        </TouchableHighlight>
-
-        <Button
-            icon={<FeatherIcon name='search' size={15}
-                               color='white'/>}
-            onPress={this._goToSearch}
-            textStyle={styles.white18pxfont}
-            buttonStyle={[styles.homeBtnStyle, styles.marginTop24px, styles.marginBottom24px]}
-            title='SEARCH'/>
-
-        <Button
-            icon={< Icon name='map' size={15}
-                         color='white'/>}
-            onPress={this._goToExplore}
-            textStyle={styles.white18pxfont}
-            buttonStyle={[styles.homeBtnStyle, styles.marginBottom24px]}
-            title='EXPLORE'/>
+            {/* go to shopping cart here */}
+            <TouchableHighlight
+            style={[styles.homeCartBtn]}
+            underlayColor={fabThemeColor} onPress={this._goToCart}>
+                <View>
+                    <FeatherIcon name={'shopping-cart'} size={24} color={'white'} />
+                </View>
+            </TouchableHighlight>
+            {/* go to dish search page here */}
+            <Button
+                icon={<FeatherIcon name='search' size={15}
+                                color='white'/>}
+                onPress={this._goToSearch}
+                textStyle={styles.white18pxfont}
+                buttonStyle={[styles.homeBtnStyle, styles.marginTop24px, styles.marginBottom24px]}
+                title='SEARCH'/>
+            {/* go to nearby EXPLORE page here */}
+            <Button
+                icon={< Icon name='map' size={15}
+                            color='white'/>}
+                onPress={this._goToExplore}
+                textStyle={styles.white18pxfont}
+                buttonStyle={[styles.homeBtnStyle, styles.marginBottom24px]}
+                title='EXPLORE'/>
 
             </ScrollView>
             

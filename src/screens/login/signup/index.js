@@ -7,28 +7,28 @@ import {
     ScrollView,
     Dimensions, TouchableHighlight, KeyboardAvoidingView, Keyboard
 } from 'react-native';
-import {Navigation} from "react-native-navigation";
-import {Card, ListItem, Button, Text} from 'react-native-elements';
+import {Button, Text} from 'react-native-elements';
 import { Text as RNText } from "react-native";
 import Input from '../../../Components/Input';
 import Icon from 'react-native-vector-icons/Entypo';
-import {hideNavigationStyle, sideNavigatorButton, navigationStyle} from '../../../navbarStyles';
+import {navigationStyle} from '../../../navbarStyles';
+import styles from '../../../Constants/StyleConstants';
 
 const viewWidth = Dimensions.get('window').width;
 const InputWidth = viewWidth-200, iconColor = 'rgba(255, 193, 7, 0.7)';
 
 export default class SignUp extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             email: '',
             password: '',
             emailErr:false,
             passwordErr: false,
         };
-        this.signUp = this.signUp.bind(this);
-        this.validateEmail = this.validateEmail.bind(this);
+        this._signUp = this._signUp.bind(this);
+        this._validateEmail = this._validateEmail.bind(this);
         this._goToLogin = this._goToLogin.bind(this);
         this._facebookLogin = this._facebookLogin.bind(this);
         this._twitterLogin = this._twitterLogin.bind(this);
@@ -38,9 +38,10 @@ export default class SignUp extends Component {
        
     }
 
+    
     _facebookLogin(){
         Keyboard.dismiss();
-        Navigation.dismissAllModals();
+        this.props.navigator.dismissAllModals();
         this.props.navigator.resetTo({screen: 'Home', title: 'Welcome to Foodie',
         
         navigatorStyle: navigationStyle,
@@ -49,7 +50,7 @@ export default class SignUp extends Component {
 
     _twitterLogin(){
         Keyboard.dismiss();
-        Navigation.dismissAllModals();
+        this.props.navigator.dismissAllModals();
         this.props.navigator.resetTo({screen: 'Home', title: 'Welcome to Foodie',
         
         navigatorStyle: navigationStyle,
@@ -58,20 +59,20 @@ export default class SignUp extends Component {
 
     _goToLogin() {
         Keyboard.dismiss();
-        Navigation.dismissAllModals();
+        this.props.navigator.dismissAllModals();
     }
 
-    validateEmail(){
+    _validateEmail(){
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(this.state.email);
     }
 
-    signUp(){
+    _signUp(){
         console.log(this.state.email);
-        if(this.validateEmail()){
+        if(this._validateEmail()){
             if(this.state.password.length>=8){
                 Keyboard.dismiss();
-                Navigation.dismissAllModals();
+                this.props.navigator.dismissAllModals();
                 this.props.navigator.resetTo({screen: 'Home', title: 'Welcome to Foodie',
                 
                 navigatorStyle: navigationStyle,
@@ -93,15 +94,19 @@ export default class SignUp extends Component {
     render() {
         return (
             <ScrollView>
-                <KeyboardAvoidingView style={[styles.container]}>
-                <View style={{position:'absolute', top:20}}>
-                    <Text style={{fontSize: 23, fontWeight:'400', fontFamily:'Academy Engraved LET'}}>REGISTER & SIGN IN</Text>
+                <KeyboardAvoidingView style={[styles.signupScreenContainer]}>
+                <Image
+                    source={require('../../../images/bg.png')}
+                    style={styles.fullScreenBackgroundImage}
+                    resizeMethod={'scale'}/>
+                <View style={styles.signUpScreenTitlePositioning}>
+                    <Text style={[styles.whiteText, styles.signUpScreenTitleTextStyle]}>REGISTER & SIGN IN</Text>
                 </View>
                 <TouchableHighlight onPress={this._goToLogin}  style={styles.closeBtn}>
                 <Icon
                     name='cross'
-                    color='#ffffff'
-                    size={20}
+                    color='#222'
+                    size={16}
                 />
             </TouchableHighlight>
                 <View style={styles.inputContainerStyle}>
@@ -114,7 +119,7 @@ export default class SignUp extends Component {
                         size={20}
                     />
                 }
-                inputStyle={{marginLeft: 20, color: 'white', borderBottomColor: '#000'}}
+                inputStyle={styles.signupScreenEmailInput}
                 keyboardAppearance="light"
                 placeholder="Email"
                 autoFocus={false}
@@ -128,7 +133,7 @@ export default class SignUp extends Component {
                 secureTextEntry={false}
                 ref={ input => this.emailInput = input }
                 onSubmitEditing={() => {
-                    if(this.validateEmail()){
+                    if(this._validateEmail()){
                         this.setState({emailErr:false});
                         this.forceUpdate();
                         this.passwordInput.focus();
@@ -140,7 +145,7 @@ export default class SignUp extends Component {
                 }}
                 blurOnSubmit={false}
                 placeholderTextColor="#B2ACAB"
-                errorStyle={{textAlign: 'center', fontSize: 12}}
+                errorStyle={[styles.textAlignCenter, styles.fontSize12]}
                 errorMessage="Please enter a valid email address"
             />
                 </View>
@@ -169,7 +174,7 @@ export default class SignUp extends Component {
                     size={20}
                 />
             }
-            inputStyle={{marginLeft: 20, color: '#ffffff'}}
+            inputStyle={styles.signupScreenPassowrdInputStyle}
             secureTextEntry={true}
             keyboardAppearance="light"
             placeholder="Password"
@@ -180,7 +185,7 @@ export default class SignUp extends Component {
             onChangeText={text => this.setState({password: text})}
             value={this.state.password}
             displayError={this.state.passwordErr}
-            errorStyle={{textAlign: 'center', fontSize: 12}}
+            errorStyle={[styles.textAlignCenter, styles.fontSize12]}
             errorMessage="Please confirm correct email and password"
             ref={ input => this.passwordInput = input}
             blurOnSubmit={true}
@@ -188,44 +193,18 @@ export default class SignUp extends Component {
         />
                 </View>
                     <Button
-                        buttonStyle={{
-                        backgroundColor: "rgba(255, 179, 0, 0.9)",
-                        minWidth: 150,
-                        height: 50,
-                        borderColor: "transparent",
-                        borderWidth: 0,
-                        borderRadius: 25,
-                        marginVertical: 30
-                        }}
-                        onPress={this.signUp}
+                        buttonStyle={styles.loginScreenLoginBtn}
+                        onPress={this._signUp}
                         title='SIGN UP'/>
 
                         <View style={{flexDirection:'row'}}>
                         <Button
-                            buttonStyle={{
-                            backgroundColor: "#4867AA",
-                            width: (Dimensions.get('window').width/2-20),
-                            marginRight:5,
-                            height: 50,
-                            borderColor: "transparent",
-                            borderWidth: 0,
-                            borderRadius: 8,
-                            marginTop: 24
-                            }}
+                            buttonStyle={[styles.signupScreenOtherSignUpBtn, styles.signupScreenOtherSignUpBtnFacebook]}
 
                             onPress={this._facebookLogin}
                             title='FACEBOOK'/>
                         <Button
-                            buttonStyle={{
-                            backgroundColor: "#3B94D9",
-                            width: (Dimensions.get('window').width/2-20),
-                            height: 50,
-                            marginLeft:5,
-                            borderColor: "transparent",
-                            borderWidth: 0,
-                            borderRadius: 8,
-                            marginTop: 24
-                            }}
+                            buttonStyle={[styles.signupScreenOtherSignUpBtn, styles.signupScreenOtherSignUpBtnTwitter]}
                             onPress={this._twitterLogin}
                             title='TWITTER'/>
                             </View>
@@ -234,18 +213,3 @@ export default class SignUp extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        minHeight: Dimensions.get('window').height,
-        backgroundColor: '#ffffff',
-        justifyContent:'center',
-        alignItems: 'center'
-    },
-    registerText: {
-        fontFamily:'AcademyEngravedLetPlain', fontSize: 18, fontWeight:'bold'
-    },
-    inputContainerStyle: {backgroundColor: 'grey', marginVertical:5, borderRadius:3, flexDirection: 'row', alignItems: 'center'},
-    closeBtn: {position:'absolute', top: 16, right: 0, backgroundColor:'#222222', borderTopLeftRadius: 20, borderBottomLeftRadius: 20, paddingVertical: 5, paddingLeft: 10, paddingRight:20}
-});

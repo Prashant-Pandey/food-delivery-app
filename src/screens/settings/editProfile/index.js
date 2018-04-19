@@ -18,11 +18,11 @@ import {
 } from 'react-native';
 import Input from '../../../Components/Input';
 import Icon from 'react-native-vector-icons/Entypo';
+import styles from '../../../Constants/StyleConstants';
 
-const viewHeight = Dimensions.get('window').height;
 const viewWidth = Dimensions.get('window').width;
 
-const IconColor = '#f1c40f', profileEditBottomColor = '#ff0';
+const profileEditBottomColor = 'transparent', inputPlaceholderColor = '#808080';
 
 export default class EditProfile extends Component {
 
@@ -40,23 +40,23 @@ export default class EditProfile extends Component {
         super(props);
         this.state = {
             // username
-            username: 'Prashant Pandey',
-            isUsernameEditable:false,
+            username: '',
+            isUsernameEditable:true,
             usernameErr: false,
             // contact
-            contact: '9455768768',
-            isContactEditable:false,
+            contact: '',
+            isContactEditable:true,
             contactErr: false,
             // email
-            email: 'Prashant Pandey',
-            isEmailEditable:false,
+            email: '',
+            isEmailEditable:true,
             emailErr: false,
             // primary address
-            primaryAddress: 'Prashant Pandey',
-            isPrimaryAddressEditable:false,
+            primaryAddress: '',
+            isPrimaryAddressEditable:true,
             // delivery address
-            deliveryAddress: 'Prashant Pandey',
-            isDeliveryAddressEditable: false,
+            deliveryAddress: '',
+            isDeliveryAddressEditable: true,
 
 
             avatarSource: 'https://facebook.github.io/react-native/docs/assets/favicon.png'
@@ -86,31 +86,19 @@ export default class EditProfile extends Component {
                                 borderRadius: 50
                             }}
                             source={{uri:'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
-                        <TouchableOpacity
-                            onPress={() => {}}
-                            style={{
-                                padding: 8,
-                                borderRadius: 2,
-                                position: 'absolute',
-                                bottom:0,
-                                paddingLeft: 120,
-                                backgroundColor:'transparent'
-                            }}>
-                            <Icon name="edit" size={30} color={IconColor}/>
-                        </TouchableOpacity>
                     </View>
 
                     {/* Name */}
                     <View style={[styles.profilePageRow, styles.contentInRow, styles.centerVertically]}>
                         <View>
                             <View style={[styles.contentInRow]}>
-                                <Text style={{paddingLeft:10}}>Name </Text>
-                                <Text style={{color:'red'}}>*</Text>
+                                <Text style={styles.paddingLeft10}>Name </Text>
+                                <Text style={styles.colorRed}>*</Text>
                             </View>
                             <Input
-                                inputStyle={{marginLeft: 20, color: 'black', borderBottomWidth:(this.state.isUsernameEditable?1:0), borderBottomColor:profileEditBottomColor}}
+                                inputStyle={[styles.editProfileSettingInputStyle,{borderBottomWidth:(this.state.isUsernameEditable?1:0), borderBottomColor:profileEditBottomColor}]}
                                 onChangeText={text => this.setState({username :text})}
-                                placeholderTextColor={'#808080'}
+                                placeholderTextColor={inputPlaceholderColor}
                                 underlineColorAndroid={'transparent'}
                                 value={this.state.username}
                                 onFocus={() => {}}
@@ -120,29 +108,21 @@ export default class EditProfile extends Component {
                                 autoCapitalize={'words'}
                                 placeholder={'Name'}/>
                         </View>
-                        <TouchableOpacity
-                            onPress={() => {this.setState({isUsernameEditable:!this.state.isUsernameEditable}); this.forceUpdate();}}
-                            style={{
-                                padding: 8,
-                                borderRadius: 2
-                            }}>
-                            <Icon name={this.state.isUsernameEditable?"save":"edit"} size={30} color={IconColor}/>
-                        </TouchableOpacity>
                     </View>
 
                     {/*Contact*/}
                     <View style={[styles.profilePageRow, styles.contentInRow]}>
                         <View style={{width: viewWidth-100}}>
                             <View style={[styles.contentInRow]}>
-                                <Text style={{paddingLeft:10}}>Contact </Text>
-                                <Text style={{color:'red'}}>*</Text>
+                                <Text style={styles.paddingLeft10}>Contact </Text>
+                                <Text style={styles.colorRed}>*</Text>
                             </View>
                             <View style={[styles.contentInRow]}>
                                 <Input
-                                    inputStyle={{marginLeft: 20, width:viewWidth-200,
+                                    inputStyle={{marginLeft: 20, width:viewWidth-100,
                                         color: 'black', borderBottomWidth:(this.state.isContactEditable?1:0), borderBottomColor:profileEditBottomColor}}
                                     onChangeText={text => this.setState({contact :text})}
-                                    placeholderTextColor={'#808080'}
+                                    placeholderTextColor={inputPlaceholderColor}
                                     underlineColorAndroid={'transparent'}
                                     value={this.state.contact}
                                     onFocus={() => {}}
@@ -155,27 +135,19 @@ export default class EditProfile extends Component {
                                     placeholder={'Contact Number'}/>
                             </View>
                         </View>
-                        <TouchableOpacity
-                            onPress={() => {this.setState({isContactEditable:!this.state.isContactEditable}); this.forceUpdate();}}
-                            style={{
-                                padding: 8,
-                                borderRadius: 2
-                            }}>
-                            <Icon name={this.state.isContactEditable?"save":"edit"} size={30} color={IconColor}/>
-                        </TouchableOpacity>
                     </View>
 
                     {/*Email*/}
                     <View style={[styles.profilePageRow, styles.contentInRow, styles.centerVertically]}>
                         <View>
                             <View style={[styles.contentInRow]}>
-                                <Text style={{paddingLeft:10}}>Email </Text>
-                                <Text style={{color:'red'}}>*</Text>
+                                <Text style={styles.paddingLeft10}>Email </Text>
+                                <Text style={styles.colorRed}>*</Text>
                             </View>
                             <Input
-                                inputStyle={{marginLeft: 20, color: 'black', borderBottomWidth:(this.state.isEmailEditable?1:0), borderBottomColor:profileEditBottomColor}}
+                                inputStyle={[styles.editProfileSettingInputStyle,{borderBottomWidth:(this.state.isEmailEditable?1:0), borderBottomColor:profileEditBottomColor}]}
                                 onChangeText={text => this.setState({email :text})}
-                                placeholderTextColor={'#808080'}
+                                placeholderTextColor={inputPlaceholderColor}
                                 underlineColorAndroid={'transparent'}
                                 value={this.state.email}
                                 keyboardType={'email-address'}
@@ -186,30 +158,22 @@ export default class EditProfile extends Component {
                                 autoCapitalize={'words'}
                                 placeholder={'Email Address'}/>
                         </View>
-                        <TouchableOpacity
-                            onPress={() => {this.setState({isEmailEditable:!this.state.isEmailEditable}); this.forceUpdate();}}
-                            style={{
-                                padding: 8,
-                                borderRadius: 2
-                            }}>
-                            <Icon name={this.state.isEmailEditable?"save":"edit"} size={30} color={IconColor}/>
-                        </TouchableOpacity>
                     </View>
 
                     {/*Primary Address*/}
                     <View style={[styles.profilePageRow, styles.contentInRow, styles.centerVertically]}>
                         <View>
                             <View style={[styles.contentInRow]}>
-                                <Text style={{paddingLeft:10}}>Primary Address </Text>
-                                <Text style={{color:'red'}}>*</Text>
+                                <Text style={styles.paddingLeft10}>Primary Address </Text>
+                                <Text style={styles.colorRed}>*</Text>
                             </View>
                             <TextInput
-                                style={{marginLeft: 20, color: 'black', paddingBottom: 10,borderBottomWidth:(this.state.isPrimaryAddressEditable?1:0), borderBottomColor:profileEditBottomColor, width: viewWidth-100}}
+                                style={[styles.editProfileSettingInputStyle,{paddingBottom: 10,borderBottomWidth:(this.state.isPrimaryAddressEditable?1:0), borderBottomColor:profileEditBottomColor, width: viewWidth-100}]}
                                 onChangeText={text => this.setState({primaryAddress :text})}
                                 editable = {this.state.isPrimaryAddressEditable}
                                 multiline = {true}
                                 numberOfLines = {4}
-                                placeholderTextColor={'#808080'}
+                                placeholderTextColor={inputPlaceholderColor}
                                 underlineColorAndroid={'transparent'}
                                 value={this.state.primaryAddress}
                                 keyboardType={'email-address'}
@@ -217,30 +181,22 @@ export default class EditProfile extends Component {
                                 autoCapitalize={'words'}
                                 placeholder={'Primary Address'}/>
                         </View>
-                        <TouchableOpacity
-                            onPress={() => {this.setState({isPrimaryAddressEditable:!this.state.isPrimaryAddressEditable}); this.forceUpdate();}}
-                            style={{
-                                padding: 8,
-                                borderRadius: 2
-                            }}>
-                            <Icon name={this.state.isPrimaryAddressEditable?"save":"edit"} size={30} color={IconColor}/>
-                        </TouchableOpacity>
                     </View>
 
                     {/*Delivery Address*/}
                     <View style={[styles.profilePageRow, styles.contentInRow, styles.centerVertically]}>
                         <View>
                             <View style={[styles.contentInRow]}>
-                                <Text style={{paddingLeft:10}}>Delivery Address </Text>
-                                <Text style={{color:'red'}}>*</Text>
+                                <Text style={styles.paddingLeft10}>Delivery Address </Text>
+                                <Text style={styles.colorRed}>*</Text>
                             </View>
                             <TextInput
-                                style={{marginLeft: 20, color: 'black', paddingBottom: 10,borderBottomWidth:(this.state.isDeliveryAddressEditable?1:0), borderBottomColor:profileEditBottomColor, width: viewWidth-100}}
+                                style={[styles.editProfileSettingInputStyle,{paddingBottom: 10,borderBottomWidth:(this.state.isDeliveryAddressEditable?1:0), borderBottomColor:profileEditBottomColor, width: viewWidth-100}]}
                                 onChangeText={text => this.setState({deliveryAddress :text})}
                                 editable = {this.state.isDeliveryAddressEditable}
                                 multiline = {true}
                                 numberOfLines = {4}
-                                placeholderTextColor={'#808080'}
+                                placeholderTextColor={inputPlaceholderColor}
                                 underlineColorAndroid={'transparent'}
                                 value={this.state.deliveryAddress}
                                 keyboardType={'email-address'}
@@ -248,112 +204,9 @@ export default class EditProfile extends Component {
                                 autoCapitalize={'words'}
                                 placeholder={'Primary Address'}/>
                         </View>
-                        <TouchableOpacity
-                            onPress={() => {this.setState({isDeliveryAddressEditable:!this.state.isDeliveryAddressEditable}); this.forceUpdate();}}
-                            style={{
-                                padding: 8,
-                                borderRadius: 2
-                            }}>
-                            <Icon name={this.state.isDeliveryAddressEditable?"save":"edit"} size={30} color={IconColor}/>
-                        </TouchableOpacity>
                     </View>
-
-
                 </View>
             </ScrollView>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    contentInRow:{
-        flexDirection: 'row',
-    },
-    centerVertically:{
-        alignItems: 'center',
-    },
-    centerHorizontally:{
-        justifyContent: 'center',
-    },
-    profilePageRow:{marginBottom: 16, justifyContent:'space-between'},
-    editProfileRow:{display:'flex', width: Dimensions.get('window').width, flexDirection:'row'},
-    Button: {
-        marginBottom: 16,
-        alignSelf: 'center',
-        width: '100%',
-        height: 45,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        backgroundColor: '#007EA7'
-    },
-    autocompleteContainer: {
-        left: 0,
-        position: 'absolute',
-        right: 0,
-        top: 0,
-        zIndex: 1
-    },
-    listrow: {
-        borderWidth: 0.5,
-        borderColor: '#000',
-        marginVertical: 1,
-        paddingLeft: 16,
-        flexDirection: 'column',
-        justifyContent: 'center'
-    },
-    listText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#007EA7'
-    },
-    container: {
-        margin: 16
-    },
-    buttonText: {
-        color: "white",
-        fontSize: 18,
-        alignSelf: 'center'
-    },
-    error: {
-        fontSize: 12,
-        color: 'red',
-        marginBottom: 2
-    },
-    input: {
-        borderWidth: 1,
-        marginBottom: 4,
-        borderColor: '#000',
-        height: 45
-    },
-    picker: {
-        width: '50%',
-        height: 45
-    },
-    welcome: {
-        fontSize: 15,
-        textAlign: 'center',
-        color: '#000'
-    },
-    label: {
-        fontSize: 14,
-        margin: 4,
-        fontWeight: '100',
-        color: '#808080'
-    },
-    spinner: {
-        position: 'absolute',
-        top: '40%',
-        alignSelf: 'center',
-        height: 50,
-        width: 50
-    },
-    box: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        height: 45,
-        borderColor: '#000',
-        borderWidth: 1,
-        marginBottom: 4
-    }
-});

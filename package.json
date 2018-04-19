@@ -18,6 +18,7 @@
     "react-native-maps": "0.21.0",
     "react-native-maps-directions": "^1.5.0",
     "react-native-navigation": "^1.1.391",
+    "react-native-splash": "^0.0.4",
     "react-native-swiper": "^1.5.13",
     "react-native-vector-icons": "^4.5.0"
   },

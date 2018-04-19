@@ -1,23 +1,12 @@
 import React, {Component} from 'react';
 import {
-    Platform,
-    StyleSheet,
     View,
-    Image,
-    ScrollView,
-    Dimensions,
 } from 'react-native';
-import {Text, Button, Card} from 'react-native-elements';
-import Icon from 'react-native-vector-icons/Feather';
-import {
-    sideNavigatorButton, coloredNavigationStyle
-} from '../../navbarStyles';
-
-
 
 import MapView from 'react-native-maps';
-import { Marker } from 'react-native-maps';
+import { Marker } from 'react-native-maps'; 
 
+// set the mapview region here as per the location of user
 const initialRegion = {
     latitude: 37.78825,
     longitude: -122.4324,
@@ -25,6 +14,7 @@ const initialRegion = {
     longitudeDelta: 0.0421,
 };
 
+// can be removed just to custom style map
 const mapStyle=[
     {
         "elementType": "geometry",
@@ -291,15 +281,10 @@ export default class Explore extends Component {
           }
         }
       }
+
+    //   go to the menu of perticular restaurant
     _goToRestaurant(){
         this.props.navigator.dismissAllModals();
-        // this
-        //     .props
-        //     .navigator
-        //     .resetTo({screen: 'Menu', title: 'Restraunt Name',
-        //         navigatorButtons: sideNavigatorButton,
-        //         navigatorStyle: coloredNavigationStyle,
-        //         animated: true, animationType: 'fade'});
         this.props.navigator.handleDeepLink({ 
             link: 'Menu'
         }); 
@@ -316,6 +301,7 @@ export default class Explore extends Component {
                 customMapStyle={mapStyle}
                 region={initialRegion}>
 
+                {/*map the restaurant markers here*/}
                 <Marker
                     coordinate={{latitude: 37.78825,
                         longitude: -122.4324,}}
@@ -353,34 +339,3 @@ export default class Explore extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#fdffff'
-    },
-    contentInRow:{
-        flexDirection: 'row',
-    },
-    centerVertically:{
-        alignItems: 'center',
-    },
-    centerHorizontally:{
-        justifyContent: 'center',
-    },
-});
-
-
-
-{/*
- <Card
-    image={{
-    uri: 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg'
-  }}>
-    <Text style={{
-      marginBottom: 10
-    }}>
-      The idea with React Native Elements is more about component structure than
-      actual design.
-    </Text>
-</Card>
-*/}

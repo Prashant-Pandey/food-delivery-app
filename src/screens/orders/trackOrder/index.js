@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {Text, Button, Card} from 'react-native-elements';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-
+import styles from "../../../Constants/StyleConstants";
 
 
 import MapView from 'react-native-maps';
@@ -308,20 +308,22 @@ export default class TrackOrder extends Component {
     render() {
         return (
             <View style={{flex:1}}>
-            <View style={[styles.trackOrderHeaderColor, styles.contentInRow,{justifyContent:'space-around', paddingVertical: 12}]}>
+            <View style={[styles.trackOrderHeaderColor, styles.contentInRow, styles.justifyContentSpaceAround,{paddingVertical: 12}]}>
                 <View style={[{width: 150}]}>
                 <View style={[styles.contentInRow]}>
                     <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, styles.whiteFont]}>
                         Order ID :&nbsp;
                     </Text>
+                    {/*order id here*/}
                     <Text style={[styles.whiteFont]}>232376776553</Text>
                 </View>
-                <Text style={[styles.fontFamilyRoboto,{fontWeight: '100', flexWrap: 'wrap'}, styles.whiteFont]}>
+                <Text style={[styles.fontFamilyRoboto,styles.fontWeight100, styles.flexWrapWrap, styles.whiteFont]}>
+                    {/*restaurant here*/}
                     Chhabras pure veg food
                 </Text>
                 </View>
                 <TouchableHighlight
-                style={[{height:30, width:30, borderRadius: 15, backgroundColor:fabThemeColor, justifyContent: 'center',alignItems: 'center',}]}
+                style={[styles.centerHorizontally, styles.centerVertically, styles.phoneCallFabStyle]}
                  underlayColor={fabThemeColor} onPress={this._doCall}>
                     <View>
                         <FeatherIcon name={'phone-call'} size={16} color={'white'} />
@@ -331,6 +333,7 @@ export default class TrackOrder extends Component {
                 <MapView style={{flex:1}}
                     customMapStyle={mapStyle}
                     region={initialRegion}>
+                    {/*map both the marker here*/}
                     <Marker
                         coordinate={{latitude: 37.3318456,
                             longitude: -122.0296002,}}
@@ -354,13 +357,13 @@ export default class TrackOrder extends Component {
                         apikey={GOOGLE_MAPS_APIKEY}/>
                 </MapView>
                 <View style={styles.mapBottomOverlay}>
-                <Card containerStyle={[{backgroundColor:'#fff', borderRadius: 5, borderWidth:0}]}>
+                <Card containerStyle={[styles.orderScreenCardStyle]}>
                 <View style={[styles.contentInRow, styles.centerVertically, styles.centerHorizontally]}>
-                <View style={[{paddingVertical: 8, width: 130}]}>
+                <View style={[styles.trackOrderScreenDeliveryAddressTitle]}>
                 <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
                     Delivery Address : 
                 </Text>
-                <Text style={{fontFamily: 'ArialMT', color: '#757575', fontWeight: '100', flexWrap: 'wrap'}}>
+                <Text style={[styles.flexWrapWrap, styles.fontWeight100, styles.trackOrderScreenDeliveryAddress]}>
                     E-74 Name Appartment, Near Bharadwaj Petrol Pump, Malviya Nagar
                 </Text>
                 </View>
@@ -376,68 +379,3 @@ export default class TrackOrder extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#fdffff'
-    },
-    contentInRow:{
-        flexDirection: 'row',
-    },
-    centerVertically:{
-        alignItems: 'center',
-    },
-    centerHorizontally:{
-        justifyContent: 'center',
-    },
-    mapBottomOverlay:{height: 150, position:'absolute', bottom:0, width: viewWidth},
-    productNameStyle: {
-        fontWeight: '500'
-    },
-    fontFamilyRoboto: {
-        fontFamily: 'ArialMT'
-    },
-    trackOrderSmallText:{
-        fontFamily:'ArialMT',
-        fontSize: 12,
-        paddingBottom: -10,
-        flexWrap:'wrap',
-        width: 100,
-        textAlign:'center',
-        padding:0,
-        margin: 0,
-    },
-    trackOrderLargeText:{
-        fontFamily:'ArialMT',
-        fontSize: 42,
-        paddingVertical: 0,
-        marginVertical: 0,
-        lineHeight: 45,
-        color:'#9EC86E'
-    },
-    trackOrderSmallTextDiffFont:{
-        fontSize: 16
-    },
-    trackOrderHeaderColor:{
-        backgroundColor: navBarThemeColor
-    },
-    whiteFont:{
-        color:'#fff'
-    }
-});
-
-
-
-{/*
- <Card
-    image={{
-    uri: 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg'
-  }}>
-    <Text style={{
-      marginBottom: 10
-    }}>
-      The idea with React Native Elements is more about component structure than
-      actual design.
-    </Text>
-</Card>
-*/}
