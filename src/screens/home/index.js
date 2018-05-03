@@ -68,7 +68,7 @@ export default class Home extends Component {
                     break;
                 case 'Orders':
                 this.props.navigator.resetTo({
-                    screen: 'Orders', title: 'Orders Summary',
+                    screen: 'Orders', title: 'Your Orders',
                     
                     navigatorStyle: coloredNavigationStyle,
                     animated: true, animationType: 'fade'

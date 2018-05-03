@@ -75,6 +75,7 @@ class mainSideMenu extends React.Component {
                                 <Text style={styles.navText}>Home</Text>
                             </TouchableHighlight>
                         </View>
+                        
                         <View style={styles.navButtons}>
                             <Icon name={'ios-beer-outline'} color={iconColor} size={30} style={styles.transparentBG}/>
                             <TouchableHighlight onPress={()=>{this._goTo('Orders')}} underlayColor={'transparent'}>

@@ -10,6 +10,7 @@ import ResetPassword from './screens/login/resetPasssword/index';
 
 import Orders from './screens/orders/index';
 import TrackOrder from './screens/orders/trackOrder/index';
+import OrderSummary from './screens/orders/orderSummary/index';
 
 import Deals from "./screens/deals/index";
 import Settings from "./screens/settings/index";
@@ -35,6 +36,7 @@ export default () => {
         Navigation.registerComponent('mainSideMenu', () => mainSideMenu),
         Navigation.registerComponent('Orders', () => Orders),
         Navigation.registerComponent('Orders.TrackOrder', () => TrackOrder),
+        Navigation.registerComponent('Orders.OrderSummary', () => OrderSummary),
         Navigation.registerComponent('Deals', () => Deals),
         Navigation.registerComponent('Settings', () => Settings),
         Navigation.registerComponent('Settings.EditProfile', () => EditProfile),

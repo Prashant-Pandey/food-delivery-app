@@ -1,18 +1,14 @@
 import React, {Component} from 'react';
 import {
-    View,
+    View, Dimensions, Text,TouchableHighlight
 } from 'react-native';
 
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps'; 
+import { Card } from "react-native-elements";
+import Icon from "react-native-vector-icons/Entypo";
 
-// set the mapview region here as per the location of user
-const initialRegion = {
-    latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-};
+const vw = Dimensions.get('window').width/100, vh = Dimensions.get('window').height/100;
 
 // can be removed just to custom style map
 const mapStyle=[
@@ -270,6 +266,29 @@ export default class Explore extends Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            initialRegion : {
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.2,
+                longitudeDelta: 0.1,
+            },
+            restaurants:[{
+                location:{
+                    latitude:37.78825,
+                    longitude:-122.4324
+                },
+                restaurantName:"Burger King",
+                restaurantAddress:"11'N, Way Street, Madison, WI 53703"
+            },{
+                location:{
+                    latitude:37.73825,
+                    longitude:-122.4224
+                },
+                restaurantName:"Burger King",
+                restaurantAddress:"11'N, Way Street, Madison, WI 53703"
+            },]
+        }
         this._goToRestaurant = this._goToRestaurant.bind(this);
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
@@ -296,46 +315,38 @@ export default class Explore extends Component {
 
     render() {
         return (
-            <MapView
-                style={{flex:1}}
-                customMapStyle={mapStyle}
-                region={initialRegion}>
-
-                {/*map the restaurant markers here*/}
-                <Marker
-                    coordinate={{latitude: 37.78825,
-                        longitude: -122.4324,}}
-                    onPress={this._goToRestaurant}
-                    title={'home'}
-                    description={'sweet home'}
-                />
-
-
-                <Marker
-                    coordinate={{latitude: 37.73825,
-                        longitude: -122.4324,}}
-                    title={'home'}
-                    description={'sweet home'}
-                />
-
-                <Marker
-                    coordinate={{latitude: 37.58825,
-                        longitude: -122.4324,}}
-                    title={'home'}
-                    description={'sweet home'}
-                />
-
-
-                <Marker
-                    coordinate={{latitude: 40.78825,
-                        longitude: -122.4324,}}
-                    title={'home'}
-                    description={'sweet home'}
-                />
-
-
-
-            </MapView>
+            <View style={{flex:1}}>
+                <MapView
+                    style={{flex: 1}}
+                    customMapStyle={mapStyle}
+                    region={this.state.initialRegion}>
+                    {this.state.restaurants.map((data, key)=>{
+                        return(
+                            <Marker
+                                coordinate={{
+                                    latitude: data.location.latitude,
+                                    longitude: data.location.longitude,
+                                }}
+                                title={data.restaurantName}
+                                description={data.restaurantAddress}
+                            />
+                        );
+                    })}
+                </MapView>
+                <View style={{position:'absolute', bottom:0, width: 100*vw, backgroundColor:'rgba(255,255,255,0.6)', minHeight:10*vh, zIndex: 100, elevation: 100, padding: 10}}>
+                    <Card>
+                        <View style={{flex: 1, flexDirection:'row', display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+                            <View>
+                                <Text style={{color:'#000', fontWeight:'600', fontSize:16}}>Burger Farms</Text>
+                                <Text>11'N, Way Street, Madison, WI 53703</Text>
+                            </View>
+                            <TouchableHighlight onPress={this._goToRestaurant}>
+                                <Icon size={30} name="chevron-right" />
+                            </TouchableHighlight>
+                        </View>
+                    </Card>
+                </View>
+            </View>
         );
     }
 }

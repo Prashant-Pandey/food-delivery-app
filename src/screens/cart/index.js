@@ -11,7 +11,8 @@ import {
     View,
     Image,
     ScrollView,
-    Dimensions
+    Dimensions,
+    TouchableHighlight
 } from 'react-native';
 import {Card, Badge, Text, Button} from 'react-native-elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -38,7 +39,20 @@ export default class Cart extends Component {
         super(props);
         this._goToCheckout = this._goToCheckout.bind(this);
         this.state = {
-            itemCount: 1
+            currentOrder:{
+               items:[{
+                name:'American Sushi Salomen',
+                cost:500.00,
+                itemCount: 1,
+                
+               },{
+                name:'Paneer Mazedar',
+                cost:130.00,
+                itemCount: 1,
+               }],
+               restaurant:'Avengers headquarter',
+               tax: 13.45
+            }
         }
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
@@ -68,52 +82,85 @@ export default class Cart extends Component {
     }
 
     render() {
+        subTotal = 0;
         return(
             <ScrollView>
                 <View>
-                    <Card containerStyle={{borderWidth:0}}>
-                        <View style={[styles.contentInRow, styles.justifyContentSpaceBetween, styles.paddingBottom16]}>
-                            <View>
-                                <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
-                                    American Sushi Salomen
-                                </Text>
-                                <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize: 12}]}>
-                                    Avengers EastWood
-                                </Text>
-                            </View>
-                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, styles.fontSize24, styles.cartProductCostColor]}>$500</Text>
-                        </View>
-                        <View style={[styles.contentInRow, styles.justifyContentSpaceBetween, styles.paddingWithLightBorder]}>
-                            <View style={[styles.contentInRow, {justifyContent:'space-around'}, styles.centerVertically]}>
-                                <Button
-                                    onPress={
-                                        ()=>{this.setState({itemCount:this.state.itemCount-1});this.forceUpdate();}
-                                    }
-                                    textStyle={styles.white18pxfont}
-                                    containerStyle={[styles.cartAddSubBtnContainerStyle]}
-                                    buttonStyle={[styles.cartAddSubBtnStyling, styles.paddingRight3]}
-                                    icon={<FeatherIcon name={'minus'} size={24} color={cartIconColor}/>} 
-                                    title={''}/>
-                                    
-                                    <Text style={[styles.fontSize24, {paddingHorizontal: 20}]}>
-                                        {this.state.itemCount}
-                                    </Text>
-                                <Button
-                                    onPress={
-                                        ()=>{this.setState({itemCount:this.state.itemCount+1});this.forceUpdate();}
-                                    }
-                                    textStyle={styles.white18pxfont}
-                                    containerStyle={[styles.cartAddSubBtnContainerStyle]}
-                                    buttonStyle={[styles.cartAddSubBtnStyling, styles.marginLeftNeg3]}
-                                    icon={<MaterialIcons name={'add'} size={24} color={cartIconColor}/>} 
-                                    title={''}/>
-                                
-                            </View>
-                            <View style={[styles.centerVertically, styles.centerHorizontally]}>
-                                <MaterialIcons name={'delete-sweep'} size={24} color={cartIconColor}/> 
-                            </View>
-                        </View>
-                    </Card>
+                    {this.state.currentOrder.items.map((data, key)=>{
+                        subTotal+=data.cost*data.itemCount;
+                        return(
+                            <Card containerStyle={{borderWidth:0}}>
+                                <View style={[styles.contentInRow, styles.justifyContentSpaceBetween, styles.paddingBottom16]}>
+                                    <View>
+                                        <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
+                                            {data.name}
+                                        </Text>
+                                        <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize: 12}]}>
+                                           {this.state.currentOrder.restaurant}
+                                        </Text>
+                                    </View>
+                                    <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, styles.fontSize24, styles.cartProductCostColor]}>INR {data.cost*data.itemCount}</Text>
+                                </View>
+                                <View style={[styles.contentInRow, styles.justifyContentSpaceBetween, styles.paddingWithLightBorder]}>
+                                    <View style={[styles.contentInRow, {justifyContent:'space-around'}, styles.centerVertically]}>
+                                        <Button
+                                            onPress={
+                                                ()=>{
+                                                    if(data.itemCount<2){
+                                                        this.setState(()=>{ 
+                                                            this.state.currentOrder.items = this.state.currentOrder.items.filter((item)=>{ 
+                                                                return item.name !== data.name 
+                                                        })});
+                                                        this.forceUpdate();
+                                                    }else{
+                                                        this.setState(()=>{
+                                                            this.state.currentOrder.items[key].itemCount = this.state.currentOrder.items[key].itemCount-1
+                                                        });
+                                                        this.forceUpdate();
+                                                    }
+                                                }
+                                            }
+                                            textStyle={styles.white18pxfont}
+                                            containerStyle={[styles.cartAddSubBtnContainerStyle]}
+                                            buttonStyle={[styles.cartAddSubBtnStyling, styles.paddingRight3]}
+                                            icon={<FeatherIcon name={'minus'} size={24} color={cartIconColor}/>} 
+                                            title={''}/>
+                                            
+                                            <Text style={[styles.fontSize24, {paddingHorizontal: 20}]}>
+                                                {data.itemCount}
+                                            </Text>
+                                        <Button
+                                            onPress={
+                                                ()=>{
+                                                    this.setState(()=>{
+                                                    this.state.currentOrder.items[key].itemCount =  this.state.currentOrder.items[key].itemCount+1
+                                                    });
+                                                   this.forceUpdate();
+                                                }
+                                            }
+                                            textStyle={styles.white18pxfont}
+                                            containerStyle={[styles.cartAddSubBtnContainerStyle]}
+                                            buttonStyle={[styles.cartAddSubBtnStyling, styles.marginLeftNeg3]}
+                                            icon={<MaterialIcons name={'add'} size={24} color={cartIconColor}/>} 
+                                            title={''}/>
+                                        
+                                    </View>
+                                    <TouchableHighlight 
+                                    onPress={()=>{
+                                        this.setState(()=>{ 
+                                            this.state.currentOrder.items = this.state.currentOrder.items.filter((item)=>{ 
+                                            return item.name !== data.name 
+                                        })});
+                                        this.forceUpdate();
+                                    }}
+                                    underlayColor={"#fff"}
+                                    style={[styles.centerVertically, styles.centerHorizontally]}>
+                                        <MaterialIcons name={'delete-sweep'} size={24} color={cartIconColor}/> 
+                                    </TouchableHighlight>
+                                </View>
+                            </Card>
+                        );
+                    })}
                 </View>
                 <View>
                     <Card containerStyle={{borderWidth:0}}>
@@ -121,21 +168,21 @@ export default class Cart extends Component {
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>Subtotal</Text>
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:18,}]}>
                                 {/* add sub total here */}
-                                $500
+                                INR {subTotal}
                             </Text>
                         </View>
                         <View style={[styles.contentInRow, styles.justifyContentSpaceBetween,styles.paddingWithLightBorder]}>
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>Tax</Text>
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:18,}]}>
                                 {/* add tax here */}
-                                $3.45
+                                INR {this.state.currentOrder.tax}
                             </Text>
                         </View>
                         <View style={[styles.contentInRow, styles.justifyContentSpaceBetween, styles.paddingWithLightBorder]}>
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>Total</Text>
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:18,}]}>
                                 {/* add net cost here */}
-                                $503.45
+                                INR {subTotal+this.state.currentOrder.tax}
                             </Text>
                     </View>
                     </Card>
@@ -150,6 +197,7 @@ export default class Cart extends Component {
                 </View>
             </ScrollView>
         )
+        // this.setState({itemCount:this.state.itemCount+1});this.forceUpdate();
     }
 }
 

@@ -100,39 +100,12 @@ export default class Checkout extends Component {
                                 containerStyle={[styles.contentInRow, styles.centerVertically]}
                                 title={'Credit Card'.toUpperCase()}/>
                         </View>
-
-
-                <Divider style={{backgroundColor: '#d8dde1'}}/>
-
-                        <View style={[styles.contentInRow, styles.justifyContentFlexStart, styles.paddingBottom16, styles.centerVertically]}>
-                        <Button
-                        onPress={this._paypalSelected}
-                        titleStyle={styles.paymentMethodChooseBtnTitle}
-                        containerStyle={ [styles.paymentMethodChooseBtnContainer, {backgroundColor:this.state.isPayPalSelected?'#7AB43A':'#E0E0E0'}]}
-                        title={''}/>
-                        <Button
-                        onPress={this._paypalSelected}
-                    buttonStyle={[{elevation:0, backgroundColor: 'transparent'}]}
-                    icon={  <FontAwesome name={'cc-paypal'} color={paymentSelectedColor} size={32} /> }
-                    titleStyle={[styles.fontFamilyRoboto, styles.productNameStyle, styles.paymentMethodChooseBtnTextTitle]}
-                    containerStyle={[styles.contentInRow, styles.centerVertically]}
-                    title={'Paypal'.toUpperCase()}/>
-                        </View> 
                     </Card>
 
                     <View style={[styles.silverColorBackground,{marginTop:16}]}>
                     { !this.state.isCreditCardSelected ?
                       (
-                        <LiteCreditCardInput
-                          autoFocus
-                          inputStyle={styles.paymentInput}
-            
-                          validColor={"black"}
-                          invalidColor={"red"}
-                          placeholderColor={"darkgray"}
-            
-                          onFocus={this._onFocus}
-                          onChange={this._onChange} />
+                        <Text>Please choose payment method</Text>
                       ) : (
                         <CreditCardInput
                           requiresName

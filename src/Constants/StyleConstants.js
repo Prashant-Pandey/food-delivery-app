@@ -5,6 +5,7 @@ import {
 
 const viewHeight = Dimensions.get('window').height;
 const viewWidth = Dimensions.get('window').width;
+const vw = viewWidth/100, vh = viewHeight/100;
 const mainBtnThemeColor = '#FF6F00', fabThemeColor = '#FF6F00', btnWidth = 200;
 const navBarThemeColor = 'rgba(255, 193, 7, 1)';
 // const mainBtnThemeColor = 'rgba(255, 193, 7, 1)';
@@ -231,7 +232,7 @@ silverColorBackground: {
 
 // payment page
 checkoutFullContainer: {
-    minHeight: viewHeight-324,
+    minHeight: 100
 },
 paymentLabel: {
     color: "black",
@@ -255,8 +256,8 @@ checkoutPlaceOrderTitle:{
     color: '#ffffff',
     fontSize: 18
 },
-paymentMethodChooseBtnTitle:{color: '#fff', fontSize: 20, fontFamily: 'AvenirNext-Bold', paddingLeft:10},
-paymentMethodChooseBtnContainer:{height: 16, width: 16, borderRadius: 8, borderWidth: 0, borderColor:'#222', marginRight: 16},
+paymentMethodChooseBtnTitle:{color: '#fff', fontSize: 20, fontFamily: 'AvenirNext-Bold', paddingLeft:10, paddingTop: 16,},
+paymentMethodChooseBtnContainer:{height: 16, width: 16, borderRadius: 8, borderWidth: 0, borderColor:'#222', marginRight: 16, paddingTop: 16,},
 paymentMethodChooseBtnTextTitle:{fontSize:16, paddingLeft: 8, color:paymentSelectedColor},
 checkoutPaymentModeChooseCard:{borderWidth:0, width: viewWidth-30, borderRadius:5},
 
@@ -429,13 +430,13 @@ signupScreenOtherSignUpBtn:{
         borderBottomWidth: 1
     },
     // also used in track order
-    orderScreenCardStyle:{backgroundColor:'#fff', borderRadius: 5, borderWidth:0},
+    orderScreenCardStyle:{backgroundColor:'#fff', borderRadius: 5, borderWidth:0, marginBottom: 5, marginTop: 5, elevation: 0},
     orderCardCostStyle:{fontFamily: 'AcademyEngravedLetPlain', fontWeight: '500', fontSize: 30},
     orderScreenCardImage:{
         height: '100%',
         width: '100%',
-        maxHeight: 120,
-        maxWidth: 100,
+        maxHeight: 150,
+        maxWidth: 120,
         marginHorizontal: 10,
         borderRadius: 5
     },
@@ -450,7 +451,7 @@ signupScreenOtherSignUpBtn:{
         height: 50,
         borderWidth: 0,
         borderRadius: 25,
-        marginTop: 24,
+        marginTop: 10,
         marginBottom: 10,
     },
     orderCardDescriptionContainer:{
@@ -543,4 +544,49 @@ signupScreenOtherSignUpBtn:{
     searchScreenSparePrice:{textDecorationLine:'line-through', fontSize: 16, marginRight:5, color:'#F5511E'},
     searchScreenOriginalPrice:{fontSize: 24, color:'#7CB443'},
     searchScreenOfferStar:{position:'absolute', top:0, right:0},
+
+    ////// order summary page ////////
+    orderContainer:{
+        minHeight: 87*vh,
+        backgroundColor: "#fff",
+        paddingHorizontal: 10,
+    },
+    billRow: {
+        backgroundColor: "#fff",
+        flexDirection: 'row',
+        borderBottomColor: "#ddd",
+        borderBottomWidth: 1,
+    },
+    billContentRow:{
+        paddingVertical: 10,
+    },
+    billPaddingTopRow:{
+        paddingVertical: 20,
+        
+    },
+    serialCol:{
+        width: 7*vw,
+        backgroundColor: "#fff",
+    },
+    nameCol:{
+        width: 50*vw,
+        backgroundColor: "#fff",
+    },
+    noOfItemsCol:{
+        width: 20*vw,
+        backgroundColor: "#fff",
+        // backgroundColor:"#f0f",
+    },
+    priceCol:{
+        width: 23*vw,
+        backgroundColor: "#fff",
+    },
+    subTotalTxt:{
+        width: 70*vw,
+        alignContent: 'center',
+        paddingHorizontal: 20*vw,
+    },
+    subTotalAmt:{
+        width: 30*vw,
+    }
 });
