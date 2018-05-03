@@ -19,8 +19,9 @@ import MapViewDirections from 'react-native-maps-directions';
 
 const origin = {latitude: 37.3318456, longitude: -122.0296002};
 const destination = {latitude: 37.771707, longitude: -122.4053769};
-const GOOGLE_MAPS_APIKEY = 'AIzaSyAEcO5pc5yk8CNgAUDQtgIminvFCXAY_8Q';
-const viewWidth = Dimensions.get('window').width;
+const GOOGLE_MAPS_APIKEY = 'AIzaSyCYxrPmMDfWjrjrSXR9E-GOA3SJyUahWwk';
+const { width, height } = Dimensions.get('window');
+const ASPECT_RATIO = width / height;
 const initialRegion = {
     latitude: 37.3318456, longitude: -122.0296002,
     latitudeDelta: 0.0922,
@@ -332,6 +333,7 @@ export default class TrackOrder extends Component {
             </View>
                 <MapView style={{flex:1}}
                     customMapStyle={mapStyle}
+                    ref={c => this.mapView = c}
                     region={initialRegion}>
                     {/*map both the marker here*/}
                     <Marker
@@ -354,7 +356,21 @@ export default class TrackOrder extends Component {
                         destination={destination}
                         strokeWidth={7}
                         strokeColor="red"
-                        apikey={GOOGLE_MAPS_APIKEY}/>
+                        apikey={GOOGLE_MAPS_APIKEY}
+                        onReady={(result) => {
+                            this.mapView.fitToCoordinates(result.coordinates, {
+                              edgePadding: {
+                                right: (width / 40),
+                                bottom: (height -250),
+                                left: (width / 40),
+                                top: (height / 20),
+                              }
+                            });
+                          }}
+                          onError={(errorMessage) => {
+                            console.log('GOT AN ERROR', errorMessage);
+                          }}
+                        />
                 </MapView>
                 <View style={styles.mapBottomOverlay}>
                 <Card containerStyle={[styles.orderScreenCardStyle]}>
