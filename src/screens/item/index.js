@@ -121,7 +121,7 @@ export default class Item extends Component {
                         </View>
                     }
                     rightComponent={
-                        <TouchableHighlight onPress={this._goToCart} underlayColor={navBarThemeColor}>
+                        <TouchableHighlight onPress={this._goToCart} underlayColor={'transparent'}>
                             <View style={[styles.centerVertically, styles.centerHorizontally, styles.paddingRight20]}>
                                 <View style={[ styles.centerVertically, styles.centerHorizontally, styles.itemPageCartNotifierStyle]}>
                                     {/*put no of items in cart*/}

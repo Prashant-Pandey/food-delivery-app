@@ -65,6 +65,7 @@ export default class OrderSummary extends Component {
             },
         };
         this._goToTrackOrder = this._goToTrackOrder.bind(this);
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     } 
    
    
@@ -76,6 +77,14 @@ export default class OrderSummary extends Component {
           }
         ]
       };
+
+      onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
+        if (event.type == 'NavBarButtonPress') { // this is the event type for button presses
+          if (event.id == 'back') { // this is the same id field from the static navigatorButtons definition
+            this.props.navigator.dismissAllModals();
+          }
+        }
+      }
 
     _goToTrackOrder(){
         this.props.navigator.showModal({

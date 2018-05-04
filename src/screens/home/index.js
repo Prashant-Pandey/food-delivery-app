@@ -151,7 +151,7 @@ export default class Home extends Component {
     }
 
     componentWillMount() {
-
+        console.disableYellowBox = true;
     }
 
     render() {

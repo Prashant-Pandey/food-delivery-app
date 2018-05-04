@@ -221,15 +221,6 @@ export default class Menu extends Component {
 
 
     render() {
-        // BackHandler.addEventListener('hardwareBackPress', function() {
-        //     this
-        //         .props
-        //         .navigator
-        //         .resetTo({screen: 'Home', title: 'Welcome to Foodie',
-        //             
-        //             navigatorStyle: navigationStyle,
-        //             animated: true, animationType: 'fade'});
-        // });
         return (
             <ScrollView style={styles.container}>
 

@@ -165,7 +165,7 @@ export default class Orders extends Component {
                                         {key+1}
                                     </Text>
                                 </View>
-                                <View style={{marginLeft: 20}}>
+                                <View style={{marginLeft: 10}}>
                                     <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>
                                     {/* put name of restaurant here */}
                                         {data.name}
@@ -176,17 +176,18 @@ export default class Orders extends Component {
                                     </Text>
                                 </View>
                             </View>
-                            <View>
+                            <View style={styles.orderCardCostContainerStyle}>
+                                <Text style={styles.orderCardCostCurrencyStyle}>INR </Text>
                                 <Text style={styles.orderCardCostStyle}>
                                 {/* put cost of product here */}
-                                    INR {data.netCost}
+                                     {data.netCost}
                                 </Text>
                             </View>
                         </View>
                         <View
                             style={[styles.contentInRow, styles.centerVertically, styles.justifyContentSpaceBetween, styles.orderCardDescriptionContainer]}>
                         <Image source={{uri: 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg'}} style={styles.orderScreenCardImage} resizeMethod={'resize'} resizeMode={'cover'}/>
-                            <View>
+                            <View style={[{justifyContent: 'space-around', alignItems: 'center', alignContent: 'space-around'}]}>
                                 <View style={[styles.contentInRow, styles.centerVertically]}>
                                     <Text style={[styles.centerVertically, styles.orderInfoTitleStyle, styles.fontSize15, styles.fontArielMT]}>
                                         Status&nbsp;:&nbsp;
@@ -201,14 +202,6 @@ export default class Orders extends Component {
                                     </Text>
                                     <Text style={[styles.fontFamilyRoboto]}>
                                         {data.orderID}
-                                    </Text>
-                                </View>
-                                <View style={[styles.contentInRow, styles.centerVertically]}>
-                                    <Text style={[styles.fontFamilyRoboto, styles.orderInfoTitleStyle]}>
-                                        Ordered at&nbsp;:&nbsp;
-                                    </Text>
-                                    <Text style={[styles.fontFamilyRoboto]}>
-                                        {data.orderDate}
                                     </Text>
                                 </View>
                                 <View style={[styles.contentInRow, styles.centerVertically]}>

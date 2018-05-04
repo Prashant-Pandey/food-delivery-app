@@ -99,7 +99,10 @@ export default class Cart extends Component {
                                            {this.state.currentOrder.restaurant}
                                         </Text>
                                     </View>
-                                    <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, styles.fontSize24, styles.cartProductCostColor]}>INR {data.cost*data.itemCount}</Text>
+                                    <View style={[styles.contentInRow, styles.centerHorizontally, styles.centerVertically]}>
+                                    <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, styles.cartProductCostColor]}>INR </Text>
+                                    <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, styles.fontSize24, styles.cartProductCostColor]}>{data.cost*data.itemCount}</Text>
+                                    </View>
                                 </View>
                                 <View style={[styles.contentInRow, styles.justifyContentSpaceBetween, styles.paddingWithLightBorder]}>
                                     <View style={[styles.contentInRow, {justifyContent:'space-around'}, styles.centerVertically]}>
@@ -166,24 +169,25 @@ export default class Cart extends Component {
                     <Card containerStyle={{borderWidth:0}}>
                         <View style={[styles.contentInRow, styles.justifyContentSpaceBetween, styles.paddingBottom16]}>
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>Subtotal</Text>
-                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:18,}]}>
-                                {/* add sub total here */}
-                                INR {subTotal}
-                            </Text>
+                            <View style={[styles.contentInRow, styles.centerHorizontally, styles.centerVertically]}>
+                                <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>INR </Text>
+                                <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:20,}]}>{subTotal}</Text>
+                            </View>
                         </View>
                         <View style={[styles.contentInRow, styles.justifyContentSpaceBetween,styles.paddingWithLightBorder]}>
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>Tax</Text>
-                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:18,}]}>
-                                {/* add tax here */}
-                                INR {this.state.currentOrder.tax}
-                            </Text>
+                            <View style={[styles.contentInRow, styles.centerHorizontally, styles.centerVertically]}>
+                                <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>INR </Text>
+                                <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:20,}]}>{this.state.currentOrder.tax}</Text>
+                            </View>
+                           
                         </View>
                         <View style={[styles.contentInRow, styles.justifyContentSpaceBetween, styles.paddingWithLightBorder]}>
                             <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>Total</Text>
-                            <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:18,}]}>
-                                {/* add net cost here */}
-                                INR {subTotal+this.state.currentOrder.tax}
-                            </Text>
+                            <View style={[styles.contentInRow, styles.centerHorizontally, styles.centerVertically]}>
+                                <Text style={[styles.fontFamilyRoboto, styles.productNameStyle]}>INR </Text>
+                                <Text style={[styles.fontFamilyRoboto, styles.productNameStyle, {fontSize:20,}]}>{subTotal+this.state.currentOrder.tax}</Text>
+                            </View>
                     </View>
                     </Card>
                 </View>

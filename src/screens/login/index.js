@@ -163,7 +163,7 @@ render() {
             source={require('../../images/bg.png')}
             style={styles.fullScreenBackgroundImage}
             resizeMethod={'scale'}/>
-        <TouchableHighlight onPress={this._goToHome}  style={styles.closeBtn}>
+        <TouchableHighlight onPress={this._goToHome} underlayColor={"#fff"}  style={styles.closeBtn}>
             <Icon
                 name='cross'
                 color='#222222'

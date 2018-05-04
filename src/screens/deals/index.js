@@ -165,7 +165,10 @@ export default class Deals extends Component {
                         style={[styles.contentInRow, styles.centerVertically, styles.paddingTop10, styles.paddingHorizontal10]}>
                         <Text style={[styles.fontFamilyRoboto, styles.textAlignJustify]}>
                         {/*put description here*/}
-                            a contagious disease that affects the skin, mucous membranes, and nerves, causing discoloration and lumps on the skin and, in severe cases, disfigurement and deformities. Leprosy is now mainly confined to tropical Africa and Asia.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+                        sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </Text>
                     </View>
                     <View style={[styles.paddingTop10, { paddingBottom:5, paddingHorizontal: 10}, styles.contentInRow, styles.centerVertically]}>

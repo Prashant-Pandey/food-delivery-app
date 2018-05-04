@@ -108,22 +108,13 @@ marginRight0:{marginRight:0},
  },
  condensedFonts: {
 //   fontFamily: 'sans-serif-condensed'
-  fontFamily: 'Arial Rounded MT Bold'
+  fontFamily: 'ArialHebrew'
  },
  textAlignCenter: {
   textAlign: 'center'
  },
  numberingOrders:{
-     borderColor: '#c7c8c3',
      borderWidth: 0,
-     borderRadius: 0,
-     width: 20,
-     height: 20,
-     shadowColor: '#c7c8c3',
-     shadowOffset: {width: 0, height: 1},
-     shadowOpacity: 0.8,
-     shadowRadius: 30,
-     elevation: 1,
  },
  productNameStyle: {
      fontWeight: '500'
@@ -163,7 +154,8 @@ marginRight0:{marginRight:0},
  discountValuePosition:{position:'absolute', right:35, top:-27},
  container: {
     backgroundColor: '#f0f0f0',
-    flex: 1
+    flex: 1,
+    minHeight: viewHeight,
 },
 contentInRow: {
     flexDirection: 'row',
@@ -179,9 +171,9 @@ productDetailsHeading: {fontWeight: '200', fontSize: 12},
 productDetailsDetail: {fontWeight: '500', fontSize: 16},
 
 fontFamilyRoboto: {
-    fontFamily: 'Arial Rounded MT Bold'
+    fontFamily: 'ArialHebrew'
 },
-orderInfoTitleStyle: {color: '#e67e22', fontWeight: '100'},
+orderInfoTitleStyle: {color: '#e67e22', fontSize:12, fontWeight: '100'},
 wrapper: {
     height: viewHeight / 3,
     margin: 0,
@@ -244,7 +236,6 @@ paymentInput: {
   },
 checkoutPlaceOrderBtn:{
     backgroundColor: mainBtnThemeColor,
-    minWidth: 150,
     marginBottom:16,
     marginHorizontal: 100,
     height: 50,
@@ -254,7 +245,7 @@ checkoutPlaceOrderBtn:{
 },
 checkoutPlaceOrderTitle:{
     color: '#ffffff',
-    fontSize: 18
+    fontSize: 12
 },
 paymentMethodChooseBtnTitle:{color: '#fff', fontSize: 20, fontFamily: 'AvenirNext-Bold', paddingLeft:10, paddingTop: 16,},
 paymentMethodChooseBtnContainer:{height: 16, width: 16, borderRadius: 8, borderWidth: 0, borderColor:'#222', marginRight: 16, paddingTop: 16,},
@@ -265,7 +256,7 @@ checkoutPaymentModeChooseCard:{borderWidth:0, width: viewWidth-30, borderRadius:
 dealsCardImage:{borderTopLeftRadius: 10, borderTopRightRadius: 10, top:0.5, width:'99%', left:'0.5%', height:175},
 // dealsCardLocation also used in other screen
 dealsCardLocation:{fontFamily: 'AppleSDGothicNeo-Medium', color: '#757575', fontWeight: '100'},
-dealsCardDiscount:{fontFamily: 'Arial Rounded MT Bold', fontWeight: '500', fontSize: 26, color:'#ffffff'},
+dealsCardDiscount:{fontFamily: 'ArialHebrew', fontWeight: '500', fontSize: 26, color:'#ffffff'},
 dealsCardLocationStyle:{textAlign:'center', fontSize: 16, paddingLeft:10},
 
 // item page or product page
@@ -338,7 +329,7 @@ itemName: {
 },
 
 // edit profile styles
-profilePageRow:{marginBottom: 16, justifyContent:'space-between'},
+profilePageRow:{marginBottom: 16, justifyContent:'space-between', marginTop: 10},
 editProfileRow:{display:'flex', width: Dimensions.get('window').width, flexDirection:'row'},
 paddingLeft10:{paddingLeft:10},
 colorRed:{color:'red'},
@@ -388,7 +379,7 @@ fullScreenBackgroundImage:{
 registerText: {
     fontFamily:'Arial-BoldMT', fontSize: 18, fontWeight:'bold', backgroundColor:"transparent"
 },
-closeBtn: {position:'absolute', top: 16, right: 0, backgroundColor:'#ffffff', borderTopLeftRadius: 20, borderBottomLeftRadius: 20, paddingVertical: 5, paddingLeft: 10, paddingRight:20},
+closeBtn: {position:'absolute', top: 16, right: -10, backgroundColor:'#ffffff', borderTopLeftRadius: 20, borderBottomLeftRadius: 20, paddingVertical: 5, paddingLeft: 10, paddingRight:20},
 
 // signup page styles
 signupScreenContainer: {
@@ -399,7 +390,7 @@ signupScreenContainer: {
     alignItems: 'center'
 },
 signUpScreenTitlePositioning:{position:'absolute', top:20},
-signUpScreenTitleTextStyle:{fontSize: 24, fontWeight:'300', fontFamily:'Academy Engraved LET'},
+signUpScreenTitleTextStyle:{fontSize: 18, fontWeight:'300', fontFamily:'Avenir-Light', backgroundColor:'transparent', paddingTop: 10,},
 inputContainerStyle: {backgroundColor: 'grey', marginVertical:5, borderRadius:3, flexDirection: 'row', alignItems: 'center'},
 signupScreenEmailInput:{marginLeft: 20, color: 'black', borderBottomColor: '#fff'},
 signupScreenPassowrdInputStyle:{marginLeft: 20, color: '#fff'},
@@ -431,7 +422,16 @@ signupScreenOtherSignUpBtn:{
     },
     // also used in track order
     orderScreenCardStyle:{backgroundColor:'#fff', borderRadius: 5, borderWidth:0, marginBottom: 5, marginTop: 5, elevation: 0},
-    orderCardCostStyle:{fontFamily: 'AcademyEngravedLetPlain', fontWeight: '500', fontSize: 30},
+    orderCardCostStyle:{fontFamily: 'Arial Hebrew', fontSize: 23,},
+    orderCardCostCurrencyStyle:{fontFamily: 'Arial Hebrew', fontSize: 18},
+    orderCardCostContainerStyle:{
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // alignContent: 'center',
+    },
     orderScreenCardImage:{
         height: '100%',
         width: '100%',
@@ -443,7 +443,7 @@ signupScreenOtherSignUpBtn:{
     fontArielMT:{
         fontFamily: 'ArialMT'
     },
-    fontSize15:{fontSize: 15,},
+    fontSize15:{fontSize:12,},
     fontSize18:{fontSize: 18,},
     orderCardBtn:{
         backgroundColor: '#F1C40F',
@@ -532,7 +532,7 @@ signupScreenOtherSignUpBtn:{
         ]
     },
     searchScreenDiscountValuePosition:{position:'absolute', right:3, top:8},
-    discountValueText:{fontFamily: 'AcademyEngravedLetPlain', fontWeight: '500', fontSize: 16, color:'#ffffff'},
+    discountValueText:{fontFamily: 'Arial Hebrew', fontWeight: '500', fontSize: 16, color:'#ffffff'},
     searchScreenCardContainerStyle:{padding:0, borderWidth: 0, borderRadius:5, marginHorizontal:5},
     searchScreenCardImageStyle:{
         height: 130,
@@ -540,7 +540,7 @@ signupScreenOtherSignUpBtn:{
         borderBottomLeftRadius: 5,
         borderTopLeftRadius: 5
     },
-    searchScreenLocationTextStyle:{fontFamily: 'AcademyEngravedLetPlain', color: '#757575', fontWeight: '100', marginTop:8},
+    searchScreenLocationTextStyle:{fontFamily: 'Arial Hebrew', color: '#757575', fontWeight: '100', marginTop:8},
     searchScreenSparePrice:{textDecorationLine:'line-through', fontSize: 16, marginRight:5, color:'#F5511E'},
     searchScreenOriginalPrice:{fontSize: 24, color:'#7CB443'},
     searchScreenOfferStar:{position:'absolute', top:0, right:0},
