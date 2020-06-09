@@ -1,31 +1,31 @@
 import {Navigation,ScreenVisibilityListener} from "react-native-navigation";
 
-import Home from './screens/home/index';
-import Login from './screens/login/index';
+import Home from './Components/home/index';
+import Login from './Components/login/index';
 import mainSideMenu from './mainSideMenu/index';
-import {navigationStyle, sideNavigatorButton} from './navbarStyles';
-import SignUp from './screens/login/signup/index';
-import ResetPassword from './screens/login/resetPasssword/index';
+import {navigationStyle, sideNavigatorButton} from './Styles/navbarStyles';
+import SignUp from './Components/login/signup/index';
+import ResetPassword from './Components/login/resetPasssword/index';
 
 
-import Orders from './screens/orders/index';
-import TrackOrder from './screens/orders/trackOrder/index';
-import OrderSummary from './screens/orders/orderSummary/index';
+import Orders from './Components/orders/index';
+import TrackOrder from './Components/orders/trackOrder/index';
+import OrderSummary from './Components/orders/orderSummary/index';
 
-import Deals from "./screens/deals/index";
-import Settings from "./screens/settings/index";
-import EditProfile from "./screens/settings/editProfile/index";
-import ChangePassword from "./screens/settings/changePassword/index";
-import DeleteAccount from "./screens/settings/deleteAccount/index";
-import AboutFoodie from "./screens/settings/aboutFoodie/index";
+import Deals from "./Components/deals/index";
+import Settings from "./Components/settings/index";
+import EditProfile from "./Components/settings/editProfile/index";
+import ChangePassword from "./Components/settings/changePassword/index";
+import DeleteAccount from "./Components/settings/deleteAccount/index";
+import AboutFoodie from "./Components/settings/aboutFoodie/index";
 
-import Search from "./screens/search/index";
-import Item from "./screens/item/index";
-import Explore from "./screens/explore/index";
-import Menu from "./screens/menu/index";
-import Cart from "./screens/cart/index";
-import Checkout from "./screens/checkout/index";
-import ThankYou from "./screens/thankyou/index";
+import Search from "./Components/search/index";
+import Item from "./Components/item/index";
+import Explore from "./Components/explore/index";
+import Menu from "./Components/menu/index";
+import Cart from "./Components/cart/index";
+import Checkout from "./Components/checkout/index";
+import ThankYou from "./Components/thankyou/index";
 
 
 export default () => {
@@ -33,11 +33,15 @@ export default () => {
         Navigation.registerComponent('Login', () => Login),
         Navigation.registerComponent('Login.SignUp', () => SignUp),
         Navigation.registerComponent('Login.ResetPassword', () => ResetPassword),
+
         Navigation.registerComponent('mainSideMenu', () => mainSideMenu),
+
         Navigation.registerComponent('Orders', () => Orders),
         Navigation.registerComponent('Orders.TrackOrder', () => TrackOrder),
         Navigation.registerComponent('Orders.OrderSummary', () => OrderSummary),
+
         Navigation.registerComponent('Deals', () => Deals),
+        
         Navigation.registerComponent('Settings', () => Settings),
         Navigation.registerComponent('Settings.EditProfile', () => EditProfile),
         Navigation.registerComponent('Settings.ChangePassword', () => ChangePassword),
@@ -59,7 +63,7 @@ export default () => {
             willDisappear: ({screen}) => console.log(`Screen will disappear ${screen}`),
             didDisappear: ({screen}) => console.log(`Screen disappeared ${screen}`)
           }).register();
-        // Navigation.registerComponent('Home', () => StorybookUI);
+          
         Navigation.startSingleScreenApp({
             screen: {
                 screen: 'Home',
