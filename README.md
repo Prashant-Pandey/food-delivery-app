@@ -1,4 +1,4 @@
-## Foodie ##
+## React-Native App similar to Doordash ##
 # app for food delivery #
 error : Could not find method implementation() for arguments react native maps....
 
